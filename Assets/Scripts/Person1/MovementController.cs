@@ -8,29 +8,49 @@ public class MovementController : MonoBehaviour
     private NavMeshAgent agent;
     private Camera cam;
 
-    void Awake()
+    [SerializeField] private InputActionReference clickInput;
+
+    private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         cam = Camera.main;
+
+        if (clickInput == null)
+            Debug.Log("clickInput is null");
+        else if (clickInput.action == null)
+            Debug.Log("clickInput.action is null");
+        else
+            Debug.Log("clickInput.action exists!");
     }
 
-    void Update()
+    private void OnEnable()
     {
-        if (Mouse.current.leftButton.wasPressedThisFrame)
+        clickInput.action.started += OnClick;
+    }
+
+    private void OnDisable()
+    {
+        clickInput.action.started -= OnClick;
+    }
+
+    private void OnClick(InputAction.CallbackContext context)
+    {
+        Debug.Log("Clicked");
+
+        // Get the mouse position from the InputAction context
+        Vector2 mousePos = context.ReadValue<Vector2>();
+        Ray ray = cam.ScreenPointToRay(mousePos);
+
+        if (Physics.Raycast(ray, out RaycastHit hit))
         {
-            Ray ray = cam.ScreenPointToRay(Mouse.current.position.ReadValue());
+            agent.SetDestination(hit.point);
 
-            if (Physics.Raycast(ray, out RaycastHit hit))
-            {
-                agent.SetDestination(hit.point);
-
-                // tiny temporary click indicator
-                GameObject marker = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                marker.transform.position = hit.point + Vector3.up * 0.05f;
-                marker.transform.localScale = Vector3.one * 0.2f;
-                Destroy(marker.GetComponent<Collider>()); // optional, remove collider
-                Destroy(marker, 1f); // auto destroy after 1 second
-            }
+            // tiny temporary click indicator
+            GameObject marker = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            marker.transform.position = hit.point + Vector3.up * 0.05f;
+            marker.transform.localScale = Vector3.one * 0.2f;
+            Destroy(marker.GetComponent<Collider>());
+            Destroy(marker, 1f);
         }
     }
 }
