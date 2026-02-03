@@ -151,11 +151,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AnimatorRuntimeDriver
   animator: {fileID: 887183288}
-  forwardParam: ForwardS
-  rotationParam: RotationS
-  talkingParam: TalkingEm
+  forwardParam: ForwardSpeed
+  rotationParam: RotationSpeed
+  talkingParam: TalkingEmote
   greetingTrigger: Greeting
-  greetingSpeedParam: GreetingS
+  greetingSpeedParam: GreetingSpeed
   forwardValue: 1
   rotationValue: 1
 --- !u!95 &887183288
@@ -210,7 +210,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AnimatorLayerWeightDriver
   animator: {fileID: 887183288}
   layerName: UpperBodyLocomotions
-  currentWeight: 0
+  currentWeight: 1
   lerpSpeed: 8
 --- !u!1 &1168010766
 GameObject:
