@@ -31,24 +31,24 @@ public class AnimationManager : MonoBehaviour
         public void PlayEmote()
     {
 
-        animator.SetBool(_talkingHash, true);
+        animator.SetBool("_talkingHash", true);
         Invoke(nameof(StopEmoteInternal), 0.1f);
     }
 
     public void PlayGreet()
     {
-        animator.SetTrigger(_greetingHash);
+        animator.SetTrigger("_greetingHash");
     }
 
     public void SetGreetSpeed(float speed)
     {
-        animator.SetFloat(_greetingSpeedHash, speed);
+        animator.SetFloat("_greetingSpeedHash", speed);
     }
 
     public void SetCharacterSpeed(float forwardSpeed, float rotationSpeed)
     {
-        animator.SetFloat(_forwardHash, forwardSpeed);
-        animator.SetFloat(_rotationHash, rotationSpeed);
+        animator.SetFloat("_forwardHash", forwardSpeed);
+        animator.SetFloat("_rotationHash", rotationSpeed);
 
     }
 
@@ -56,7 +56,7 @@ public class AnimationManager : MonoBehaviour
 
     private void StopEmoteInternal()
     {
-        animator.SetBool(_talkingHash, false);
+        animator.SetBool("_talkingHash", false);
     }
 
 
