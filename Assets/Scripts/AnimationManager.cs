@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class AnimatorRuntimeDriver : MonoBehaviour
+public class AnimationManager : MonoBehaviour
 {
     [Header("Reference")]
     [SerializeField] private Animator animator;
@@ -27,6 +27,38 @@ public class AnimatorRuntimeDriver : MonoBehaviour
         if (animator == null)
             animator = GetComponent<Animator>();
     }
+
+        public void PlayEmote()
+    {
+
+        animator.SetBool(_talkingHash, true);
+        Invoke(nameof(StopEmoteInternal), 0.1f);
+    }
+
+    public void PlayGreet()
+    {
+        animator.SetTrigger(_greetingHash);
+    }
+
+    public void SetGreetSpeed(float speed)
+    {
+        animator.SetFloat(_greetingSpeedHash, speed);
+    }
+
+    public void SetCharacterSpeed(float forwardSpeed, float rotationSpeed)
+    {
+        animator.SetFloat(_forwardHash, forwardSpeed);
+        animator.SetFloat(_rotationHash, rotationSpeed);
+
+    }
+
+
+
+    private void StopEmoteInternal()
+    {
+        animator.SetBool(_talkingHash, false);
+    }
+
 
     private void Update()
     {
@@ -65,4 +97,6 @@ public class AnimatorRuntimeDriver : MonoBehaviour
         // Just to prove runtime changes
         animator.SetFloat(greetingSpeedParam, Mathf.PingPong(Time.time, 1f));
     }
+
+    
 }

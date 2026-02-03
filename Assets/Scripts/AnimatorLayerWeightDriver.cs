@@ -5,7 +5,6 @@ public class AnimatorLayerWeightDriver : MonoBehaviour
 {
     [SerializeField] private Animator animator;
 
-    // NOME EXATO da sua layer (como aparece no Animator)
     [SerializeField] private string layerName = "UpperBodyLocomotions";
 
     [Range(0f, 1f)]
@@ -36,7 +35,7 @@ public class AnimatorLayerWeightDriver : MonoBehaviour
     {
         if (animator == null || layerIndex < 0) return;
 
-        // Toggle com Y: liga/desliga o upper body
+        // Toggle with Y
         if (Keyboard.current != null && Keyboard.current.yKey.wasPressedThisFrame)
             targetWeight = (targetWeight < 0.5f) ? 1f : 0f;
 
