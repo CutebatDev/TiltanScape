@@ -7,12 +7,18 @@ public class testscr : MonoBehaviour
     private NavMeshAgent agent;
 
     [SerializeField] private LayerMask clickableLayers;
+    [SerializeField] private float lookRotationSpeed = 5f;
 
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
 
         input = new Controls();
+    }
+
+    void Update()
+    {
+        FaceTarget();
     }
 
     private void ClickToMove()
@@ -34,11 +40,35 @@ public class testscr : MonoBehaviour
     private void OnEnable()
     {
         input.Enable();
-        input.Movement.Move.performed += ctx => ClickToMove();
+        input.Movement.Move.performed += OnMovePerformed;
     }
     private void OnDisable()
     {
         input.Disable();
-        input.Movement.Move.performed -= ctx => ClickToMove();
+        input.Movement.Move.performed -= OnMovePerformed;
+    }
+
+    private void OnMovePerformed(InputAction.CallbackContext ctx)
+    {
+        ClickToMove();
+    }
+
+    private void FaceTarget()
+    {
+        if (agent.remainingDistance <= agent.stoppingDistance)
+            return;
+
+        if (!agent.hasPath)
+            return;
+
+        Vector3 flatDir = agent.destination - transform.position;
+        flatDir.y = 0f;
+
+        if (flatDir.sqrMagnitude < 0.0001f)
+            return;
+
+        Quaternion lookRotation = Quaternion.LookRotation(flatDir);
+
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * lookRotationSpeed);
     }
 }
