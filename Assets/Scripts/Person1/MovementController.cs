@@ -31,6 +31,6 @@ public class MovementController : MonoBehaviour
                 Destroy(marker.GetComponent<Collider>()); // optional, remove collider
                 Destroy(marker, 1f); // auto destroy after 1 second
             }
-        }
+        } 
     }
 }

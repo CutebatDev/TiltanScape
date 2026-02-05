@@ -2,15 +2,14 @@ using UnityEngine;
 
 public class BaseCharacter : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    
+    [SerializeField] private Animator characterAnimator;
+    [SerializeField] private RuntimeAnimatorController characterController;
+    
     void Start()
     {
-        
+        characterAnimator.runtimeAnimatorController = characterController;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }

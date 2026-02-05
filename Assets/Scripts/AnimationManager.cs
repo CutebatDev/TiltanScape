@@ -7,11 +7,11 @@ public class AnimationManager : MonoBehaviour
     [SerializeField] private Animator animator;
 
     [Header("Animator Parameters")]
-    [SerializeField] private string forwardParam = "ForwardSpe";      // float
-    [SerializeField] private string rotationParam = "RotationSpe";    // float
-    [SerializeField] private string talkingParam = "TalkingEmot";     // bool
+    [SerializeField] private string forwardParam = "ForwardSpeed";      // float
+    [SerializeField] private string rotationParam = "RotationSpeed";    // float
+    [SerializeField] private string talkingParam = "TalkingEmote";     // bool
     [SerializeField] private string greetingTrigger = "Greeting";     // trigger
-    [SerializeField] private string greetingSpeedParam = "GreetingSpe"; // float
+    [SerializeField] private string greetingSpeedParam = "GreetingSpeed"; // float
 
     [Header("Tuning")]
     [SerializeField] private float forwardValue = 1f;
