@@ -7,7 +7,7 @@
             "id": "abdc3c68-baec-419c-aaa4-5603c84cf442",
             "actions": [
                 {
-                    "name": "Click",
+                    "name": "Move",
                     "type": "Button",
                     "id": "d4bf1f1b-deb8-46fb-aabf-9b088e072644",
                     "expectedControlType": "",
@@ -24,7 +24,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Click",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

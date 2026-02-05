@@ -1,49 +1,26 @@
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
-
-[RequireComponent(typeof(NavMeshAgent))]
-public class MovementController : MonoBehaviour
+public class testscr : MonoBehaviour
 {
+    private Controls input;
     private NavMeshAgent agent;
-    private Camera cam;
 
-    [SerializeField] private InputActionReference clickInput;
+    [SerializeField] private LayerMask clickableLayers;
 
-    private void Awake()
+    void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-        cam = Camera.main;
 
-        if (clickInput == null)
-            Debug.Log("clickInput is null");
-        else if (clickInput.action == null)
-            Debug.Log("clickInput.action is null");
-        else
-            Debug.Log("clickInput.action exists!");
+        input = new Controls();
     }
 
-    private void OnEnable()
+    private void ClickToMove()
     {
-        clickInput.action.started += OnClick;
-    }
-
-    private void OnDisable()
-    {
-        clickInput.action.started -= OnClick;
-    }
-
-    private void OnClick(InputAction.CallbackContext context)
-    {
-        Debug.Log("Clicked");
-
-        // Get the mouse position from the InputAction context
-        Vector2 mousePos = context.ReadValue<Vector2>();
-        Ray ray = cam.ScreenPointToRay(mousePos);
-
-        if (Physics.Raycast(ray, out RaycastHit hit))
+        RaycastHit hit;
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100, clickableLayers))
         {
-            agent.SetDestination(hit.point);
+            agent.destination = hit.point;
 
             // tiny temporary click indicator
             GameObject marker = GameObject.CreatePrimitive(PrimitiveType.Sphere);
@@ -52,5 +29,16 @@ public class MovementController : MonoBehaviour
             Destroy(marker.GetComponent<Collider>());
             Destroy(marker, 1f);
         }
+    }
+
+    private void OnEnable()
+    {
+        input.Enable();
+        input.Movement.Move.performed += ctx => ClickToMove();
+    }
+    private void OnDisable()
+    {
+        input.Disable();
+        input.Movement.Move.performed -= ctx => ClickToMove();
     }
 }
