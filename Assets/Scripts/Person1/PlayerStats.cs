@@ -1,3 +1,4 @@
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
@@ -6,10 +7,9 @@ public class PlayerStats : MonoBehaviour
 {
     [SerializeField] private float maxHealth = 100f;
     public float CurrentHealth { get; private set; }
-    public float MaxHealth => maxHealth;
+    public float MaxHealth;
 
-    [Header("Events")]
-    [SerializeField] private UnityEvent onHealthChangedUI;
+    public event Action<float, float> OnHealthChanged;
 
     private void Awake()
     {
@@ -31,6 +31,6 @@ public class PlayerStats : MonoBehaviour
         float damage = enemy.GetComponent<EnemyStats>().ContactDamage;
         CurrentHealth = Mathf.Clamp(CurrentHealth - damage, 0f, maxHealth);
 
-        onHealthChangedUI?.Invoke();
+        OnHealthChanged?.Invoke(CurrentHealth, maxHealth);
     }
 }

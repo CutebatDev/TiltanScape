@@ -11,8 +11,19 @@ public class HealthBarUpdater : MonoBehaviour
         healthFill.fillAmount = 1;
     }
 
-    public void UpdateHealthBar()
+    private void OnEnable()
     {
-        healthFill.fillAmount = playerStats.CurrentHealth / playerStats.MaxHealth;
+        playerStats.OnHealthChanged += UpdateHealthBar;
     }
+
+    private void OnDisable()
+    {
+        playerStats.OnHealthChanged -= UpdateHealthBar;
+    }
+
+    private void UpdateHealthBar(float current, float max)
+    {
+        healthFill.fillAmount = current / max;
+    }
+
 }
