@@ -130,17 +130,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8992f0154bca3040bdbe90e54bbd1f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
---- !u!114 &206600138 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4129627122105733310, guid: 0011cdc932b89e346b1c28ab13e448f8, type: 3}
-  m_PrefabInstance: {fileID: 1518718129}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd70a9a59ef951e4abe1cb3d2acfb929, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
 --- !u!4 &206600141 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8177364424485445962, guid: 0011cdc932b89e346b1c28ab13e448f8, type: 3}
@@ -432,6 +421,67 @@ MonoBehaviour:
   layerName: UpperBodyLocomotions
   currentWeight: 1
   lerpSpeed: 8
+--- !u!1001 &932279033
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3961118569769331982, guid: 15c9c964224c7474daad10a5241d6320, type: 3}
+      propertyPath: OnStartedMoving.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 356057109}
+    - target: {fileID: 8130531417378868708, guid: 15c9c964224c7474daad10a5241d6320, type: 3}
+      propertyPath: m_Name
+      value: BossCharacter
+      objectReference: {fileID: 0}
+    - target: {fileID: 9136691181034183930, guid: 15c9c964224c7474daad10a5241d6320, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.9094
+      objectReference: {fileID: 0}
+    - target: {fileID: 9136691181034183930, guid: 15c9c964224c7474daad10a5241d6320, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 9136691181034183930, guid: 15c9c964224c7474daad10a5241d6320, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.71584
+      objectReference: {fileID: 0}
+    - target: {fileID: 9136691181034183930, guid: 15c9c964224c7474daad10a5241d6320, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9136691181034183930, guid: 15c9c964224c7474daad10a5241d6320, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9136691181034183930, guid: 15c9c964224c7474daad10a5241d6320, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9136691181034183930, guid: 15c9c964224c7474daad10a5241d6320, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9136691181034183930, guid: 15c9c964224c7474daad10a5241d6320, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9136691181034183930, guid: 15c9c964224c7474daad10a5241d6320, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9136691181034183930, guid: 15c9c964224c7474daad10a5241d6320, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 15c9c964224c7474daad10a5241d6320, type: 3}
 --- !u!224 &1005295119 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3144863216065304497, guid: 0ee4abc0f59db3c4896b2a03ea20de85, type: 3}
@@ -770,18 +820,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2252425851857631879, guid: 0011cdc932b89e346b1c28ab13e448f8, type: 3}
-      propertyPath: currentWeight
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4129627122105733310, guid: 0011cdc932b89e346b1c28ab13e448f8, type: 3}
       propertyPath: OnStartedMoving.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 356057109}
-    - target: {fileID: 6753195019339690832, guid: 0011cdc932b89e346b1c28ab13e448f8, type: 3}
-      propertyPath: movementController
-      value: 
-      objectReference: {fileID: 206600138}
     - target: {fileID: 8177364424485445962, guid: 0011cdc932b89e346b1c28ab13e448f8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1562,3 +1604,4 @@ SceneRoots:
   - {fileID: 2121948627}
   - {fileID: 888449009959095257}
   - {fileID: 1051109607877023787}
+  - {fileID: 932279033}
