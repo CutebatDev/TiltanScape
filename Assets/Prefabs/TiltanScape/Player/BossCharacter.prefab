@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: The Boss
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 869052815aa7b7949965040a4bd443f3, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 2ef9dfe8743c12e40968a1ddbb234eb3, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -79,6 +83,18 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 4962462615082268740}
+    - target: {fileID: 1243666559538162453, guid: d7a804bb8a0d4924897592c3ad712842, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1344063409788258952, guid: d7a804bb8a0d4924897592c3ad712842, type: 3}
+      propertyPath: m_Acceleration
+      value: 9999
+      objectReference: {fileID: 0}
+    - target: {fileID: 2343976644289111815, guid: d7a804bb8a0d4924897592c3ad712842, type: 3}
+      propertyPath: lookRotationSpeed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4302419070767154521, guid: d7a804bb8a0d4924897592c3ad712842, type: 3}
       propertyPath: characterAnimator
       value: 
@@ -129,15 +145,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7544600525507614451, guid: d7a804bb8a0d4924897592c3ad712842, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.0259712
+      value: 2.9094
       objectReference: {fileID: 0}
     - target: {fileID: 7544600525507614451, guid: d7a804bb8a0d4924897592c3ad712842, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.04
       objectReference: {fileID: 0}
     - target: {fileID: 7544600525507614451, guid: d7a804bb8a0d4924897592c3ad712842, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.302956
+      value: -2.71584
       objectReference: {fileID: 0}
     - target: {fileID: 7544600525507614451, guid: d7a804bb8a0d4924897592c3ad712842, type: 3}
       propertyPath: m_LocalRotation.w

@@ -864,14 +864,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8736916389993658450, guid: 0011cdc932b89e346b1c28ab13e448f8, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 2ef9dfe8743c12e40968a1ddbb234eb3, type: 2}
-    - target: {fileID: 8736916389993658450, guid: 0011cdc932b89e346b1c28ab13e448f8, type: 3}
-      propertyPath: m_ApplyRootMotion
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 9179086568863232084, guid: 0011cdc932b89e346b1c28ab13e448f8, type: 3}
       propertyPath: m_Name
       value: GrannyCharacter
