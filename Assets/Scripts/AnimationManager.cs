@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -5,11 +6,12 @@ public class AnimationManager : MonoBehaviour
 {
     [Header("Reference")]
     [SerializeField] private Animator animator;
+    [SerializeField] private MovementController movementController;
 
     [Header("Animator Parameters")]
     [SerializeField] private string forwardParam = "ForwardSpeed";      // float
     [SerializeField] private string rotationParam = "RotationSpeed";    // float
-    [SerializeField] private string talkingParam = "TalkingEmote";     // bool
+    [SerializeField] private string talkingParam = "TalkingEmote";     // trigger
     [SerializeField] private string greetingTrigger = "Greeting";     // trigger
     [SerializeField] private string greetingSpeedParam = "GreetingSpeed"; // float
 
@@ -22,75 +24,59 @@ public class AnimationManager : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
+    private void OnEnable()
+    {
+        CollisionSystem.OnQuestTrigger += PlayEmote;
+        CollisionSystem.OnEnemyTouched += PlayGreet;
+    }
+
+    private void OnDisable()
+    {
+        CollisionSystem.OnQuestTrigger -= PlayEmote;
+        CollisionSystem.OnEnemyTouched -= PlayGreet;
+    }
+
     private void Awake()
     {
         if (animator == null)
             animator = GetComponent<Animator>();
     }
 
+    private void PlayEmote(GameObject other) => PlayEmote();
         public void PlayEmote()
     {
-
-        animator.SetBool("_talkingHash", true);
-        Invoke(nameof(StopEmoteInternal), 0.1f);
+        animator.SetTrigger(talkingParam);
     }
+
+    public void PlayGreet(GameObject other) => PlayGreet();
 
     public void PlayGreet()
     {
-        animator.SetTrigger("_greetingHash");
+        animator.SetTrigger(greetingTrigger);
     }
 
     public void SetGreetSpeed(float speed)
     {
-        animator.SetFloat("_greetingSpeedHash", speed);
+        animator.SetFloat(greetingSpeedParam, speed);
     }
 
     public void SetCharacterSpeed(float forwardSpeed, float rotationSpeed)
     {
-        animator.SetFloat("_forwardHash", forwardSpeed);
-        animator.SetFloat("_rotationHash", rotationSpeed);
+        animator.SetFloat(forwardParam, forwardSpeed);
+        animator.SetFloat(rotationParam, rotationSpeed);
 
     }
-
-
-
-    private void StopEmoteInternal()
-    {
-        animator.SetBool("_talkingHash", false);
-    }
-
 
     private void Update()
     {
-        if (animator == null) return;
+        if (!animator) return;
+        if (!movementController) return;
+        
+        float forward = movementController.ForwardSpeed;
+        float rotation = movementController.RotationSpeed;
 
-        // the movement input (WASD)
-        float forward = 0f;
-        float rotation = 0f;
 
-        var kb = Keyboard.current;
-        if (kb != null)
-        {
-            if (kb.wKey.isPressed) forward += forwardValue;
-            if (kb.sKey.isPressed) forward -= forwardValue;
-
-            if (kb.dKey.isPressed) rotation += rotationValue;
-            if (kb.aKey.isPressed) rotation -= rotationValue;
-
-            // Toggle TalkingEmot (T)
-            if (kb.tKey.wasPressedThisFrame)
-            {
-                bool current = animator.GetBool(talkingParam);
-                animator.SetBool(talkingParam, !current);
-            }
-
-            // Trigger Greeting (G)
-            if (kb.gKey.wasPressedThisFrame)
-            {
-                animator.SetTrigger(greetingTrigger);
-            }
-        }
-
+        animator.SetBool("UpperActive", movementController.IsTurning);
         animator.SetFloat(forwardParam, forward);
         animator.SetFloat(rotationParam, rotation);
 
