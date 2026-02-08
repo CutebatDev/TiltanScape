@@ -8,9 +8,9 @@ public class EnemyStats : MonoBehaviour
     [Header("Events")]
     [SerializeField] private UnityEvent onDie;
 
-    private void OnEnable() => CollisionSystem.OnEnemyTouched += OnPlayerContact;
+    private void OnEnable() => CollisionSystem.OnPlayerTouched += OnPlayerContact;
 
-    private void OnDisable() => CollisionSystem.OnEnemyTouched -= OnPlayerContact;
+    private void OnDisable() => CollisionSystem.OnPlayerTouched -= OnPlayerContact;
 
     private void OnPlayerContact(GameObject player)
     {

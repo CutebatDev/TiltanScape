@@ -7,8 +7,8 @@ public class MovementController : MonoBehaviour
 {
     public UnityEvent OnStartedMoving;
 
-    public float ForwardSpeed;
-    public float RotationSpeed { get; private set; }
+    public float ForwardSpeed => agent.velocity.magnitude;
+    public float RotationSpeed => CalculateRotationSpeed();
     public bool IsTurning;
 
     private Controls input;
@@ -41,10 +41,6 @@ public class MovementController : MonoBehaviour
         FaceTarget();
 
         bool isMoving = AgentIsMoving();
-
-        ForwardSpeed = agent.velocity.magnitude;
-
-        RotationSpeed = CalculateRotationSpeed();
 
         IsTurning = RotationSpeed > 0.1f;
 
@@ -114,11 +110,6 @@ public class MovementController : MonoBehaviour
         return agent.hasPath && agent.velocity.sqrMagnitude > 0.01f;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        CollisionSystem.HandleTrigger(other.gameObject);
-    }
-
     private float CalculateRotationSpeed()
     {
         // Angle between current rotation and last rotation
@@ -129,6 +120,5 @@ public class MovementController : MonoBehaviour
         return angle / Time.deltaTime;
     }
 
-    public float CurrentSpeed => agent.velocity.magnitude;
     public bool IsMoving => AgentIsMoving();
 }

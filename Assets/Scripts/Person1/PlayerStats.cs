@@ -18,15 +18,15 @@ public class PlayerStats : MonoBehaviour
 
     private void OnEnable()
     {
-        CollisionSystem.OnEnemyTouched += OnEnemyTouched;
+        CollisionSystem.OnEnemyTouched += OnEnemyContact;
     }
 
     private void OnDisable()
     {
-        CollisionSystem.OnEnemyTouched += OnEnemyTouched;
+        CollisionSystem.OnEnemyTouched += OnEnemyContact;
     }
 
-    public void OnEnemyTouched(GameObject enemy)
+    public void OnEnemyContact(GameObject enemy)
     {
         float damage = enemy.GetComponent<EnemyStats>().ContactDamage;
         CurrentHealth = Mathf.Clamp(CurrentHealth - damage, 0f, maxHealth);

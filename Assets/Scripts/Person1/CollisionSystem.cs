@@ -10,6 +10,7 @@ public class CollisionSystem : MonoBehaviour
 
     public static event Action<GameObject> OnQuestTrigger;
     public static event Action<GameObject> OnEnemyTouched;
+    public static event Action<GameObject> OnPlayerTouched;
 
     private void Awake()
     {
@@ -19,7 +20,7 @@ public class CollisionSystem : MonoBehaviour
             Destroy(gameObject);
     }
 
-    public static void HandleTrigger(GameObject other)
+    public static void HandleTrigger(GameObject other, GameObject self)
     {
         if (instance == null)
             return;
@@ -32,6 +33,7 @@ public class CollisionSystem : MonoBehaviour
         if (other.CompareTag(instance.enemyTag))
         {
             OnEnemyTouched?.Invoke(other);
+            OnPlayerTouched?.Invoke(self);
         }
     }
 }
