@@ -14,10 +14,7 @@ public class AnimationManager : MonoBehaviour
     [SerializeField] private string talkingParam = "TalkingEmote";     // trigger
     [SerializeField] private string greetingTrigger = "Greeting";     // trigger
     [SerializeField] private string greetingSpeedParam = "GreetingSpeed"; // float
-
-    [Header("Tuning")]
-    [SerializeField] private float forwardValue = 1f;
-    [SerializeField] private float rotationValue = 1f;
+    [SerializeField] private string upperActiveParam = "UpperActive"; // bool
 
     private void Reset()
     {
@@ -76,7 +73,7 @@ public class AnimationManager : MonoBehaviour
         float rotation = movementController.RotationSpeed;
 
 
-        animator.SetBool("UpperActive", movementController.IsTurning);
+        animator.SetBool(upperActiveParam, movementController.IsTurning);
         animator.SetFloat(forwardParam, forward);
         animator.SetFloat(rotationParam, rotation);
 
