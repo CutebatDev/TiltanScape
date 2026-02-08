@@ -48,6 +48,7 @@ GameObject:
   - component: {fileID: 4302419070767154521}
   - component: {fileID: 4931495181316359401}
   - component: {fileID: 471227366046502206}
+  - component: {fileID: 3152151372082735920}
   m_Layer: 0
   m_Name: BasePlayer
   m_TagString: Player
@@ -128,6 +129,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd70a9a59ef951e4abe1cb3d2acfb929, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  OnStartedMoving:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  ForwardSpeed: 0
+  IsTurning: 0
+  clickableLayers:
+    serializedVersion: 2
+    m_Bits: 64
+  lookRotationSpeed: 5
+  moveSpeed: 5
+  runSpeed: 8
 --- !u!114 &7364369919838579432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,3 +241,16 @@ MonoBehaviour:
   layerName: UpperBodyLocomotions
   currentWeight: 0
   lerpSpeed: 8
+--- !u!114 &3152151372082735920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7397920174082525165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 274443777ab33074aa3329eb0c8426fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
+  maxHealth: 100

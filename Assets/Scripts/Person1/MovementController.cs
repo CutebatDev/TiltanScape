@@ -7,11 +7,14 @@ public class MovementController : MonoBehaviour
 {
     public UnityEvent OnStartedMoving;
 
+    public float ForwardSpeed;
+    public float RotationSpeed { get; private set; }
+    public bool IsTurning;
+
     private Controls input;
     private NavMeshAgent agent;
     private Camera mainCamera;
 
-    [SerializeField] private Animator animator;
     [SerializeField] private LayerMask clickableLayers;
     [SerializeField] private float lookRotationSpeed = 5f;
     [SerializeField] private float moveSpeed = 5f;
@@ -19,6 +22,8 @@ public class MovementController : MonoBehaviour
 
     private bool isRunning = false;
     private bool wasMoving;
+    private Quaternion lastRotation;
+    private float rotationSpeed;
 
     void Awake()
     {
@@ -37,16 +42,18 @@ public class MovementController : MonoBehaviour
 
         bool isMoving = AgentIsMoving();
 
-        animator.SetFloat("Speed", agent.velocity.magnitude);
-        animator.SetBool("IsMoving", isMoving);
+        ForwardSpeed = agent.velocity.magnitude;
+
+        RotationSpeed = CalculateRotationSpeed();
+
+        IsTurning = RotationSpeed > 0.1f;
 
         if (isMoving && !wasMoving)
-        {
             OnStartedMoving?.Invoke();
-        }
 
         wasMoving = isMoving;
     }
+
 
     private void ClickToMove()
     {
@@ -110,6 +117,16 @@ public class MovementController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         CollisionSystem.HandleTrigger(other.gameObject);
+    }
+
+    private float CalculateRotationSpeed()
+    {
+        // Angle between current rotation and last rotation
+        float angle = Quaternion.Angle(transform.rotation, lastRotation);
+        lastRotation = transform.rotation;
+
+        // Convert to degrees per second
+        return angle / Time.deltaTime;
     }
 
     public float CurrentSpeed => agent.velocity.magnitude;
