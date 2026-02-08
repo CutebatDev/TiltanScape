@@ -17,6 +17,7 @@ public class EnemyStats : MonoBehaviour
         if (player != null && player.CompareTag("Player") && gameObject.activeSelf)
         {
             onDie?.Invoke();
+            Die();
         }
     }
 

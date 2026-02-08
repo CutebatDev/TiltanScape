@@ -931,17 +931,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2131953884 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 334650911232870793, guid: d7a804bb8a0d4924897592c3ad712842, type: 3}
-  m_PrefabInstance: {fileID: 5431031619737922147}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 274443777ab33074aa3329eb0c8426fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
 --- !u!1001 &607746481949567981
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1186,10 +1175,58 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 471227366046502206, guid: d7a804bb8a0d4924897592c3ad712842, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 887183288}
     - target: {fileID: 1247435144521818289, guid: d7a804bb8a0d4924897592c3ad712842, type: 3}
       propertyPath: OnStartedMoving.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 356057109}
+    - target: {fileID: 2343976644289111815, guid: d7a804bb8a0d4924897592c3ad712842, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 887183288}
+    - target: {fileID: 2343976644289111815, guid: d7a804bb8a0d4924897592c3ad712842, type: 3}
+      propertyPath: clickableLayers.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 2343976644289111815, guid: d7a804bb8a0d4924897592c3ad712842, type: 3}
+      propertyPath: OnStartedMoving.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2343976644289111815, guid: d7a804bb8a0d4924897592c3ad712842, type: 3}
+      propertyPath: OnStartedMoving.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2343976644289111815, guid: d7a804bb8a0d4924897592c3ad712842, type: 3}
+      propertyPath: OnStartedMoving.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 356057109}
+    - target: {fileID: 2343976644289111815, guid: d7a804bb8a0d4924897592c3ad712842, type: 3}
+      propertyPath: OnStartedMoving.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2343976644289111815, guid: d7a804bb8a0d4924897592c3ad712842, type: 3}
+      propertyPath: OnStartedMoving.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 2343976644289111815, guid: d7a804bb8a0d4924897592c3ad712842, type: 3}
+      propertyPath: OnStartedMoving.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2343976644289111815, guid: d7a804bb8a0d4924897592c3ad712842, type: 3}
+      propertyPath: OnStartedMoving.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4302419070767154521, guid: d7a804bb8a0d4924897592c3ad712842, type: 3}
+      propertyPath: characterAnimator
+      value: 
+      objectReference: {fileID: 887183288}
+    - target: {fileID: 4931495181316359401, guid: d7a804bb8a0d4924897592c3ad712842, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 887183288}
     - target: {fileID: 7397920174082525165, guid: d7a804bb8a0d4924897592c3ad712842, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1330,7 +1367,7 @@ PrefabInstance:
     - target: {fileID: 8985872493201791834, guid: 0ee4abc0f59db3c4896b2a03ea20de85, type: 3}
       propertyPath: playerStats
       value: 
-      objectReference: {fileID: 2131953884}
+      objectReference: {fileID: 0}
     - target: {fileID: 9215686045068609541, guid: 0ee4abc0f59db3c4896b2a03ea20de85, type: 3}
       propertyPath: m_Name
       value: HealthContainer
