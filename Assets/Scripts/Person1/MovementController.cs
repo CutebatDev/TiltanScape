@@ -5,6 +5,9 @@ using UnityEngine.InputSystem;
 
 public class MovementController : MonoBehaviour
 {
+    public float interactionRange = 2f;
+    private Interactable targetInteractable;
+
     public UnityEvent OnStartedMoving;
 
     public float ForwardSpeed => agent.velocity.magnitude;
@@ -48,8 +51,9 @@ public class MovementController : MonoBehaviour
             OnStartedMoving?.Invoke();
 
         wasMoving = isMoving;
-    }
 
+        CheckInteraction();
+    }
 
     private void ClickToMove()
     {
@@ -57,17 +61,56 @@ public class MovementController : MonoBehaviour
             return;
 
         Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
+
         if (Physics.Raycast(ray, out RaycastHit hit, 100f, clickableLayers))
         {
-            agent.SetDestination(hit.point);
+            Interactable interactable = hit.collider.GetComponent<Interactable>();
 
-            // Tiny temporary click indicator (debug)
-            GameObject marker = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-            marker.transform.position = hit.point + Vector3.up * 0.05f;
-            marker.transform.localScale = Vector3.one * 0.2f;
-            Destroy(marker.GetComponent<Collider>());
-            Destroy(marker, 1f);
+            if (interactable != null)
+            {
+                targetInteractable = interactable;
+                agent.SetDestination(interactable.seat.transform.position);
+            }
+            else
+            {
+                targetInteractable = null;
+                agent.SetDestination(hit.point);
+
+                DrawClickIndicator(hit);
+            }
         }
+    }
+
+    private void CheckInteraction()
+    {
+        if (targetInteractable == null)
+            return;
+
+        float dist = Vector3.Distance(agent.nextPosition, targetInteractable.transform.position);
+
+        if (dist <= interactionRange)
+        {
+            agent.ResetPath();
+            agent.velocity = Vector3.zero;
+
+            if (targetInteractable.seat != null)
+            {
+                transform.position = targetInteractable.seat.position;
+                transform.rotation = targetInteractable.seat.rotation;
+            }
+
+            targetInteractable.Interact();
+            targetInteractable = null;
+        }
+    }
+
+    private void DrawClickIndicator(RaycastHit hit)
+    {
+        GameObject marker = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        marker.transform.position = hit.point + Vector3.up * 0.05f;
+        marker.transform.localScale = Vector3.one * 0.2f;
+        Destroy(marker.GetComponent<Collider>());
+        Destroy(marker, 1f);
     }
 
     private void OnEnable()
