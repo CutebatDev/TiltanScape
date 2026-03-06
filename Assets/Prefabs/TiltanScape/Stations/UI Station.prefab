@@ -240,7 +240,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 876b0cf3ede2a2b41b272ffe44d1c944, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SkillStation
-  player: {fileID: 0}
+  actionController: {fileID: 0}
+  skills: {fileID: 0}
   skill: {fileID: 11400000, guid: 103d1385ac0d71e47bd11340dc72e018, type: 2}
   xpReward: 25
   baseActionTime: 3
@@ -261,7 +262,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6497132385977950938}
         m_TargetAssemblyTypeName: SkillStation, Assembly-CSharp
-        m_MethodName: StartPerformAction
+        m_MethodName: StartInteract
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

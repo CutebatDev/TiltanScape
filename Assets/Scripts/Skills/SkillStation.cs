@@ -3,28 +3,23 @@ using UnityEngine;
 
 public class SkillStation : MonoBehaviour
 {
-    [SerializeField] private PlayerSkills player;
+    [SerializeField] PlayerActionController actionController;
+    [SerializeField] PlayerSkills skills;
+
     public SkillDefinition skill;
     public int xpReward = 25;
     public float baseActionTime = 3f;
 
-    public void Interact()
+    public void StartInteract()
     {
-        player.StartSkillAction(PerformAction());
+        actionController.StartAction(PerformAction());
     }
-    //public void StartPerformAction()
-    //{
-    //    if (player.IsBusy)
-    //        return;
-
-    //    StartCoroutine(PerformAction());
-    //}
 
     private IEnumerator PerformAction()
     {
-        Debug.Log($"Current {skill.name} level: {player.GetLevel(skill)}");
+        Debug.Log($"Current {skill.name} level: {skills.GetLevel(skill)}");
 
-        int level = player.GetLevel(skill);
+        int level = skills.GetLevel(skill);
         float speedMultiplier = skill.actionSpeed.Evaluate(level);
         float duration = baseActionTime * speedMultiplier;
 
@@ -32,10 +27,9 @@ public class SkillStation : MonoBehaviour
         Debug.Log($"Duration: {duration}");
 
         float timer = 0f;
-
         while (timer < duration)
         {
-            if (player.ShouldCancelAction())
+            if (actionController.ShouldCancelAction())
             {
                 Debug.Log($"{skill.skillName} action interrupted!");
                 yield break;
@@ -45,8 +39,7 @@ public class SkillStation : MonoBehaviour
             yield return null;
         }
 
-        player.AddXP(skill, xpReward);
-
+        skills.AddXP(skill, xpReward);
         Debug.Log($"{skill.skillName}: +{xpReward}EXP");
     }
 }

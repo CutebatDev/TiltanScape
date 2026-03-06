@@ -833,9 +833,37 @@ PrefabInstance:
       value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4129627122105733310, guid: 0011cdc932b89e346b1c28ab13e448f8, type: 3}
+      propertyPath: OnStartedMoving.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4129627122105733310, guid: 0011cdc932b89e346b1c28ab13e448f8, type: 3}
+      propertyPath: OnStartedMoving.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4129627122105733310, guid: 0011cdc932b89e346b1c28ab13e448f8, type: 3}
       propertyPath: OnStartedMoving.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 356057109}
+    - target: {fileID: 4129627122105733310, guid: 0011cdc932b89e346b1c28ab13e448f8, type: 3}
+      propertyPath: OnStartedMoving.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1809543251}
+    - target: {fileID: 4129627122105733310, guid: 0011cdc932b89e346b1c28ab13e448f8, type: 3}
+      propertyPath: OnStartedMoving.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4129627122105733310, guid: 0011cdc932b89e346b1c28ab13e448f8, type: 3}
+      propertyPath: OnStartedMoving.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: InterruptAction
+      objectReference: {fileID: 0}
+    - target: {fileID: 4129627122105733310, guid: 0011cdc932b89e346b1c28ab13e448f8, type: 3}
+      propertyPath: OnStartedMoving.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: PlayerActionController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4129627122105733310, guid: 0011cdc932b89e346b1c28ab13e448f8, type: 3}
+      propertyPath: OnStartedMoving.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6408096077618558960, guid: 0011cdc932b89e346b1c28ab13e448f8, type: 3}
       propertyPath: m_IsTrigger
       value: 0
@@ -891,6 +919,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 9179086568863232084, guid: 0011cdc932b89e346b1c28ab13e448f8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1809543242}
+    - targetCorrespondingSourceObject: {fileID: 9179086568863232084, guid: 0011cdc932b89e346b1c28ab13e448f8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1809543251}
   m_SourcePrefab: {fileID: 100100000, guid: 0011cdc932b89e346b1c28ab13e448f8, type: 3}
 --- !u!114 &1809543241 stripped
 MonoBehaviour:
@@ -915,6 +946,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6e6f2971f422b74b98fb8dc921e6805, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerSkills
+--- !u!114 &1809543251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 442576332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e27fa9efa12f79845965c7399526a3df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &2103578398
 GameObject:
   m_ObjectHideFlags: 0
@@ -1319,14 +1362,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2617415452494829008, guid: e94198ddea8f3b447bc9c12d5a648f1b, type: 3}
-      propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Interact
-      objectReference: {fileID: 0}
     - target: {fileID: 6497132385977950938, guid: e94198ddea8f3b447bc9c12d5a648f1b, type: 3}
-      propertyPath: player
+      propertyPath: skills
       value: 
       objectReference: {fileID: 1809543242}
+    - target: {fileID: 6497132385977950938, guid: e94198ddea8f3b447bc9c12d5a648f1b, type: 3}
+      propertyPath: actionController
+      value: 
+      objectReference: {fileID: 1809543251}
     - target: {fileID: 6630071578020622295, guid: e94198ddea8f3b447bc9c12d5a648f1b, type: 3}
       propertyPath: m_Name
       value: UI Station
@@ -1384,18 +1427,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2462958913868690006, guid: ff577d4e379fa3b44b45ed804b264eb0, type: 3}
-      propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Interact
-      objectReference: {fileID: 0}
     - target: {fileID: 6520758786196621393, guid: ff577d4e379fa3b44b45ed804b264eb0, type: 3}
       propertyPath: m_Name
       value: Animation Station
       objectReference: {fileID: 0}
     - target: {fileID: 6653696895626642780, guid: ff577d4e379fa3b44b45ed804b264eb0, type: 3}
-      propertyPath: player
+      propertyPath: skills
       value: 
       objectReference: {fileID: 1809543242}
+    - target: {fileID: 6653696895626642780, guid: ff577d4e379fa3b44b45ed804b264eb0, type: 3}
+      propertyPath: actionController
+      value: 
+      objectReference: {fileID: 1809543251}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1409,10 +1452,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1775018179260200419, guid: 35da72a72eda06b4899359fce8a9a50d, type: 3}
-      propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Interact
-      objectReference: {fileID: 0}
     - target: {fileID: 2800862310021431502, guid: 35da72a72eda06b4899359fce8a9a50d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5
@@ -1458,9 +1497,13 @@ PrefabInstance:
       value: Narrative Station
       objectReference: {fileID: 0}
     - target: {fileID: 7411446860702696169, guid: 35da72a72eda06b4899359fce8a9a50d, type: 3}
-      propertyPath: player
+      propertyPath: skills
       value: 
       objectReference: {fileID: 1809543242}
+    - target: {fileID: 7411446860702696169, guid: 35da72a72eda06b4899359fce8a9a50d, type: 3}
+      propertyPath: actionController
+      value: 
+      objectReference: {fileID: 1809543251}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1475,16 +1518,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2896740603801989831, guid: e91fb71106d41e94aa9b47c7549af830, type: 3}
-      propertyPath: player
+      propertyPath: skills
       value: 
       objectReference: {fileID: 1809543242}
+    - target: {fileID: 2896740603801989831, guid: e91fb71106d41e94aa9b47c7549af830, type: 3}
+      propertyPath: actionController
+      value: 
+      objectReference: {fileID: 1809543251}
     - target: {fileID: 3322398378345807818, guid: e91fb71106d41e94aa9b47c7549af830, type: 3}
       propertyPath: m_Name
       value: Level Design Station
-      objectReference: {fileID: 0}
-    - target: {fileID: 6218297067352425933, guid: e91fb71106d41e94aa9b47c7549af830, type: 3}
-      propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Interact
       objectReference: {fileID: 0}
     - target: {fileID: 7509573106140492000, guid: e91fb71106d41e94aa9b47c7549af830, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1544,13 +1587,13 @@ PrefabInstance:
       value: Game Art Station
       objectReference: {fileID: 0}
     - target: {fileID: 2597421009847406889, guid: 24cd847c1b33c69449c1ab050e44f1ac, type: 3}
-      propertyPath: player
+      propertyPath: skills
       value: 
       objectReference: {fileID: 1809543242}
-    - target: {fileID: 6517687923136210467, guid: 24cd847c1b33c69449c1ab050e44f1ac, type: 3}
-      propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Interact
-      objectReference: {fileID: 0}
+    - target: {fileID: 2597421009847406889, guid: 24cd847c1b33c69449c1ab050e44f1ac, type: 3}
+      propertyPath: actionController
+      value: 
+      objectReference: {fileID: 1809543251}
     - target: {fileID: 7210248078514885390, guid: 24cd847c1b33c69449c1ab050e44f1ac, type: 3}
       propertyPath: m_LocalPosition.x
       value: 11
@@ -1705,18 +1748,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2681194109745337517, guid: f9017651a69acc5418457a38e2678289, type: 3}
-      propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Interact
-      objectReference: {fileID: 0}
     - target: {fileID: 6578947416329413543, guid: f9017651a69acc5418457a38e2678289, type: 3}
-      propertyPath: skill
-      value: 
-      objectReference: {fileID: 11400000, guid: b87cbd23487a10243801bb5cca53aea1, type: 2}
-    - target: {fileID: 6578947416329413543, guid: f9017651a69acc5418457a38e2678289, type: 3}
-      propertyPath: player
+      propertyPath: skills
       value: 
       objectReference: {fileID: 1809543242}
+    - target: {fileID: 6578947416329413543, guid: f9017651a69acc5418457a38e2678289, type: 3}
+      propertyPath: actionController
+      value: 
+      objectReference: {fileID: 1809543251}
     - target: {fileID: 6730014269552340650, guid: f9017651a69acc5418457a38e2678289, type: 3}
       propertyPath: m_Name
       value: Code Station
@@ -1892,10 +1931,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 822663422438253345, guid: 83cb59e122f6c6844ac0940e79242c65, type: 3}
-      propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Interact
-      objectReference: {fileID: 0}
     - target: {fileID: 3825307371200189964, guid: 83cb59e122f6c6844ac0940e79242c65, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8
@@ -1941,9 +1976,13 @@ PrefabInstance:
       value: Concept Art Station
       objectReference: {fileID: 0}
     - target: {fileID: 8435855638132151339, guid: 83cb59e122f6c6844ac0940e79242c65, type: 3}
-      propertyPath: player
+      propertyPath: skills
       value: 
       objectReference: {fileID: 1809543242}
+    - target: {fileID: 8435855638132151339, guid: 83cb59e122f6c6844ac0940e79242c65, type: 3}
+      propertyPath: actionController
+      value: 
+      objectReference: {fileID: 1809543251}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2019,9 +2058,13 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 665816757317395171, guid: 89586d710db922545befcfc44c210eb0, type: 3}
-      propertyPath: player
+      propertyPath: skills
       value: 
       objectReference: {fileID: 1809543242}
+    - target: {fileID: 665816757317395171, guid: 89586d710db922545befcfc44c210eb0, type: 3}
+      propertyPath: actionController
+      value: 
+      objectReference: {fileID: 1809543251}
     - target: {fileID: 1086978653475319790, guid: 89586d710db922545befcfc44c210eb0, type: 3}
       propertyPath: m_Name
       value: Game Engine Station
@@ -2065,10 +2108,6 @@ PrefabInstance:
     - target: {fileID: 5276356296866668740, guid: 89586d710db922545befcfc44c210eb0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8594533677308024297, guid: 89586d710db922545befcfc44c210eb0, type: 3}
-      propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Interact
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2184,18 +2223,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3095417732731606360, guid: d08b03cdb162d26498fd5e48182791a1, type: 3}
-      propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Interact
-      objectReference: {fileID: 0}
     - target: {fileID: 5955290891570523999, guid: d08b03cdb162d26498fd5e48182791a1, type: 3}
       propertyPath: m_Name
       value: Game Systems Station
       objectReference: {fileID: 0}
     - target: {fileID: 6092732582336520786, guid: d08b03cdb162d26498fd5e48182791a1, type: 3}
-      propertyPath: player
+      propertyPath: skills
       value: 
       objectReference: {fileID: 1809543242}
+    - target: {fileID: 6092732582336520786, guid: d08b03cdb162d26498fd5e48182791a1, type: 3}
+      propertyPath: actionController
+      value: 
+      objectReference: {fileID: 1809543251}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
