@@ -3,7 +3,14 @@ using UnityEngine;
 
 public class PlayerSkills : MonoBehaviour
 {
+    private bool isBusy = false;
+    public bool IsBusy => isBusy;
     private Dictionary<SkillDefinition, int> xp = new();
+
+    public void SetIsBusy(bool busy)
+    {
+        isBusy = busy;
+    }
 
     public void AddXP(SkillDefinition skill, int amount)
     {
@@ -32,6 +39,6 @@ public class PlayerSkills : MonoBehaviour
 
     private void OnLevelUp(SkillDefinition skill, int oldLevel, int newLevel)
     {
-        Debug.Log($"{skill.skillName} level from {oldLevel} to {newLevel}");
+        Debug.Log($"{skill.skillName} leveled up from {oldLevel} to {newLevel}!");
     }
 }

@@ -10,20 +10,31 @@ public class SkillStation : MonoBehaviour
 
     public void StartPerformAction()
     {
+        if (player.IsBusy)
+            return;
+
         StartCoroutine(PerformAction());
     }
 
     private IEnumerator PerformAction()
     {
-        Debug.Log("Interaction Started");
+        player.SetIsBusy(true);
+
+        Debug.Log($"Current {skill.name} level: {player.GetLevel(skill)}");
         int level = player.GetLevel(skill);
 
         float speedMultiplier = skill.actionSpeed.Evaluate(level);
         float duration = baseActionTime * speedMultiplier;
 
+        Debug.Log($"Speed multiplier: {speedMultiplier}");
+        Debug.Log($"Duration: {duration}");
+
         yield return new WaitForSeconds(duration);
 
         player.AddXP(skill, xpReward);
+
         Debug.Log($"{xpReward} exp added");
+
+        player.SetIsBusy(false);
     }
 }

@@ -90,8 +90,6 @@ public class MovementController : MonoBehaviour
 
         if (!agent.pathPending && agent.remainingDistance <= interactionRange)
         {
-            Debug.Log("dist<=range");
-
             agent.ResetPath();
 
             if (targetInteractable.seat != null)
@@ -100,7 +98,6 @@ public class MovementController : MonoBehaviour
                 transform.rotation = targetInteractable.seat.rotation;
             }
 
-            Debug.Log("before interaction call");
             targetInteractable.Interact();
             targetInteractable = null;
         }
