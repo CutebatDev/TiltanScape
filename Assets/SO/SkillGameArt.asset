@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 701a2838791f6ab44a38e6de8b567c91, type: 3}
-  m_Name: SkillCoding
+  m_Name: SkillGameArt
   m_EditorClassIdentifier: Assembly-CSharp::SkillDefinition
-  skillName: Coding
+  skillName: Game Art
   icon: {fileID: 0}
   actionAnimation: {fileID: 0}
   successChance:
