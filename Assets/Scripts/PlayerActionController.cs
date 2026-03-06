@@ -6,6 +6,9 @@ public class PlayerActionController : MonoBehaviour
     private Coroutine currentAction;
     private bool cancelAction;
 
+    [SerializeField] private float useDelay;
+    public float UseDelay => useDelay;
+
     public bool IsBusy { get; private set; }
 
     public void StartAction(IEnumerator action)
