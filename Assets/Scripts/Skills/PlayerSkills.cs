@@ -1,16 +1,46 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerSkills : MonoBehaviour
 {
+    private Coroutine currentAction;
+    private bool cancelAction;
+
     private bool isBusy = false;
     public bool IsBusy => isBusy;
     private Dictionary<SkillDefinition, int> xp = new();
 
-    public void SetIsBusy(bool busy)
+    public void StartSkillAction(IEnumerator action)
     {
-        isBusy = busy;
+        if (IsBusy) return;
+
+        isBusy = true;
+        cancelAction = false;
+        currentAction = StartCoroutine(RunSkillAction(action));
     }
+
+    private IEnumerator RunSkillAction(IEnumerator action)
+    {
+        yield return StartCoroutine(action);
+
+        currentAction = null;
+        isBusy = false;
+    }
+
+    public void InterruptAction()
+    {
+        if (currentAction != null)
+        {
+            cancelAction = true;
+            StopCoroutine(currentAction);
+            currentAction = null;
+            isBusy = false;
+            Debug.Log("Action Interrupted!");
+        }
+    }
+
+    public bool ShouldCancelAction() => cancelAction;
 
     public void AddXP(SkillDefinition skill, int amount)
     {

@@ -8,33 +8,45 @@ public class SkillStation : MonoBehaviour
     public int xpReward = 25;
     public float baseActionTime = 3f;
 
-    public void StartPerformAction()
+    public void Interact()
     {
-        if (player.IsBusy)
-            return;
-
-        StartCoroutine(PerformAction());
+        player.StartSkillAction(PerformAction());
     }
+    //public void StartPerformAction()
+    //{
+    //    if (player.IsBusy)
+    //        return;
+
+    //    StartCoroutine(PerformAction());
+    //}
 
     private IEnumerator PerformAction()
     {
-        player.SetIsBusy(true);
-
         Debug.Log($"Current {skill.name} level: {player.GetLevel(skill)}");
-        int level = player.GetLevel(skill);
 
+        int level = player.GetLevel(skill);
         float speedMultiplier = skill.actionSpeed.Evaluate(level);
         float duration = baseActionTime * speedMultiplier;
 
         Debug.Log($"Speed multiplier: {speedMultiplier}");
         Debug.Log($"Duration: {duration}");
 
-        yield return new WaitForSeconds(duration);
+        float timer = 0f;
+
+        while (timer < duration)
+        {
+            if (player.ShouldCancelAction())
+            {
+                Debug.Log($"{skill.skillName} action interrupted!");
+                yield break;
+            }
+
+            timer += Time.deltaTime;
+            yield return null;
+        }
 
         player.AddXP(skill, xpReward);
 
-        Debug.Log($"{xpReward} exp added");
-
-        player.SetIsBusy(false);
+        Debug.Log($"{skill.skillName}: +{xpReward}EXP");
     }
 }
