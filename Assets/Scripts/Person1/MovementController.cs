@@ -35,6 +35,8 @@ public class MovementController : MonoBehaviour
 
         mainCamera = Camera.main;
         input = new Controls();
+
+        agent.stoppingDistance = interactionRange;
     }
 
     void Update()
@@ -86,12 +88,11 @@ public class MovementController : MonoBehaviour
         if (targetInteractable == null)
             return;
 
-        float dist = Vector3.Distance(agent.nextPosition, targetInteractable.transform.position);
-
-        if (dist <= interactionRange)
+        if (!agent.pathPending && agent.remainingDistance <= interactionRange)
         {
+            Debug.Log("dist<=range");
+
             agent.ResetPath();
-            agent.velocity = Vector3.zero;
 
             if (targetInteractable.seat != null)
             {
@@ -99,6 +100,7 @@ public class MovementController : MonoBehaviour
                 transform.rotation = targetInteractable.seat.rotation;
             }
 
+            Debug.Log("before interaction call");
             targetInteractable.Interact();
             targetInteractable = null;
         }

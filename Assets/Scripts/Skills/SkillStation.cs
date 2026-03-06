@@ -3,17 +3,19 @@ using UnityEngine;
 
 public class SkillStation : MonoBehaviour
 {
+    [SerializeField] private PlayerSkills player;
     public SkillDefinition skill;
     public int xpReward = 25;
     public float baseActionTime = 3f;
 
-    public void StartPerformAction(PlayerSkills player)
+    public void StartPerformAction()
     {
-        StartCoroutine(PerformAction(player));
+        StartCoroutine(PerformAction());
     }
 
-    private IEnumerator PerformAction(PlayerSkills player)
+    private IEnumerator PerformAction()
     {
+        Debug.Log("Interaction Started");
         int level = player.GetLevel(skill);
 
         float speedMultiplier = skill.actionSpeed.Evaluate(level);
@@ -22,5 +24,6 @@ public class SkillStation : MonoBehaviour
         yield return new WaitForSeconds(duration);
 
         player.AddXP(skill, xpReward);
+        Debug.Log($"{xpReward} exp added");
     }
 }
