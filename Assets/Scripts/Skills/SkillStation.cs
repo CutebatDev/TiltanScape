@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SkillStation : MonoBehaviour
 {
+    [SerializeField] private MinigameBaseUI minigame;
+
     [SerializeField] PlayerActionController actionController;
     [SerializeField] PlayerSkills skills;
 
@@ -21,7 +23,12 @@ public class SkillStation : MonoBehaviour
     public void StartInteract()
     {
         if (actionController.IsBusy) return;
-        actionController.StartAction(PerformAction());
+
+        //actionController.StartAction(PerformAction());
+
+        if (minigame == null) return;
+
+        minigame.OpenMinigame();
     }
 
     private IEnumerator PerformAction()
