@@ -1,166 +1,158 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-public class MovementController : MonoBehaviour
+namespace Player.Movement
 {
-    public float interactionRange = 2f;
-    private Interactable targetInteractable;
-
-    public UnityEvent OnStartedMoving;
-
-    public float ForwardSpeed => agent.velocity.magnitude;
-    public float RotationSpeed => CalculateRotationSpeed();
-    public bool IsTurning;
-
-    private Controls input;
-    private NavMeshAgent agent;
-    private Camera mainCamera;
-
-    [SerializeField] private LayerMask clickableLayers;
-    [SerializeField] private float lookRotationSpeed = 5f;
-    [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private float runSpeed = 8f;
-
-    private bool isRunning = false;
-    private bool wasMoving;
-    private Quaternion lastRotation;
-    private float rotationSpeed;
-
-    void Awake()
+    public class MovementController : MonoBehaviour
     {
-        agent = GetComponent<NavMeshAgent>();
-        agent.updateRotation = false;
+        public static PlayerInput PlayerInput;
+        public UnityEvent onStartedMoving;
+        public float ForwardSpeed => agent.velocity.magnitude;
+        public float RotationSpeed => CalculateRotationSpeed();
+        public float interactionRange = 2f;
+        public bool isTurning;
 
-        mainCamera = Camera.main;
-        input = new Controls();
+        [SerializeField] private NavMeshAgent agent;
+        [SerializeField] private Camera mainCamera;
+        [SerializeField] private LayerMask clickableLayers;
+        [SerializeField] private float lookRotationSpeed = 5f;
+        [SerializeField] private float moveSpeed = 5f;
+        [SerializeField] private float runSpeed = 8f;
 
-        agent.stoppingDistance = interactionRange;
-    }
+        private Quaternion _lastRotation;
+        private Interactable _targetInteractable;
+        private float _rotationSpeed;
+        private bool _wasMoving;
+        private bool _isRunning = false;
 
-    void Update()
-    {
-        agent.speed = isRunning ? runSpeed : moveSpeed;
-
-        FaceTarget();
-
-        bool isMoving = AgentIsMoving();
-
-        IsTurning = RotationSpeed > 0.1f;
-
-        if (isMoving && !wasMoving)
-            OnStartedMoving?.Invoke();
-
-        wasMoving = isMoving;
-
-        CheckInteraction();
-    }
-
-    private void ClickToMove()
-    {
-        if (!mainCamera)
-            return;
-
-        Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
-
-        if (Physics.Raycast(ray, out RaycastHit hit, 100f, clickableLayers))
+        void Awake()
         {
-            Interactable interactable = hit.collider.GetComponent<Interactable>();
+            agent.updateRotation = false;
+            agent.stoppingDistance = interactionRange;
+        }
 
-            if (interactable != null)
-            {
-                targetInteractable = interactable;
-                agent.SetDestination(interactable.seat.transform.position);
-            }
-            else
-            {
-                targetInteractable = null;
-                agent.SetDestination(hit.point);
+        private void Start()
+        {
+            if (!PlayerInput)
+                PlayerInput = GetComponent<PlayerInput>();
+        }
 
-                DrawClickIndicator(hit);
+        void Update()
+        {
+            agent.speed = _isRunning ? runSpeed : moveSpeed;
+
+            FaceTarget();
+
+            bool isMoving = AgentIsMoving();
+
+            isTurning = RotationSpeed > 0.1f;
+
+            if (isMoving && !_wasMoving)
+                onStartedMoving?.Invoke();
+
+            _wasMoving = isMoving;
+
+            CheckInteraction();
+        }
+
+        public void OnMovePerformed(InputAction.CallbackContext ctx)
+        {
+            if (ctx.performed)
+                ClickToMove();
+        }
+
+        private void ClickToMove()
+        {
+            if (!mainCamera)
+                return;
+
+            Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
+
+            if (Physics.Raycast(ray, out RaycastHit hit, 100f, clickableLayers))
+            {
+                Interactable interactable = hit.collider.GetComponent<Interactable>();
+
+                if (interactable)
+                {
+                    _targetInteractable = interactable;
+                    agent.SetDestination(interactable.seat.transform.position);
+                }
+                else
+                {
+                    _targetInteractable = null;
+                    agent.SetDestination(hit.point);
+
+                    DrawClickIndicator(hit);
+                }
             }
         }
-    }
 
-    private void CheckInteraction()
-    {
-        if (targetInteractable == null)
-            return;
-
-        if (!agent.pathPending && agent.remainingDistance <= interactionRange)
+        private void CheckInteraction()
         {
-            agent.ResetPath();
+            if (!_targetInteractable)
+                return;
 
-            if (targetInteractable.seat != null)
+            if (!agent.pathPending && agent.remainingDistance <= interactionRange)
             {
-                transform.position = targetInteractable.seat.position;
-                transform.rotation = targetInteractable.seat.rotation;
+                agent.ResetPath();
+
+                if (_targetInteractable.seat)
+                {
+                    transform.position = _targetInteractable.seat.position;
+                    transform.rotation = _targetInteractable.seat.rotation;
+                }
+
+                _targetInteractable.Interact();
+                _targetInteractable = null;
             }
-
-            targetInteractable.Interact();
-            targetInteractable = null;
         }
+
+        private void DrawClickIndicator(RaycastHit hit)
+        {
+            GameObject marker = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            marker.transform.position = hit.point + Vector3.up * 0.05f;
+            marker.transform.localScale = Vector3.one * 0.2f;
+            Destroy(marker.GetComponent<Collider>());
+            Destroy(marker, 1f);
+        }
+
+
+        private void FaceTarget()
+        {
+            if (!agent.hasPath || agent.pathPending)
+                return;
+
+            if (agent.remainingDistance <= agent.stoppingDistance)
+                return;
+
+            Vector3 flatDir = agent.destination - transform.position;
+            flatDir.y = 0f;
+
+            if (flatDir.sqrMagnitude < 0.0001f)
+                return;
+
+            Quaternion lookRotation = Quaternion.LookRotation(flatDir);
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * lookRotationSpeed);
+        }
+
+        private bool AgentIsMoving()
+        {
+            return agent.hasPath && agent.velocity.sqrMagnitude > 0.01f;
+        }
+
+        private float CalculateRotationSpeed()
+        {
+            // Angle between current rotation and last rotation
+            float angle = Quaternion.Angle(transform.rotation, _lastRotation);
+            _lastRotation = transform.rotation;
+
+            // Convert to degrees per second
+            return angle / Time.deltaTime;
+        }
+
+        public bool IsMoving => AgentIsMoving();
     }
-
-    private void DrawClickIndicator(RaycastHit hit)
-    {
-        GameObject marker = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        marker.transform.position = hit.point + Vector3.up * 0.05f;
-        marker.transform.localScale = Vector3.one * 0.2f;
-        Destroy(marker.GetComponent<Collider>());
-        Destroy(marker, 1f);
-    }
-
-    private void OnEnable()
-    {
-        input.Enable();
-        input.Movement.Move.performed += OnMovePerformed;
-    }
-
-    private void OnDisable()
-    {
-        input.Movement.Move.performed -= OnMovePerformed;
-        input.Disable();
-    }
-
-    private void OnMovePerformed(InputAction.CallbackContext ctx)
-    {
-        ClickToMove();
-    }
-
-    private void FaceTarget()
-    {
-        if (!agent.hasPath || agent.pathPending)
-            return;
-
-        if (agent.remainingDistance <= agent.stoppingDistance)
-            return;
-
-        Vector3 flatDir = agent.destination - transform.position;
-        flatDir.y = 0f;
-
-        if (flatDir.sqrMagnitude < 0.0001f)
-            return;
-
-        Quaternion lookRotation = Quaternion.LookRotation(flatDir);
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * lookRotationSpeed);
-    }
-
-    private bool AgentIsMoving()
-    {
-        return agent.hasPath && agent.velocity.sqrMagnitude > 0.01f;
-    }
-
-    private float CalculateRotationSpeed()
-    {
-        // Angle between current rotation and last rotation
-        float angle = Quaternion.Angle(transform.rotation, lastRotation);
-        lastRotation = transform.rotation;
-
-        // Convert to degrees per second
-        return angle / Time.deltaTime;
-    }
-
-    public bool IsMoving => AgentIsMoving();
 }

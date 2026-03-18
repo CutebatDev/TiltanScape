@@ -25,6 +25,14 @@ PrefabInstance:
       value: 999999
       objectReference: {fileID: 0}
     - target: {fileID: 2343976644289111815, guid: d7a804bb8a0d4924897592c3ad712842, type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 248391061345505378}
+    - target: {fileID: 2343976644289111815, guid: d7a804bb8a0d4924897592c3ad712842, type: 3}
+      propertyPath: playerInput
+      value: 
+      objectReference: {fileID: 2935559931662738488}
+    - target: {fileID: 2343976644289111815, guid: d7a804bb8a0d4924897592c3ad712842, type: 3}
       propertyPath: interactionRange
       value: 0.5
       objectReference: {fileID: 0}
@@ -157,7 +165,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7397920174082525165, guid: d7a804bb8a0d4924897592c3ad712842, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4758191351858438401}
+    - targetCorrespondingSourceObject: {fileID: 7397920174082525165, guid: d7a804bb8a0d4924897592c3ad712842, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2935559931662738488}
   m_SourcePrefab: {fileID: 100100000, guid: d7a804bb8a0d4924897592c3ad712842, type: 3}
+--- !u!195 &248391061345505378 stripped
+NavMeshAgent:
+  m_CorrespondingSourceObject: {fileID: 1344063409788258952, guid: d7a804bb8a0d4924897592c3ad712842, type: 3}
+  m_PrefabInstance: {fileID: 1285044140595616490}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &3553936593944067565 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2343976644289111815, guid: d7a804bb8a0d4924897592c3ad712842, type: 3}
@@ -204,6 +220,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   useDelay: 0
+--- !u!114 &2935559931662738488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8610836195100105991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
+  m_Actions: {fileID: -944628639613478452, guid: 665dee2c0ea702f408b3b1e0827d03e4, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: ControlScheme
+  m_DefaultActionMap: 29ebde6c-80e4-48e1-bff6-fc9cdcbf7daa
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1001 &2078861926368984820
 PrefabInstance:
   m_ObjectHideFlags: 0
