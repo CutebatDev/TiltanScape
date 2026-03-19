@@ -4233,6 +4233,8 @@ MonoBehaviour:
     uiObject: {fileID: 411374491}
   - type: 3
     uiObject: {fileID: 545821158}
+  - type: 5
+    uiObject: {fileID: 1902240989}
 --- !u!1 &2121948624
 GameObject:
   m_ObjectHideFlags: 0
