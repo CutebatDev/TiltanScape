@@ -9,6 +9,7 @@ namespace User_Interface
     public class UIManager : MonoBehaviour
     {
         [SerializeField] private List<UIEntry> uiPanels;
+        private UIEntry _previusPanel;
         private bool _isGamePaused;
 
         private void Start()
@@ -28,6 +29,7 @@ namespace User_Interface
 
         private void OpenUI(UIType uiToOpen)
         {
+            _previusPanel = uiPanels.Find(panel => panel.uiObject.activeSelf);
             CloseAllUI();
 
             foreach (var uiPanel in uiPanels)
@@ -69,9 +71,9 @@ namespace User_Interface
             print("Main Menu");
         }
 
-        public void OptionsMenu()
+        public void SettingsMenu()
         {
-            print("Options Menu");
+            OpenUI(UIType.SettingsMenu);
         }
 
         public void QuitGame()
@@ -82,7 +84,14 @@ namespace User_Interface
         Application.Quit();
 #endif
         }
+
+        public void BackButton()
+        {
+            CloseAllUI();
+            OpenUI(_previusPanel.type);
+        }
     }
+
 
     [System.Serializable]
     public struct UIEntry
