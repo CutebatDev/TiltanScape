@@ -2,35 +2,26 @@ using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class QuestStation : Interactable
+[RequireComponent(typeof(ActionInteractable))]
+[RequireComponent(typeof(PlayerActionController))]
+public class QuestStation : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField] private QuestData questData;
-    [SerializeField] private PlayerActionController actionController;
     [SerializeField] private PlayerSkills playerSkills;
+
+    [SerializeField] private ActionInteractable interactable;
+    [SerializeField] private PlayerActionController actionController;
+    
 
     void Awake()
     {
-        OnInteract.AddListener(StartInteract);
-    }
-
-    public void StartInteract()
-    {
-        if (actionController.IsBusy) return;
-
-        // Ensure quest exists
-        QuestManager.Instance.StartQuest(questData);
-
-        // Start the action coroutine
-        actionController.StartAction(PerformQuestProgress());
+        interactable.SetAction(PerformQuestProgress);
     }
 
     private IEnumerator PerformQuestProgress()
     {
-        Quest quest = QuestManager.Instance.GetActiveQuest(questData.Id);
-        if (quest == null)
-            yield break;
-
-        float timer = 0f;
+        Quest quest = QuestManager.Instance.StartQuest(questData);
 
         float averageMultiplier = 1f;
         if (questData.relevantSkills != null && questData.relevantSkills.Count > 0)
@@ -39,11 +30,13 @@ public class QuestStation : Interactable
             foreach (var skill in questData.relevantSkills)
             {
                 int level = playerSkills.GetLevel(skill);
-                float multiplier = skill.actionSpeed.Evaluate(level);
-                sum += multiplier;
+                sum += skill.actionSpeed.Evaluate(level);
             }
             averageMultiplier = sum / questData.relevantSkills.Count;
         }
+
+        float timer = 0f;
+
 
         while (timer < questData.baseActionTime)
         {

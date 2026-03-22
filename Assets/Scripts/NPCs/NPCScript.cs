@@ -1,56 +1,91 @@
 using System.Collections;
+using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.InputSystem.Utilities;
+using UnityEngine.UI;
 
-public class NPCScript : Interactable
+[RequireComponent(typeof(ActionInteractable))]
+[RequireComponent(typeof(PlayerActionController))]
+public class NPCScript : MonoBehaviour
 {
     [Header("Quest Settings")]
     [SerializeField] private QuestData questData; // Quest list
-    [SerializeField] private GameObject questIcon; // Current quest icon above the NPC
+
+    [Header("Icon References")]
+    [SerializeField] private Image questStatusIcon; // Current quest icon above the NPC
+    [SerializeField] private Sprite availableIcon;
+    [SerializeField] private Sprite inProgressIcon;
+    [SerializeField] private Sprite completedIcon;
 
     [Header("References")]
+    [SerializeField] private ActionInteractable interactable;
     [SerializeField] private PlayerActionController actionController;
-    [SerializeField] private float baseInteractTime = 1f;
 
     void Awake()
     {
-        OnInteract.AddListener(StartInteract);    
+        interactable.SetAction(PerformInteraction);
+        UpdateQuestIcon();
     }
 
-    void Update()
+    void OnEnable()
     {
+        if (QuestManager.Instance != null)
+        {
+            QuestManager.Instance.OnQuestStarted += HandleQuestChanged;
+            QuestManager.Instance.OnQuestProgressCompleted += HandleQuestChanged;
+            QuestManager.Instance.OnQuestTurnedIn += HandleQuestChanged;
+        }
+    }
+    void OnDisable()
+    {
+        if (QuestManager.Instance != null)
+        {
+            QuestManager.Instance.OnQuestStarted -= HandleQuestChanged;
+            QuestManager.Instance.OnQuestProgressCompleted -= HandleQuestChanged;
+            QuestManager.Instance.OnQuestTurnedIn -= HandleQuestChanged;
+        }
+    }
+
+    private void HandleQuestChanged(Quest quest)
+    {
+        if (quest.Data != questData) return;
+
         UpdateQuestIcon();
     }
 
     private void UpdateQuestIcon()
     {
-        if (questIcon == null || questData == null)
-            return;
+        if (questStatusIcon == null || questData == null) return;
 
         Quest activeQuest = QuestManager.Instance.GetActiveQuest(questData.Id);
 
-        questIcon.SetActive(activeQuest == null && !QuestManager.Instance.IsQuestCompleted(questData.Id));
-    }
-
-    public void StartInteract()
-    {
-        if (actionController.IsBusy) return;
-
-        actionController.StartAction(PerformInteraction());
+        if (activeQuest == null && !QuestManager.Instance.IsQuestCompleted(questData.Id))
+        {
+            // Quest available
+            questStatusIcon.gameObject.SetActive(true);
+            questStatusIcon.sprite = availableIcon;
+        }
+        else if (activeQuest != null && !activeQuest.IsCompleted)
+        {
+            // Quest in progress
+            questStatusIcon.gameObject.SetActive(true);
+            questStatusIcon.sprite = inProgressIcon;
+        }
+        else if (activeQuest != null && activeQuest.IsCompleted && !activeQuest.IsTurnedIn)
+        {
+            // Quest progress finished
+            questStatusIcon.gameObject.SetActive(true);
+            questStatusIcon.sprite = completedIcon;
+        }
+        else
+        {
+            // No quest
+            questStatusIcon.gameObject.SetActive(false);
+        }
     }
 
     private IEnumerator PerformInteraction()
     {
-        float timer = 0f;
-
-        while (timer < baseInteractTime)
-        {
-            if (actionController.ShouldCancelAction())
-                yield break;
-
-            timer += Time.deltaTime;
-            yield return null;
-        }
-
         Quest activeQuest = QuestManager.Instance.GetActiveQuest(questData.Id);
 
         if (activeQuest == null)
@@ -67,5 +102,7 @@ public class NPCScript : Interactable
         {
             Debug.Log($"Quest '{questData.Title}' is in progress: {activeQuest.Progress * 100:F0}% complete.");
         }
+
+        yield return null;
     }
 }

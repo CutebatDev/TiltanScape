@@ -9,6 +9,12 @@ public class QuestManager : MonoBehaviour
     private Dictionary<string, Quest> activeQuests = new();
     private HashSet<string> completedQuests = new();
 
+    // Events
+    public delegate void QuestEvent(Quest quets);
+    public event QuestEvent OnQuestStarted;
+    public event QuestEvent OnQuestProgressCompleted;
+    public event QuestEvent OnQuestTurnedIn;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -29,6 +35,9 @@ public class QuestManager : MonoBehaviour
 
         var quest = new Quest(data);
         activeQuests.Add(data.Id, quest);
+
+        OnQuestStarted?.Invoke(quest);
+
         return quest;
     }
 
@@ -37,7 +46,11 @@ public class QuestManager : MonoBehaviour
         if (!activeQuests.TryGetValue(questId, out var quest))
             return;
 
+        bool wasCompleted = quest.IsCompleted;
         quest.AddProgress(amount);
+
+        if (!wasCompleted && quest.IsCompleted)
+            OnQuestProgressCompleted?.Invoke(quest);
     }
 
     public void TurnInQuest(string questId)
@@ -51,6 +64,8 @@ public class QuestManager : MonoBehaviour
         quest.TurnIn();
         activeQuests.Remove(questId);
         completedQuests.Add(questId);
+
+        OnQuestTurnedIn?.Invoke(quest);
     }
 
     public Quest GetActiveQuest(string questId)
