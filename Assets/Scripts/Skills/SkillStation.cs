@@ -21,7 +21,7 @@ public class SkillStation : MonoBehaviour
     public void StartInteract()
     {
         if (actionController.IsBusy) return;
-        actionController.StartAction(PerformAction());
+            actionController.StartAction(PerformAction());
     }
 
     private IEnumerator PerformAction()
