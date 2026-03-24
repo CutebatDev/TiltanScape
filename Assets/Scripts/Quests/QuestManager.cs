@@ -1,10 +1,11 @@
+using Collision;
 using UnityEngine;
 
 public class QuestManager : MonoBehaviour
 {
     void OnEnable()
     {
-        CollisionSystem.OnQuestTrigger += LogQuest;    
+        CollisionSystem.OnQuestTrigger += LogQuest;
     }
 
     void OnDisable()

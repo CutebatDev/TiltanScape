@@ -240,8 +240,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 876b0cf3ede2a2b41b272ffe44d1c944, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SkillStation
-  actionController: {fileID: 0}
-  skills: {fileID: 0}
+  actionController: {fileID: 4758191351858438401, guid: f73ea0a71499be441878e9f1d10edd21, type: 3}
+  skills: {fileID: 2632559355513001879, guid: f73ea0a71499be441878e9f1d10edd21, type: 3}
   skill: {fileID: 11400000, guid: b87cbd23487a10243801bb5cca53aea1, type: 2}
   xpReward: 25
   baseActionTime: 3

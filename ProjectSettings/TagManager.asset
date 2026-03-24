@@ -6,6 +6,7 @@ TagManager:
   tags:
   - QuestTrigger
   - Enemy
+  - NextScene
   layers:
   - Default
   - TransparentFX

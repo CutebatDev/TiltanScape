@@ -6,8 +6,20 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/old/RaceScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Scenes/SceneChange/Bootstrapper.unity
+    guid: 7657b17958136bc46bb0102fc1827182
+  - enabled: 1
+    path: Assets/Scenes/SceneChange/Gameplay.unity
+    guid: c7827b638e88d3844b4ef2acdddc2853
+  - enabled: 1
+    path: Assets/Scenes/SceneChange/UI.unity
+    guid: 41317417e61c0154a946e3ba06c1b411
+  - enabled: 1
+    path: Assets/Scenes/SceneChange/Level_FirstFloor.unity
+    guid: 251235d223efd8b4d89fbee6c614b938
+  - enabled: 1
+    path: Assets/Scenes/SceneChange/Level_SecondFloor.unity
+    guid: 17ee7f8a823dd0a488b06d4582154be0
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 665dee2c0ea702f408b3b1e0827d03e4, type: 3}
   m_UseUCBPForAssetBundles: 0

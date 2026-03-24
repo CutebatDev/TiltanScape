@@ -1,39 +1,52 @@
 using System;
+using SceneChange;
 using UnityEngine;
 
-public class CollisionSystem : MonoBehaviour
+namespace Collision
 {
-    [SerializeField] private string questTriggerTag = "QuestTrigger";
-    [SerializeField] private string enemyTag = "Enemy";
-
-    private static CollisionSystem instance;
-
-    public static event Action<GameObject> OnQuestTrigger;
-    public static event Action<GameObject> OnEnemyTouched;
-    public static event Action<GameObject> OnPlayerTouched;
-
-    private void Awake()
+    public class CollisionSystem : MonoBehaviour
     {
-        if (instance == null)
-            instance = this;
-        else
-            Destroy(gameObject);
-    }
+        [SerializeField] private string questTriggerTag = "QuestTrigger";
+        [SerializeField] private string enemyTag = "Enemy";
+        [SerializeField] private string nextSceneTag = "NextScene";
 
-    public static void HandleTrigger(GameObject other, GameObject self)
-    {
-        if (instance == null)
-            return;
+        private static CollisionSystem _instance;
 
-        if (other.CompareTag(instance.questTriggerTag))
+        public static event Action<GameObject> OnQuestTrigger;
+        public static event Action<GameObject> OnEnemyTouched;
+        public static event Action<GameObject> OnPlayerTouched;
+        public static event Action<string> OnNextScene;
+
+        private void Awake()
         {
-            OnQuestTrigger?.Invoke(other);
+            if (_instance == null)
+                _instance = this;
+            else
+                Destroy(gameObject);
         }
 
-        if (other.CompareTag(instance.enemyTag))
+        public static void HandleTrigger(GameObject other, GameObject self)
         {
-            OnEnemyTouched?.Invoke(other);
-            OnPlayerTouched?.Invoke(self);
+            if (_instance == null)
+                return;
+
+            if (other.CompareTag(_instance.questTriggerTag))
+            {
+                OnQuestTrigger?.Invoke(other);
+            }
+
+            if (other.CompareTag(_instance.enemyTag))
+            {
+                OnEnemyTouched?.Invoke(other);
+                OnPlayerTouched?.Invoke(self);
+            }
+
+            if (other.CompareTag(_instance.nextSceneTag))
+            {
+                string gameObjectName = other.gameObject.name;
+                Destroy(other);
+                OnNextScene?.Invoke(gameObjectName);
+            }
         }
     }
 }
