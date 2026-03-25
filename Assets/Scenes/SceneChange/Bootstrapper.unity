@@ -127,42 +127,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4986674319748976101, guid: 711856e0ad970864ea77e249fcc5b026, type: 3}
-      propertyPath: sceneGroups.Array.data[0].scenes.Array.data[0].sceneType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4986674319748976101, guid: 711856e0ad970864ea77e249fcc5b026, type: 3}
-      propertyPath: sceneGroups.Array.data[0].scenes.Array.data[1].sceneType
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4986674319748976101, guid: 711856e0ad970864ea77e249fcc5b026, type: 3}
-      propertyPath: sceneGroups.Array.data[0].scenes.Array.data[2].sceneType
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4986674319748976101, guid: 711856e0ad970864ea77e249fcc5b026, type: 3}
-      propertyPath: sceneGroups.Array.data[0].scenes.Array.data[0].reference.guid
-      value: c7827b638e88d3844b4ef2acdddc2853
-      objectReference: {fileID: 0}
-    - target: {fileID: 4986674319748976101, guid: 711856e0ad970864ea77e249fcc5b026, type: 3}
-      propertyPath: sceneGroups.Array.data[0].scenes.Array.data[1].reference.guid
-      value: 41317417e61c0154a946e3ba06c1b411
-      objectReference: {fileID: 0}
-    - target: {fileID: 4986674319748976101, guid: 711856e0ad970864ea77e249fcc5b026, type: 3}
-      propertyPath: sceneGroups.Array.data[0].scenes.Array.data[2].reference.guid
-      value: 251235d223efd8b4d89fbee6c614b938
-      objectReference: {fileID: 0}
-    - target: {fileID: 4986674319748976101, guid: 711856e0ad970864ea77e249fcc5b026, type: 3}
-      propertyPath: sceneGroups.Array.data[0].scenes.Array.data[0].reference.asset
-      value: 
-      objectReference: {fileID: 102900000, guid: c7827b638e88d3844b4ef2acdddc2853, type: 3}
-    - target: {fileID: 4986674319748976101, guid: 711856e0ad970864ea77e249fcc5b026, type: 3}
-      propertyPath: sceneGroups.Array.data[0].scenes.Array.data[1].reference.asset
-      value: 
-      objectReference: {fileID: 102900000, guid: 41317417e61c0154a946e3ba06c1b411, type: 3}
-    - target: {fileID: 4986674319748976101, guid: 711856e0ad970864ea77e249fcc5b026, type: 3}
-      propertyPath: sceneGroups.Array.data[0].scenes.Array.data[2].reference.asset
-      value: 
-      objectReference: {fileID: 102900000, guid: 251235d223efd8b4d89fbee6c614b938, type: 3}
     - target: {fileID: 7857950688394321695, guid: 711856e0ad970864ea77e249fcc5b026, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.14689

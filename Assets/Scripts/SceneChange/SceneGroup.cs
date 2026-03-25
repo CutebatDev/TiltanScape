@@ -27,12 +27,11 @@ namespace SceneChange
 
     public enum SceneType
     {
+        Level,
         ActiveScene,
-        MainMenu,
         UserInterface,
-        HUD,
+        MainMenu,
         Cinematic,
-        Environment,
         Tooling
     }
 }
