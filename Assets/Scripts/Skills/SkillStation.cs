@@ -2,33 +2,23 @@ using NUnit.Framework.Internal;
 using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(ActionInteractable))]
+[RequireComponent(typeof(PlayerActionController))]
 public class SkillStation : MonoBehaviour
 {
-    [SerializeField] private MinigameBaseUI minigame;
+    [Header("Skill Settings")]
+    [SerializeField] private PlayerSkills playerSkills;
+    [SerializeField] private SkillDefinition skill;
+    [SerializeField] private int xpReward = 25;
+    [SerializeField] private float baseActionTime = 3f;
 
+    [Header("References")]
     [SerializeField] PlayerActionController actionController;
-    [SerializeField] PlayerSkills skills;
+    [SerializeField] private ActionInteractable interactable;
 
-    private float useDelay;
-
-    public SkillDefinition skill;
-    public int xpReward = 25;
-    public float baseActionTime = 3f;
-
-    void Start()
+    void Awake()
     {
-        useDelay = actionController.UseDelay;
-    }
-
-    public void StartInteract()
-    {
-        if (actionController.IsBusy) return;
-
-        //actionController.StartAction(PerformAction());
-
-        if (minigame == null) return;
-
-        minigame.OpenMinigame();
+        interactable.SetAction(PerformAction);
     }
 
     private IEnumerator PerformAction()
@@ -36,12 +26,9 @@ public class SkillStation : MonoBehaviour
         while (true)
         {
             if (actionController.ShouldCancelAction())
-            {
-                Debug.Log($"{skill.skillName} action interrupted!");
                 yield break;
-            }
 
-            int level = skills.GetLevel(skill);
+            int level = playerSkills.GetLevel(skill);
             float speedMultiplier = skill.actionSpeed.Evaluate(level);
             float duration = baseActionTime * speedMultiplier;
 
@@ -61,11 +48,11 @@ public class SkillStation : MonoBehaviour
                 yield return null;
             }
 
-            skills.AddXP(skill, xpReward);
+            playerSkills.AddXP(skill, xpReward);
             Debug.Log($"{skill.skillName}: +{xpReward}EXP");
-            Debug.Log($"Current {skill.name} level: {skills.GetLevel(skill)}");
+            Debug.Log($"Current {skill.name} level: {playerSkills.GetLevel(skill)}");
 
-            yield return new WaitForSeconds(useDelay);
+            yield return new WaitForSeconds(actionController.UseDelay);
         }
     }
 }
