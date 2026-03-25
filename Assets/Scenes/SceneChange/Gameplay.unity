@@ -148,9 +148,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 595a397000ed75c4c8d4fdfc71c41702, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Events.EventsManager
-  onTogglePauseMenu:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!4 &178455594
 Transform:
   m_ObjectHideFlags: 0
@@ -718,10 +715,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2237581728382267107, guid: 94673695d80ce4740a0c918ed0ea8c70, type: 3}
+      propertyPath: near clip plane
+      value: 3.2
+      objectReference: {fileID: 0}
     - target: {fileID: 5451870679231836201, guid: 94673695d80ce4740a0c918ed0ea8c70, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 206600141}
+    - target: {fileID: 5451870679231836201, guid: 94673695d80ce4740a0c918ed0ea8c70, type: 3}
+      propertyPath: offset.y
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5451870679231836201, guid: 94673695d80ce4740a0c918ed0ea8c70, type: 3}
+      propertyPath: offset.z
+      value: -3
+      objectReference: {fileID: 0}
     - target: {fileID: 7755271787265742030, guid: 94673695d80ce4740a0c918ed0ea8c70, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -736,23 +745,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7755271787265742030, guid: 94673695d80ce4740a0c918ed0ea8c70, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7660445
+      value: 0.809017
       objectReference: {fileID: 0}
     - target: {fileID: 7755271787265742030, guid: 94673695d80ce4740a0c918ed0ea8c70, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.6427876
+      value: 0.58778524
       objectReference: {fileID: 0}
     - target: {fileID: 7755271787265742030, guid: 94673695d80ce4740a0c918ed0ea8c70, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7755271787265742030, guid: 94673695d80ce4740a0c918ed0ea8c70, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7755271787265742030, guid: 94673695d80ce4740a0c918ed0ea8c70, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 80
+      value: 72
       objectReference: {fileID: 0}
     - target: {fileID: 7755271787265742030, guid: 94673695d80ce4740a0c918ed0ea8c70, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
