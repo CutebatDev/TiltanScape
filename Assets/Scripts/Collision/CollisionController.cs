@@ -1,9 +1,13 @@
+using Events;
 using UnityEngine;
 
-public class CollisionController : MonoBehaviour
+namespace Collision
 {
-    void OnTriggerEnter(Collider other)
+    public class CollisionController : MonoBehaviour
     {
-        CollisionSystem.HandleTrigger(other.gameObject, gameObject);
+        void OnTriggerEnter(Collider other)
+        {
+            CollisionSystem.HandleTrigger(other.gameObject, gameObject);
+        }
     }
 }

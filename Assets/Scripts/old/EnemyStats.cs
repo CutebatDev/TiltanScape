@@ -1,3 +1,4 @@
+using Collision;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -5,8 +6,7 @@ public class EnemyStats : MonoBehaviour
 {
     [SerializeField] private float damage = 10f;
 
-    [Header("Events")]
-    [SerializeField] private UnityEvent onDie;
+    [Header("Events")] [SerializeField] private UnityEvent onDie;
 
     private void OnEnable() => CollisionSystem.OnPlayerTouched += OnPlayerContact;
 
