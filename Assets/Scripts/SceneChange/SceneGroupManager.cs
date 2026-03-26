@@ -17,10 +17,11 @@ namespace SceneChange
 
         public async Task LoadScenes(SceneGroup group, IProgress<float> progress, bool reloadDupScenes = false)
         {
-            _activeSceneGroup = group;
             var loadedScenes = new List<string>();
 
-            await UnloadScenes();
+            await UnloadScenes(group);
+
+            _activeSceneGroup = group;
 
             int sceneCount = SceneManager.sceneCount;
 
@@ -63,20 +64,22 @@ namespace SceneChange
             OnSceneGroupLoaded.Invoke();
         }
 
-        public async Task UnloadScenes()
+        private async Task UnloadScenes(SceneGroup nextGroup)
         {
-            var scenes = new List<string>();
-            var activeScene = SceneManager.GetActiveScene().name;
+            List<string> scenes = new List<string>();
 
+            List<string> nextSceneNames = nextGroup.scenes.Select(scene => scene.Name).ToList();
             int sceneCount = SceneManager.sceneCount;
 
-            for (var i = sceneCount - 1; i > 0; i--)
+            for (int i = 0; i <= sceneCount - 1; i++)
             {
-                var sceneAt = SceneManager.GetSceneAt(i);
+                Scene sceneAt = SceneManager.GetSceneAt(i);
                 if (!sceneAt.isLoaded) continue;
 
-                var sceneName = sceneAt.name;
-                if (sceneName.Equals(activeScene) || sceneName == "Bootstrapper") continue;
+                string sceneName = sceneAt.name;
+                if (sceneName == "Bootstrapper") continue;
+                if (nextSceneNames.Contains(sceneName)) continue;
+
                 scenes.Add(sceneName);
             }
 
@@ -105,9 +108,8 @@ namespace SceneChange
     {
         public readonly List<AsyncOperation> operations;
 
-        public float InProgress => operations.Average(operation => operation.progress);
+        public float InProgress => operations.Count == 0 ? 1f : operations.Average(operation => operation.progress);
         public bool IsDone => operations.All(operation => operation.isDone);
-
 
         public AsyncOperationGroup(int initialCapacity)
         {
