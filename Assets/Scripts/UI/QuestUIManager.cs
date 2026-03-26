@@ -29,7 +29,10 @@ public class QuestUIManager : MonoBehaviour
     public void ShowQuestSelection(QuestStation station, List<QuestData> availableQuests)
     {
         if (availableQuests == null || availableQuests.Count == 0)
+        {
+            Debug.Log("Empty");
             return;
+        }
 
         currentStation = station;
 

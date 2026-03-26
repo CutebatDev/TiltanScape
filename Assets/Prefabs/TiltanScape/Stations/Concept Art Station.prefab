@@ -245,7 +245,7 @@ MonoBehaviour:
   xpReward: 25
   baseActionTime: 3
   actionController: {fileID: 0}
-  interactable: {fileID: 0}
+  interactable: {fileID: 6530387527641763420}
 --- !u!208 &5256434821595012203
 NavMeshObstacle:
   m_ObjectHideFlags: 0
