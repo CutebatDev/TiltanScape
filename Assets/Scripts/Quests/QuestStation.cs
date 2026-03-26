@@ -3,7 +3,6 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(ActionInteractable))]
-[RequireComponent(typeof(PlayerActionController))]
 public class QuestStation : MonoBehaviour
 {
     [Header("References")]

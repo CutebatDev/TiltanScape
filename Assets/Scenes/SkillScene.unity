@@ -552,6 +552,11 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!4 &1229500628 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4063343644979157542, guid: 986f17f0c2e00844baf4e312bcf0c619, type: 3}
+  m_PrefabInstance: {fileID: 2505009606083391438}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1372877053
 GameObject:
   m_ObjectHideFlags: 0
@@ -783,6 +788,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e27fa9efa12f79845965c7399526a3df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+--- !u!114 &2086616605 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2519671577434097171, guid: 986f17f0c2e00844baf4e312bcf0c619, type: 3}
+  m_PrefabInstance: {fileID: 2505009606083391438}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb41840a4969064389aceb3a1d5ac1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ActionInteractable
 --- !u!1 &2103578398
 GameObject:
   m_ObjectHideFlags: 0
@@ -1199,6 +1215,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI Station
       objectReference: {fileID: 0}
+    - target: {fileID: 7648623570917953913, guid: e94198ddea8f3b447bc9c12d5a648f1b, type: 3}
+      propertyPath: actionController
+      value: 
+      objectReference: {fileID: 1809543251}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1212,10 +1232,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2519671577434097171, guid: 986f17f0c2e00844baf4e312bcf0c619, type: 3}
+      propertyPath: seat
+      value: 
+      objectReference: {fileID: 1229500628}
+    - target: {fileID: 2519671577434097171, guid: 986f17f0c2e00844baf4e312bcf0c619, type: 3}
+      propertyPath: actionController
+      value: 
+      objectReference: {fileID: 1809543251}
     - target: {fileID: 6337264295079294877, guid: 986f17f0c2e00844baf4e312bcf0c619, type: 3}
       propertyPath: m_Name
       value: DevQuest Station
       objectReference: {fileID: 0}
+    - target: {fileID: 7189326691288771513, guid: 986f17f0c2e00844baf4e312bcf0c619, type: 3}
+      propertyPath: interactable
+      value: 
+      objectReference: {fileID: 2086616605}
+    - target: {fileID: 7189326691288771513, guid: 986f17f0c2e00844baf4e312bcf0c619, type: 3}
+      propertyPath: playerSkills
+      value: 
+      objectReference: {fileID: 1809543242}
+    - target: {fileID: 7189326691288771513, guid: 986f17f0c2e00844baf4e312bcf0c619, type: 3}
+      propertyPath: actionController
+      value: 
+      objectReference: {fileID: 1809543251}
     - target: {fileID: 7867204922175769477, guid: 986f17f0c2e00844baf4e312bcf0c619, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.5
@@ -1256,8 +1296,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3948911679489787902, guid: 986f17f0c2e00844baf4e312bcf0c619, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1310,6 +1349,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3125525220147685886, guid: ff577d4e379fa3b44b45ed804b264eb0, type: 3}
+      propertyPath: actionController
+      value: 
+      objectReference: {fileID: 1809543251}
     - target: {fileID: 6520758786196621393, guid: ff577d4e379fa3b44b45ed804b264eb0, type: 3}
       propertyPath: m_Name
       value: Animation Station
@@ -1396,6 +1439,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1944213216805812254, guid: 35da72a72eda06b4899359fce8a9a50d, type: 3}
+      propertyPath: actionController
+      value: 
+      objectReference: {fileID: 1809543251}
     - target: {fileID: 2800862310021431502, guid: 35da72a72eda06b4899359fce8a9a50d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5
@@ -1469,6 +1516,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level Design Station
       objectReference: {fileID: 0}
+    - target: {fileID: 5057839318342543918, guid: e91fb71106d41e94aa9b47c7549af830, type: 3}
+      propertyPath: actionController
+      value: 
+      objectReference: {fileID: 1809543251}
     - target: {fileID: 7509573106140492000, guid: e91fb71106d41e94aa9b47c7549af830, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1
@@ -1531,6 +1582,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1809543242}
     - target: {fileID: 2597421009847406889, guid: 24cd847c1b33c69449c1ab050e44f1ac, type: 3}
+      propertyPath: actionController
+      value: 
+      objectReference: {fileID: 1809543251}
+    - target: {fileID: 3565846454692584536, guid: 24cd847c1b33c69449c1ab050e44f1ac, type: 3}
       propertyPath: actionController
       value: 
       objectReference: {fileID: 1809543251}
@@ -1915,6 +1970,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6530387527641763420, guid: 83cb59e122f6c6844ac0940e79242c65, type: 3}
+      propertyPath: actionController
+      value: 
+      objectReference: {fileID: 1809543251}
     - target: {fileID: 8303199011853310246, guid: 83cb59e122f6c6844ac0940e79242c65, type: 3}
       propertyPath: m_Name
       value: Concept Art Station
@@ -2041,10 +2100,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1049077621434952975, guid: 60e894c1232708441a244f5bc6465f5c, type: 3}
+      propertyPath: actionController
+      value: 
+      objectReference: {fileID: 1809543251}
     - target: {fileID: 2597113433660550897, guid: 60e894c1232708441a244f5bc6465f5c, type: 3}
       propertyPath: m_Name
       value: Dev Teacher
       objectReference: {fileID: 0}
+    - target: {fileID: 4073714295202349587, guid: 60e894c1232708441a244f5bc6465f5c, type: 3}
+      propertyPath: actionController
+      value: 
+      objectReference: {fileID: 1809543251}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2110,6 +2177,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5401513096595444621, guid: 89586d710db922545befcfc44c210eb0, type: 3}
+      propertyPath: actionController
+      value: 
+      objectReference: {fileID: 1809543251}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2236,6 +2307,10 @@ PrefabInstance:
       propertyPath: actionController
       value: 
       objectReference: {fileID: 1809543251}
+    - target: {fileID: 6520634125151404147, guid: d08b03cdb162d26498fd5e48182791a1, type: 3}
+      propertyPath: actionController
+      value: 
+      objectReference: {fileID: 1809543251}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2265,5 +2340,5 @@ SceneRoots:
   - {fileID: 6968476189787886827}
   - {fileID: 4681790572418927483}
   - {fileID: 2983815813712815435}
-  - {fileID: 2505009606083391438}
   - {fileID: 7291715247470143875}
+  - {fileID: 2505009606083391438}

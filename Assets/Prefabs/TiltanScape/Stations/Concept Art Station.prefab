@@ -277,7 +277,7 @@ MonoBehaviour:
   OnInteract:
     m_PersistentCalls:
       m_Calls: []
-  seat: {fileID: 0}
+  seat: {fileID: 4471037968054501365}
   actionController: {fileID: 0}
   baseActionTime: 1
   OnActionComplete:
