@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 1898779145432895859}
   - component: {fileID: 5491957857832917746}
   - component: {fileID: 665816757317395171}
-  - component: {fileID: 8594533677308024297}
   - component: {fileID: 3809413404873599651}
+  - component: {fileID: 5401513096595444621}
   m_Layer: 6
   m_Name: Game Engine Station
   m_TagString: Untagged
@@ -128,39 +128,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 876b0cf3ede2a2b41b272ffe44d1c944, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SkillStation
-  actionController: {fileID: 0}
-  skills: {fileID: 0}
+  playerSkills: {fileID: 0}
   skill: {fileID: 11400000, guid: 41b33d8de7fd1cd4bbce2a234c0620fe, type: 2}
   xpReward: 25
   baseActionTime: 3
---- !u!114 &8594533677308024297
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1086978653475319790}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31ad7f7f654ad9a43a3264e281b68606, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Interactable
-  OnInteract:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 665816757317395171}
-        m_TargetAssemblyTypeName: SkillStation, Assembly-CSharp
-        m_MethodName: StartInteract
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  seat: {fileID: 4765665501665560893}
+  actionController: {fileID: 0}
+  interactable: {fileID: 5401513096595444621}
 --- !u!208 &3809413404873599651
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -177,6 +150,27 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &5401513096595444621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1086978653475319790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb41840a4969064389aceb3a1d5ac1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ActionInteractable
+  OnInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  seat: {fileID: 0}
+  actionController: {fileID: 0}
+  baseActionTime: 1
+  OnActionComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8135277072917022499
 GameObject:
   m_ObjectHideFlags: 0

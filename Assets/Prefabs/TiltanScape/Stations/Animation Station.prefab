@@ -125,8 +125,8 @@ GameObject:
   - component: {fileID: 5706636117632579276}
   - component: {fileID: 1827476630933486925}
   - component: {fileID: 6653696895626642780}
-  - component: {fileID: 2462958913868690006}
   - component: {fileID: 7040845363259886876}
+  - component: {fileID: 3125525220147685886}
   m_Layer: 6
   m_Name: Animation Station
   m_TagString: Untagged
@@ -240,39 +240,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 876b0cf3ede2a2b41b272ffe44d1c944, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SkillStation
-  actionController: {fileID: 0}
-  skills: {fileID: 0}
+  playerSkills: {fileID: 0}
   skill: {fileID: 11400000, guid: 0b9fb064345f0de4dbb622029e880de3, type: 2}
   xpReward: 25
   baseActionTime: 3
---- !u!114 &2462958913868690006
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6520758786196621393}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31ad7f7f654ad9a43a3264e281b68606, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Interactable
-  OnInteract:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6653696895626642780}
-        m_TargetAssemblyTypeName: SkillStation, Assembly-CSharp
-        m_MethodName: StartInteract
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  seat: {fileID: 1677820955386834562}
+  actionController: {fileID: 0}
+  interactable: {fileID: 3125525220147685886}
 --- !u!208 &7040845363259886876
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -289,3 +262,24 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &3125525220147685886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6520758786196621393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb41840a4969064389aceb3a1d5ac1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ActionInteractable
+  OnInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  seat: {fileID: 0}
+  actionController: {fileID: 0}
+  baseActionTime: 1
+  OnActionComplete:
+    m_PersistentCalls:
+      m_Calls: []

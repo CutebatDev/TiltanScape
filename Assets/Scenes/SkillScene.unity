@@ -1188,7 +1188,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6497132385977950938, guid: e94198ddea8f3b447bc9c12d5a648f1b, type: 3}
-      propertyPath: skills
+      propertyPath: playerSkills
       value: 
       objectReference: {fileID: 1809543242}
     - target: {fileID: 6497132385977950938, guid: e94198ddea8f3b447bc9c12d5a648f1b, type: 3}
@@ -1256,7 +1256,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3948911679489787902, guid: 986f17f0c2e00844baf4e312bcf0c619, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1314,7 +1315,7 @@ PrefabInstance:
       value: Animation Station
       objectReference: {fileID: 0}
     - target: {fileID: 6653696895626642780, guid: ff577d4e379fa3b44b45ed804b264eb0, type: 3}
-      propertyPath: skills
+      propertyPath: playerSkills
       value: 
       objectReference: {fileID: 1809543242}
     - target: {fileID: 6653696895626642780, guid: ff577d4e379fa3b44b45ed804b264eb0, type: 3}
@@ -1440,7 +1441,7 @@ PrefabInstance:
       value: Narrative Station
       objectReference: {fileID: 0}
     - target: {fileID: 7411446860702696169, guid: 35da72a72eda06b4899359fce8a9a50d, type: 3}
-      propertyPath: skills
+      propertyPath: playerSkills
       value: 
       objectReference: {fileID: 1809543242}
     - target: {fileID: 7411446860702696169, guid: 35da72a72eda06b4899359fce8a9a50d, type: 3}
@@ -1460,10 +1461,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2896740603801989831, guid: e91fb71106d41e94aa9b47c7549af830, type: 3}
-      propertyPath: skills
-      value: 
-      objectReference: {fileID: 1809543242}
     - target: {fileID: 2896740603801989831, guid: e91fb71106d41e94aa9b47c7549af830, type: 3}
       propertyPath: actionController
       value: 
@@ -1530,7 +1527,7 @@ PrefabInstance:
       value: Game Art Station
       objectReference: {fileID: 0}
     - target: {fileID: 2597421009847406889, guid: 24cd847c1b33c69449c1ab050e44f1ac, type: 3}
-      propertyPath: skills
+      propertyPath: playerSkills
       value: 
       objectReference: {fileID: 1809543242}
     - target: {fileID: 2597421009847406889, guid: 24cd847c1b33c69449c1ab050e44f1ac, type: 3}
@@ -1651,6 +1648,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 370141192017633123, guid: f9017651a69acc5418457a38e2678289, type: 3}
+      propertyPath: actionController
+      value: 
+      objectReference: {fileID: 1809543251}
     - target: {fileID: 1966114914662359424, guid: f9017651a69acc5418457a38e2678289, type: 3}
       propertyPath: m_LocalPosition.x
       value: -10
@@ -1692,7 +1693,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6578947416329413543, guid: f9017651a69acc5418457a38e2678289, type: 3}
-      propertyPath: skills
+      propertyPath: playerSkills
       value: 
       objectReference: {fileID: 1809543242}
     - target: {fileID: 6578947416329413543, guid: f9017651a69acc5418457a38e2678289, type: 3}
@@ -1919,7 +1920,7 @@ PrefabInstance:
       value: Concept Art Station
       objectReference: {fileID: 0}
     - target: {fileID: 8435855638132151339, guid: 83cb59e122f6c6844ac0940e79242c65, type: 3}
-      propertyPath: skills
+      propertyPath: playerSkills
       value: 
       objectReference: {fileID: 1809543242}
     - target: {fileID: 8435855638132151339, guid: 83cb59e122f6c6844ac0940e79242c65, type: 3}
@@ -2058,7 +2059,7 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 665816757317395171, guid: 89586d710db922545befcfc44c210eb0, type: 3}
-      propertyPath: skills
+      propertyPath: playerSkills
       value: 
       objectReference: {fileID: 1809543242}
     - target: {fileID: 665816757317395171, guid: 89586d710db922545befcfc44c210eb0, type: 3}
@@ -2228,7 +2229,7 @@ PrefabInstance:
       value: Game Systems Station
       objectReference: {fileID: 0}
     - target: {fileID: 6092732582336520786, guid: d08b03cdb162d26498fd5e48182791a1, type: 3}
-      propertyPath: skills
+      propertyPath: playerSkills
       value: 
       objectReference: {fileID: 1809543242}
     - target: {fileID: 6092732582336520786, guid: d08b03cdb162d26498fd5e48182791a1, type: 3}

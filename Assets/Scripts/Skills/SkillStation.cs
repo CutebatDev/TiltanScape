@@ -3,7 +3,6 @@ using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(ActionInteractable))]
-[RequireComponent(typeof(PlayerActionController))]
 public class SkillStation : MonoBehaviour
 {
     [Header("Skill Settings")]
@@ -13,7 +12,7 @@ public class SkillStation : MonoBehaviour
     [SerializeField] private float baseActionTime = 3f;
 
     [Header("References")]
-    [SerializeField] PlayerActionController actionController;
+    [SerializeField] private PlayerActionController actionController;
     [SerializeField] private ActionInteractable interactable;
 
     void Awake()
