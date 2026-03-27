@@ -10,6 +10,8 @@ public class NPCScript : MonoBehaviour
 {
     [Header("NPC Settings")]
     [SerializeField] private int npcId;
+    public string defaultGreeting;
+    public string questGreeting;
     public int NPCId => npcId;
 
     [Header("Quest Settings")]
@@ -131,4 +133,7 @@ public class NPCScript : MonoBehaviour
         yield return null;
     }
 
+    // Helpers
+    public int QuestsAvailable() => quests?.Count ?? 0;
+    public List<QuestData> GetQuests() => quests;
 }
