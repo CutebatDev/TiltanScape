@@ -17,8 +17,9 @@ public class NPCUIManager : MonoBehaviour
     [SerializeField] private TMP_Text questDetailSkills;
     [SerializeField] private Button acceptQuestButton;
 
-    [Header("Prefabs")]
+    [Header("Quest Button")]
     [SerializeField] private GameObject questButtonPrefab;
+    [SerializeField] private TMP_Text questButtonLabel;
 
     [Header("Quest Button Colors")]
     [SerializeField] private Color availableQuestColor;
@@ -48,6 +49,25 @@ public class NPCUIManager : MonoBehaviour
         acceptQuestButton.onClick.AddListener(OnAcceptQuestClicked);
     }
 
+    private void EnableQuestInfoUI()
+    {
+        npcMessageText.gameObject.SetActive(false);
+        questDetailTitle.gameObject.SetActive(true);
+        questDetailDescription.gameObject.SetActive(true);
+        questDetailSkills.gameObject.SetActive(true);
+        questButtonContainer.gameObject.SetActive(false);
+    }
+
+    private void EnableQuestListUI()
+    {
+        npcMessageText.gameObject.SetActive(true);
+        questDetailTitle.gameObject.SetActive(false);
+        questDetailDescription.gameObject.SetActive(false);
+        questDetailSkills.gameObject.SetActive(false);
+        questButtonContainer.gameObject.SetActive(true);
+        panel.SetActive(true);
+    }
+
     public void OpenNPCDialogue(NPCScript npc)
     {
         currentNPC = npc;
@@ -60,7 +80,7 @@ public class NPCUIManager : MonoBehaviour
         {
             npcMessageText.text = npc.defaultGreeting;
             acceptQuestButton.gameObject.SetActive(false);
-            panel.SetActive(true);
+            EnableQuestListUI();
             return;
         }
 
@@ -69,25 +89,37 @@ public class NPCUIManager : MonoBehaviour
         foreach (var q in npc.GetQuests())
         {
             GameObject btnObj = Instantiate(questButtonPrefab, questButtonContainer);
-            TMP_Text btnText = btnObj.GetComponentInChildren<TMP_Text>();
+            TMP_Text btnText = btnObj.transform.GetChild(0).GetComponent<TMP_Text>();
             Button btn = btnObj.GetComponent<Button>();
 
             var activeQuest = QuestManager.Instance.GetActiveQuest(q.Id);
 
             if (activeQuest == null)
+            {
                 btnText.color = availableQuestColor;
+                btnText.text = $"<color=#{ColorUtility.ToHtmlStringRGB(availableQuestColor)}>[AVAILABLE] {q.Title}</color>";
+                Debug.Log($"{q.Title}'s Color = available");
+            }
             else if (!activeQuest.IsCompleted)
+            {
                 btnText.color = inProgressQuestColor;
+                btnText.text = $"<color=#{ColorUtility.ToHtmlStringRGB(inProgressQuestColor)}>[IN-PROGRESS] {q.Title}</color>";
+                Debug.Log($"{q.Title}'s Color = in progress");
+            }
             else if (activeQuest.IsCompleted && !activeQuest.IsTurnedIn)
+            {
                 btnText.color = completeQuestColor;
+                btnText.text = $"<color=#{ColorUtility.ToHtmlStringRGB(completeQuestColor)}>[COMPLETED] {q.Title}</color>";
+                Debug.Log($"{q.Title}'s Color = completed");
+            }
 
-            btnText.text = q.Title;
+            //btnText.text = q.Title;
 
             QuestData capturedQuest = q;
-            btn.onClick.AddListener(() => ShowQuestDetails(capturedQuest));
+            btn.onClick.AddListener(() => OnQuestSelected(capturedQuest));
         }
 
-        panel.SetActive(true);
+        EnableQuestListUI();
     }
 
     private void OnQuestSelected(QuestData quest)
@@ -110,6 +142,8 @@ public class NPCUIManager : MonoBehaviour
         {
             acceptQuestButton.gameObject.SetActive(false);
         }
+
+        EnableQuestInfoUI();
     }
 
     private void OnAcceptQuestClicked()
@@ -121,15 +155,14 @@ public class NPCUIManager : MonoBehaviour
         if (activeQuest == null)
         {
             QuestManager.Instance.StartQuest(selectedQuest);
-            npcMessageText.text = $"You have started the quest: {selectedQuest.Title}";
         }
         else if (activeQuest.IsCompleted && !activeQuest.IsTurnedIn)
         {
             QuestManager.Instance.TurnInQuest(selectedQuest.Id);
-            npcMessageText.text = $"You turned in the quest: {selectedQuest.Title}";
         }
 
         OnQuestSelected(selectedQuest);
+        CloseDialogue();
     }
 
     public void ShowQuestDetails(QuestData quest)

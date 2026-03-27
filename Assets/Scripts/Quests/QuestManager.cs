@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
@@ -75,4 +76,5 @@ public class QuestManager : MonoBehaviour
     }
 
     public bool IsQuestCompleted(string questId) => completedQuests.Contains(questId);
+    public void GetActiveQuestNames() => Debug.Log(string.Join(", ", activeQuests.Values.Select(q => q.Data.Title)));
 }
