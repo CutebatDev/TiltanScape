@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 665816757317395171}
   - component: {fileID: 3809413404873599651}
   - component: {fileID: 5401513096595444621}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Game Engine Station
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -183,7 +183,7 @@ GameObject:
   - component: {fileID: 6590122350024278560}
   - component: {fileID: 8186755414138351405}
   - component: {fileID: 6272410747277059514}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Seat
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2896740603801989831}
   - component: {fileID: 1572881776356670087}
   - component: {fileID: 5057839318342543918}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Level Design Station
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -183,7 +183,7 @@ GameObject:
   - component: {fileID: 8825629992851984900}
   - component: {fileID: 5805997847514873609}
   - component: {fileID: 8503406037359670686}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Seat
   m_TagString: Untagged
   m_Icon: {fileID: 0}

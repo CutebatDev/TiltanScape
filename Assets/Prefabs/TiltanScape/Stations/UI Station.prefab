@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 604563135605391897}
   - component: {fileID: 2488860052538650388}
   - component: {fileID: 295852177623852419}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Seat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 6497132385977950938}
   - component: {fileID: 7479008815864294042}
   - component: {fileID: 7648623570917953913}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: UI Station
   m_TagString: Untagged
   m_Icon: {fileID: 0}

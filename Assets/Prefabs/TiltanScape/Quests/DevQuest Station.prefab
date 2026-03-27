@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1996866575989479300}
   - component: {fileID: 782668057695154404}
   - component: {fileID: 735729216488799014}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Seat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 2285773248728058978}
   - component: {fileID: 7189326691288771513}
   - component: {fileID: 2519671577434097171}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: DevQuest Station
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -256,7 +256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceca91b30fcf3d7438567b9d07f7e162, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  questData: {fileID: 0}
+  availableQuests: []
   playerSkills: {fileID: 0}
   interactable: {fileID: 2519671577434097171}
   actionController: {fileID: 0}

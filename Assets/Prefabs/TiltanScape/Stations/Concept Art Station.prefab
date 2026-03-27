@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2836013829505119464}
   - component: {fileID: 986966155846015461}
   - component: {fileID: 3108414506774729586}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Seat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 8435855638132151339}
   - component: {fileID: 5256434821595012203}
   - component: {fileID: 6530387527641763420}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Concept Art Station
   m_TagString: Untagged
   m_Icon: {fileID: 0}
