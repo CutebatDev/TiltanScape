@@ -4,14 +4,14 @@ using UnityEngine.Audio;
 public class AudioManager : MonoBehaviour
 {
 
-    public AudioManager Instance;
+    [HideInInspector] public AudioManager Instance;
     
     
     [Header("Audio Mixers")]
     [SerializeField] private AudioMixer audioMixer;
-    [SerializeField] private string mainMixerName = "Main";
-    [SerializeField] private string musicMixerName = "Music";
-    [SerializeField] private string sfxMixerName = "SFX";
+    [SerializeField] private string masterMixerVolumeName = "MasterVolume";
+    [SerializeField] private string musicMixerVolumeName = "MusicVolume";
+    [SerializeField] private string sfxMixerVolumeName = "SFXVolume";
     
     //[Header("Clips")]
 
@@ -37,12 +37,43 @@ public class AudioManager : MonoBehaviour
     
 
     #region Mixer Functions
-
-    public void SetAudioMixerVolume(float volume)
+    
+    public void SetAudioMixerVolume(AudioType type, float volume)
     {
-        
+        string volumeName = "";
+        switch (type)
+        {
+            case AudioType.Master:
+                volumeName = masterMixerVolumeName;
+                break;
+            case AudioType.Music:
+                volumeName = musicMixerVolumeName;
+                break;
+            case AudioType.SFX:
+                volumeName = sfxMixerVolumeName;
+                break;
+        }
+        audioMixer.SetFloat(volumeName, LinearVolumeToDB(volume));
     }
 
+
+    public void SetMasterVolume(float volume)
+    {
+        SetAudioMixerVolume(AudioType.Master, volume);
+    }
+
+
+    public void SetMusicVolume(float volume)
+    {
+        SetAudioMixerVolume(AudioType.Music, volume);
+    }
+
+
+    public void SetSFXVolume(float volume)
+    {
+        SetAudioMixerVolume(AudioType.SFX, volume);
+    }
+    
     #endregion
     
 
@@ -51,7 +82,7 @@ public class AudioManager : MonoBehaviour
 
     private float LinearVolumeToDB(float volume)
     {
-        return Mathf.Log10(volume) * 20;
+        return Mathf.Log10(Mathf.Clamp(volume, 0.0001f, 1f)) * 20;
     }
 
     #endregion
@@ -130,5 +161,12 @@ public class AudioManager : MonoBehaviour
         Floor3,
         Floor2AndAHalf,
         Floor2
+    }
+
+    public enum AudioType
+    {
+        Master,
+        SFX,
+        Music,
     }
 }
