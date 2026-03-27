@@ -30,6 +30,10 @@ public class NPCScript : MonoBehaviour
     void Awake()
     {
         interactable.SetAction(PerformInteraction);
+    }
+
+    void Start()
+    {
         UpdateQuestIcon();
     }
 
@@ -106,31 +110,34 @@ public class NPCScript : MonoBehaviour
 
     private IEnumerator PerformInteraction()
     {
-        if (quests == null || quests.Count == 0) yield break;
-
-        foreach (var q in quests)
-        {
-            var activeQuest = QuestManager.Instance.GetActiveQuest(q.Id);
-
-            if (activeQuest == null) // Start the quest
-            {
-                QuestManager.Instance.StartQuest(q);
-                Debug.Log($"Quest '{q.Title}' started!");
-                break;
-            }
-            else if (activeQuest.IsCompleted && !activeQuest.IsTurnedIn) // Turn in the quest
-            {
-                QuestManager.Instance.TurnInQuest(q.Id);
-                Debug.Log($"Quest '{q.Title}' turned in!");
-                break;
-            }
-            else // Quest in progress
-            {
-                Debug.Log($"Quest '{q.Title}' is in progress: {activeQuest.Progress * 100:F0}% complete.");
-            }
-        }
-
+        NPCUIManager.Instance.OpenNPCDialogue(this);
         yield return null;
+
+        //if (quests == null || quests.Count == 0) yield break;
+
+        //foreach (var q in quests)
+        //{
+        //    var activeQuest = QuestManager.Instance.GetActiveQuest(q.Id);
+
+        //    if (activeQuest == null) // Start the quest
+        //    {
+        //        QuestManager.Instance.StartQuest(q);
+        //        Debug.Log($"Quest '{q.Title}' started!");
+        //        break;
+        //    }
+        //    else if (activeQuest.IsCompleted && !activeQuest.IsTurnedIn) // Turn in the quest
+        //    {
+        //        QuestManager.Instance.TurnInQuest(q.Id);
+        //        Debug.Log($"Quest '{q.Title}' turned in!");
+        //        break;
+        //    }
+        //    else // Quest in progress
+        //    {
+        //        Debug.Log($"Quest '{q.Title}' is in progress: {activeQuest.Progress * 100:F0}% complete.");
+        //    }
+        //}
+
+        //yield return null;
     }
 
     // Helpers

@@ -8,16 +8,24 @@ public class NPCUIManager : MonoBehaviour
 
     [Header("UI References")]
     [SerializeField] private GameObject panel;
+    [SerializeField] private Transform questButtonContainer;
     [SerializeField] private TMP_Text npcMessageText;
-    [SerializeField] private Transform questButtonParent;
-    [SerializeField] private GameObject questButtonPrefab;
+
+    [Header("References Inside Quest")]
     [SerializeField] private TMP_Text questDetailTitle;
     [SerializeField] private TMP_Text questDetailDescription;
     [SerializeField] private TMP_Text questDetailSkills;
     [SerializeField] private Button acceptQuestButton;
+
+    [Header("Prefabs")]
+    [SerializeField] private GameObject questButtonPrefab;
+
+    [Header("Quest Button Colors")]
     [SerializeField] private Color availableQuestColor;
     [SerializeField] private Color inProgressQuestColor;
     [SerializeField] private Color completeQuestColor;
+
+    [Header("Text Strings")]
     [SerializeField] private string skillReqText;
     [SerializeField] private string acceptButtonText;
     [SerializeField] private string turnInButtonText;
@@ -45,7 +53,7 @@ public class NPCUIManager : MonoBehaviour
         currentNPC = npc;
         selectedQuest = null;
 
-        foreach (Transform child in questButtonParent)
+        foreach (Transform child in questButtonContainer)
             Destroy(child.gameObject);
 
         if (npc.QuestsAvailable() == 0)
@@ -60,7 +68,7 @@ public class NPCUIManager : MonoBehaviour
 
         foreach (var q in npc.GetQuests())
         {
-            GameObject btnObj = Instantiate(questButtonPrefab, questButtonParent);
+            GameObject btnObj = Instantiate(questButtonPrefab, questButtonContainer);
             TMP_Text btnText = btnObj.GetComponentInChildren<TMP_Text>();
             Button btn = btnObj.GetComponent<Button>();
 
