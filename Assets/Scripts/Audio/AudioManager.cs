@@ -9,18 +9,19 @@ public class AudioManager : MonoBehaviour
     
     [Header("Audio Mixers")]
     [SerializeField] private AudioMixer audioMixer;
+    [SerializeField] private AudioMixerGroup masterMixerGroup;
+    [SerializeField] private AudioMixerGroup musicMixerGroup;
+    [SerializeField] private AudioMixerGroup sfxMixerGroup;
     [SerializeField] private string masterMixerVolumeName = "MasterVolume";
     [SerializeField] private string musicMixerVolumeName = "MusicVolume";
     [SerializeField] private string sfxMixerVolumeName = "SFXVolume";
     
-    //[Header("Clips")]
-
     [Header("Music")] 
-    private AudioSource currentMusic;
-    [SerializeField] private AudioClip mainMenuMusic;
     [SerializeField] private AudioClip floor3Music;
     [SerializeField] private AudioClip floor2AndAHalfMusic;
     [SerializeField] private AudioClip floor2Music;
+    //[SerializeField] private AudioClip mainMenuMusic;
+    private AudioSource currentMusic;
     
     [Header("Prefabs")]
     [SerializeField] private GameObject audioSourcePrefab;
@@ -38,6 +39,9 @@ public class AudioManager : MonoBehaviour
 
     #region Mixer Functions
     
+    /// <summary>
+    /// The function to set the volume of a mixer group, via exposed parameters
+    /// </summary>
     public void SetAudioMixerVolume(AudioType type, float volume)
     {
         string volumeName = "";
@@ -80,27 +84,81 @@ public class AudioManager : MonoBehaviour
 
     #region Helper Functions
 
+    /// <summary>
+    /// Translates linear volume to decibels
+    /// </summary>
     private float LinearVolumeToDB(float volume)
     {
         return Mathf.Log10(Mathf.Clamp(volume, 0.0001f, 1f)) * 20;
     }
 
+
+    /// <summary>
+    /// Returns a mixer group from a type of audio
+    /// </summary>
+    private AudioMixerGroup GetMixerGroupFromAudioType(AudioType type)
+    {
+        AudioMixerGroup mixerGroup = null;
+
+        switch (type)
+        {
+            case AudioType.Master:
+                mixerGroup = masterMixerGroup;
+                break;
+            case AudioType.Music:
+                mixerGroup = musicMixerGroup;
+                break;
+            case AudioType.SFX:
+                mixerGroup = sfxMixerGroup;
+                break;
+        }
+        
+        return mixerGroup;
+    }
+    
+    
+    /// <summary>
+    /// Private helper function to create an audio source
+    /// </summary>
+    private AudioSource InstantiateAudioSource(AudioClip audioClip,AudioType type, float linearVolume, bool isLoop)
+    {
+        AudioSource audioSource = Instantiate(audioSourcePrefab).GetComponent<AudioSource>();
+        audioSource.outputAudioMixerGroup = GetMixerGroupFromAudioType(type);
+        audioSource.clip = audioClip;
+        audioSource.volume = linearVolume;
+        audioSource.loop = isLoop;
+        return audioSource;
+    }
     #endregion
     
     
     
     #region General Functions
 
-    public AudioSource PlayAudio3D(AudioClip audioClip, Vector3 position, float volume)
+    /// <summary>
+    /// Plays an audio in 3D space at a position
+    /// </summary>
+    public AudioSource PlayAudio3D(AudioClip audioClip,AudioType type, Vector3 position, float linearVolume,bool isLooping)
     {
-        return null;
+        AudioSource audioSource = InstantiateAudioSource(audioClip,type,linearVolume,isLooping);
+        audioSource.spatialBlend = 1;
+        audioSource.gameObject.transform.position = position;
+        audioSource.Play();
+        return audioSource;
     }
 
 
-    public AudioSource PlayAudio2D(AudioClip audioClip, float volume)
+    /// <summary>
+    /// Plays an audio in mono space
+    /// </summary>
+    public AudioSource PlayAudio2D(AudioClip audioClip,AudioType type, float linearVolume,bool isLooping)
     {
-        return null;
+        AudioSource audioSource = InstantiateAudioSource(audioClip,type,linearVolume,isLooping);
+        audioSource.spatialBlend = 0;
+        audioSource.Play();
+        return audioSource;
     }
+    
     
     #endregion
     
@@ -124,7 +182,7 @@ public class AudioManager : MonoBehaviour
                 music = floor2Music;
                 break;
         }
-        currentMusic = PlayAudio2D(music,0f);
+        currentMusic = PlayAudio2D(music,AudioType.Music,0f,true);
     }
 
 
@@ -133,7 +191,13 @@ public class AudioManager : MonoBehaviour
     /// </summary>
     public void ResumeMusic()
     {
+        if (!currentMusic)
+            return;
+
+        if (currentMusic.isPlaying)
+            return;
         
+        currentMusic.UnPause();
     }
 
 
@@ -142,7 +206,10 @@ public class AudioManager : MonoBehaviour
     /// </summary>
     public void PauseMusic()
     {
+        if (!currentMusic)
+            return;
         
+        currentMusic.Pause();
     }
     
 
@@ -151,7 +218,10 @@ public class AudioManager : MonoBehaviour
     /// </summary>
     public void StopMusic()
     {
+        if (!currentMusic)
+            return;
         
+        currentMusic.Stop();
     }
     #endregion
 

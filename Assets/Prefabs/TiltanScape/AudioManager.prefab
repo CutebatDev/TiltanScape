@@ -44,13 +44,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67b5b2bab3c1af344b4e8083e2e97930, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  Instance: {fileID: 0}
-  audioMixer: {fileID: 0}
-  mainMixerName: Main
-  musicMixerName: Music
-  sfxMixerName: SFX
-  mainMenuMusic: {fileID: 0}
-  floor3Music: {fileID: 0}
-  floor2AndAHalfMusic: {fileID: 0}
-  floor2Music: {fileID: 0}
-  audioSourcePrefab: {fileID: 0}
+  Instance: {fileID: 3005522816056556821}
+  audioMixer: {fileID: 24100000, guid: d87f5fd79970576448689b667ec4e06b, type: 2}
+  masterMixerGroup: {fileID: 24300002, guid: d87f5fd79970576448689b667ec4e06b, type: 2}
+  musicMixerGroup: {fileID: -1634397909705837208, guid: d87f5fd79970576448689b667ec4e06b, type: 2}
+  sfxMixerGroup: {fileID: 7669660286167201989, guid: d87f5fd79970576448689b667ec4e06b, type: 2}
+  masterMixerVolumeName: MasterVolume
+  musicMixerVolumeName: MusicVolume
+  sfxMixerVolumeName: SFXVolume
+  floor3Music: {fileID: 8300000, guid: a3d0011d4c82f5d43af30435b4c18493, type: 3}
+  floor2AndAHalfMusic: {fileID: 8300000, guid: 89d18d659291ca647b775ea72d149dae, type: 3}
+  floor2Music: {fileID: 8300000, guid: 86eae937717da4e43a81e1be68517d8c, type: 3}
+  audioSourcePrefab: {fileID: 6847983195498461446, guid: 5cf630c2f1e37374694751cd33366d8e, type: 3}
