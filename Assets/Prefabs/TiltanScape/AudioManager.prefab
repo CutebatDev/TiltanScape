@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1232773531037786039
+--- !u!1 &215006525930314145
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,9 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 791702604872033255}
-  - component: {fileID: 6878963921423269379}
-  - component: {fileID: 1166483551880416870}
+  - component: {fileID: 6720266992794234738}
+  - component: {fileID: 3005522816056556821}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -18,129 +17,42 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &791702604872033255
+--- !u!4 &6720266992794234738
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1232773531037786039}
+  m_GameObject: {fileID: 215006525930314145}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.08945, y: -0.93686, z: 7.11818}
+  m_LocalPosition: {x: 4.90682, y: -1, z: -7.61393}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &6878963921423269379
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1232773531037786039}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
---- !u!114 &1166483551880416870
+--- !u!114 &3005522816056556821
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1232773531037786039}
+  m_GameObject: {fileID: 215006525930314145}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8992f0154bca3040bdbe90e54bbd1f9, type: 3}
+  m_Script: {fileID: 11500000, guid: 67b5b2bab3c1af344b4e8083e2e97930, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  sfxSource: {fileID: 6878963921423269379}
-  enemyDeathClip: {fileID: 8300000, guid: c105e313a1a90cb46a9f0fe1fb36a214, type: 3}
+  Instance: {fileID: 3005522816056556821}
+  audioMixer: {fileID: 24100000, guid: d87f5fd79970576448689b667ec4e06b, type: 2}
+  masterMixerGroup: {fileID: 24300002, guid: d87f5fd79970576448689b667ec4e06b, type: 2}
+  musicMixerGroup: {fileID: -1634397909705837208, guid: d87f5fd79970576448689b667ec4e06b, type: 2}
+  sfxMixerGroup: {fileID: 7669660286167201989, guid: d87f5fd79970576448689b667ec4e06b, type: 2}
+  masterMixerVolumeName: MasterVolume
+  musicMixerVolumeName: MusicVolume
+  sfxMixerVolumeName: SFXVolume
+  floor3Music: {fileID: 8300000, guid: a3d0011d4c82f5d43af30435b4c18493, type: 3}
+  floor2AndAHalfMusic: {fileID: 8300000, guid: 89d18d659291ca647b775ea72d149dae, type: 3}
+  floor2Music: {fileID: 8300000, guid: 86eae937717da4e43a81e1be68517d8c, type: 3}
+  audioSourcePrefab: {fileID: 6847983195498461446, guid: 5cf630c2f1e37374694751cd33366d8e, type: 3}
