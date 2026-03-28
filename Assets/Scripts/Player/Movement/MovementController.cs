@@ -15,6 +15,8 @@ namespace Player.Movement
         public float interactionRange = 2f;
         public bool isTurning;
 
+        [SerializeField] private HumanoidAnimationManager animationManager;
+
         [SerializeField] private NavMeshAgent agent;
         [SerializeField] private Camera mainCamera;
         [SerializeField] private LayerMask clickableLayers;
@@ -87,6 +89,9 @@ namespace Player.Movement
 
                     DrawClickIndicator(hit);
                 }
+
+                if (!IsMoving)
+                    animationManager.PlayAnimation(EnumAnimations.Walk);
             }
         }
 

@@ -41,12 +41,12 @@ public class HumanoidAnimationManager : MonoBehaviour
     void Sit() => ToggleSitting();
     
 #endif
-    void PlayAnimation(EnumAnimations anim)
+    public void PlayAnimation(EnumAnimations anim)
     {
         animator.SetTrigger(anim.ToString());
     }
 
-    void ToggleSitting()
+    public void ToggleSitting()
     {
         _isSittingBool = !_isSittingBool;
         if(_isSittingBool)
