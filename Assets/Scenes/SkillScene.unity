@@ -4789,6 +4789,14 @@ PrefabInstance:
       propertyPath: actionController
       value: 
       objectReference: {fileID: 1809543251}
+    - target: {fileID: 2036424998391787029, guid: 60e894c1232708441a244f5bc6465f5c, type: 3}
+      propertyPath: m_Radius
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2036424998391787029, guid: 60e894c1232708441a244f5bc6465f5c, type: 3}
+      propertyPath: m_Center.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2597113433660550897, guid: 60e894c1232708441a244f5bc6465f5c, type: 3}
       propertyPath: m_Name
       value: Dev Teacher
