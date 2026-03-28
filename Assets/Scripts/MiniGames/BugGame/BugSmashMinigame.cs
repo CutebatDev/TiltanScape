@@ -16,6 +16,7 @@ public class BugSmashMinigame : MinigameBaseUI
     [SerializeField] private TMP_Text countdownText;
     [SerializeField] private TMP_Text timerText;
     [SerializeField] private TMP_Text counterText;
+    [SerializeField] private RectTransform bugContainer;
 
     [Header("Bug Prefab")]
     [SerializeField] private GameObject bugPrefab;
@@ -58,7 +59,7 @@ public class BugSmashMinigame : MinigameBaseUI
     private IEnumerator RunBugSmashGame()
     {
         ResetVisualState();
-        SetInstruction("Eliminate the bugs");
+        SetInstruction("Eliminate all the bugs");
 
         yield return StartCoroutine(ShowCountdown());
 
@@ -192,7 +193,7 @@ public class BugSmashMinigame : MinigameBaseUI
         if (bugPrefab == null || gameArea == null)
             return;
 
-        GameObject bugObject = Instantiate(bugPrefab, gameArea);
+        GameObject bugObject = Instantiate(bugPrefab, bugContainer);
         BugActorUI bugActor = bugObject.GetComponent<BugActorUI>();
 
         if (bugActor == null)
@@ -209,7 +210,7 @@ public class BugSmashMinigame : MinigameBaseUI
 
         bugActor.Setup(
             this,
-            gameArea,
+            bugContainer,
             aliveBugSprite,
             smashedBugSprite,
             logic.MoveSpeed,
@@ -222,7 +223,7 @@ public class BugSmashMinigame : MinigameBaseUI
 
     private Vector2 GetRandomCornerOutsidePosition(RectTransform bugRect)
     {
-        Rect rect = gameArea.rect;
+        Rect rect = bugContainer.rect;
 
         float halfWidth = bugRect.rect.width * 0.5f;
         float halfHeight = bugRect.rect.height * 0.5f;
@@ -247,7 +248,7 @@ public class BugSmashMinigame : MinigameBaseUI
 
     private Vector2 GetRandomPointNearInsideFromCorner()
     {
-        Rect rect = gameArea.rect;
+        Rect rect = bugContainer.rect;
 
         float marginX = rect.width * 0.2f;
         float marginY = rect.height * 0.2f;
@@ -338,12 +339,12 @@ public class BugSmashMinigame : MinigameBaseUI
 
         activeBugs.Clear();
 
-        if (gameArea == null)
+        if (bugContainer == null)
             return;
 
-        for (int i = gameArea.childCount - 1; i >= 0; i--)
+        for (int i = bugContainer.childCount - 1; i >= 0; i--)
         {
-            Destroy(gameArea.GetChild(i).gameObject);
+            Destroy(bugContainer.GetChild(i).gameObject);
         }
     }
 
