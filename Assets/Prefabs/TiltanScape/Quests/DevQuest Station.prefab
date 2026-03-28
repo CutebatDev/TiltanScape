@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1996866575989479300}
   - component: {fileID: 782668057695154404}
   - component: {fileID: 735729216488799014}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Seat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,12 +124,10 @@ GameObject:
   - component: {fileID: 984563160550525837}
   - component: {fileID: 7046698177391241463}
   - component: {fileID: 419240321927611214}
-  - component: {fileID: 3948911679489787902}
   - component: {fileID: 2285773248728058978}
   - component: {fileID: 7189326691288771513}
   - component: {fileID: 2519671577434097171}
-  - component: {fileID: 7234307356149092000}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: DevQuest Station
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -230,34 +228,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3948911679489787902
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6337264295079294877}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31ad7f7f654ad9a43a3264e281b68606, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Interactable
-  OnInteract:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SkillStation, Assembly-CSharp
-        m_MethodName: StartInteract
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  seat: {fileID: 4063343644979157542}
 --- !u!208 &2285773248728058978
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -286,9 +256,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceca91b30fcf3d7438567b9d07f7e162, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  questData: {fileID: 0}
+  availableQuests: []
   playerSkills: {fileID: 0}
-  interactable: {fileID: 0}
+  interactable: {fileID: 2519671577434097171}
   actionController: {fileID: 0}
 --- !u!114 &2519671577434097171
 MonoBehaviour:
@@ -305,22 +275,9 @@ MonoBehaviour:
   OnInteract:
     m_PersistentCalls:
       m_Calls: []
-  seat: {fileID: 0}
+  seat: {fileID: 4063343644979157542}
   actionController: {fileID: 0}
   baseActionTime: 1
   OnActionComplete:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &7234307356149092000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6337264295079294877}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e27fa9efa12f79845965c7399526a3df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerActionController
-  useDelay: 0

@@ -1,15 +1,19 @@
 using System.Collections;
-using System.Runtime.CompilerServices;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem.Utilities;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(ActionInteractable))]
-[RequireComponent(typeof(PlayerActionController))]
 public class NPCScript : MonoBehaviour
 {
+    [Header("NPC Settings")]
+    [SerializeField] private int npcId;
+    public string defaultGreeting;
+    public string questGreeting;
+    public int NPCId => npcId;
+
     [Header("Quest Settings")]
-    [SerializeField] private QuestData questData; // Quest list
+    [SerializeField] private List<QuestData> quests; // Quest list
 
     [Header("Icon References")]
     [SerializeField] private Image questStatusIcon; // Current quest icon above the NPC
@@ -24,6 +28,10 @@ public class NPCScript : MonoBehaviour
     void Awake()
     {
         interactable.SetAction(PerformInteraction);
+    }
+
+    void Start()
+    {
         UpdateQuestIcon();
     }
 
@@ -48,61 +56,63 @@ public class NPCScript : MonoBehaviour
 
     private void HandleQuestChanged(Quest quest)
     {
-        if (quest.Data != questData) return;
+        if (!quests.Contains(quest.Data)) return;
 
         UpdateQuestIcon();
     }
 
     private void UpdateQuestIcon()
     {
-        if (questStatusIcon == null || questData == null) return;
+        if (questStatusIcon == null || quests == null) return;
 
-        Quest activeQuest = QuestManager.Instance.GetActiveQuest(questData.Id);
+        QuestData displayQuest = null;
+        Quest activeQuest = null;
 
-        if (activeQuest == null && !QuestManager.Instance.IsQuestCompleted(questData.Id))
+        foreach (var q in quests)
         {
-            // Quest available
-            questStatusIcon.gameObject.SetActive(true);
+            var quest = QuestManager.Instance.GetActiveQuest(q.Id);
+            if (quest != null && !quest.IsTurnedIn)
+            {
+                displayQuest = q;
+                activeQuest = quest;
+                break;
+            }
+            else if (!QuestManager.Instance.IsQuestCompleted(q.Id))
+            {
+                displayQuest = q;
+                break;
+            }
+        }
+
+        if (displayQuest == null)
+        {
+            questStatusIcon.gameObject.SetActive(false);
+            return;
+        }
+
+        if (activeQuest == null) // Available
+        {
             questStatusIcon.sprite = availableIcon;
         }
-        else if (activeQuest != null && !activeQuest.IsCompleted)
+        else if (!activeQuest.IsCompleted) // In progress
         {
-            // Quest in progress
-            questStatusIcon.gameObject.SetActive(true);
             questStatusIcon.sprite = inProgressIcon;
         }
-        else if (activeQuest != null && activeQuest.IsCompleted && !activeQuest.IsTurnedIn)
+        else if (activeQuest.IsCompleted && !activeQuest.IsTurnedIn) // Ready to turn in
         {
-            // Quest progress finished
-            questStatusIcon.gameObject.SetActive(true);
             questStatusIcon.sprite = completedIcon;
         }
-        else
-        {
-            // No quest
-            questStatusIcon.gameObject.SetActive(false);
-        }
+
+        questStatusIcon.gameObject.SetActive(true);
     }
 
     private IEnumerator PerformInteraction()
     {
-        Quest activeQuest = QuestManager.Instance.GetActiveQuest(questData.Id);
-
-        if (activeQuest == null)
-        {
-            QuestManager.Instance.StartQuest(questData);
-            Debug.Log($"Quest '{questData.Title}' started!");
-        }
-        else if (activeQuest.IsCompleted && !activeQuest.IsTurnedIn)
-        {
-            QuestManager.Instance.TurnInQuest(questData.Id);
-            Debug.Log($"Quest '{questData.Title}' turned in!");
-        }
-        else
-        {
-            Debug.Log($"Quest '{questData.Title}' is in progress: {activeQuest.Progress * 100:F0}% complete.");
-        }
-
+        NPCUIManager.Instance.OpenNPCDialogue(this);
         yield return null;
     }
+
+    // Helpers
+    public int QuestsAvailable() => quests?.Count ?? 0;
+    public List<QuestData> GetQuests() => quests;
 }

@@ -37,6 +37,10 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2343976644289111815, guid: d7a804bb8a0d4924897592c3ad712842, type: 3}
+      propertyPath: clickableLayers.m_Bits
+      value: 192
+      objectReference: {fileID: 0}
+    - target: {fileID: 2343976644289111815, guid: d7a804bb8a0d4924897592c3ad712842, type: 3}
       propertyPath: OnStartedMoving.m_PersistentCalls.m_Calls.Array.size
       value: 2
       objectReference: {fileID: 0}
