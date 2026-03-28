@@ -17,6 +17,13 @@ public class BalancingLogic
     /// </summary>
     public BalanceEvaluationResult Evaluate(MonsterWeights weights, MonsterStatValues chosenValues)
     {
+        float totalWeight = weights.TotalWeight;
+
+        if (!Mathf.Approximately(totalWeight, 10f))
+        {
+            Debug.LogWarning($"MonsterWeights total is {totalWeight}, but it should be 10.");
+        }
+
         float finalScore =
             (chosenValues.hp * weights.hpWeight) +
             (chosenValues.damage * weights.damageWeight) +

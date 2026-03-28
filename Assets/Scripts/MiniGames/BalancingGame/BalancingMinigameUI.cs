@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 /// <summary>
 /// UI controller for the balancing minigame.
-/// Handles countdown, timer, setup of parameter rows, simulation result,
+/// Handles setup of parameter rows, battle sequence,
 /// success/failure feedback, and restart flow.
 /// Gameplay rules are handled by BalancingLogic.
 /// </summary>
@@ -13,8 +13,6 @@ public class BalancingMinigameUI : MinigameBaseUI
 {
     [Header("Balancing UI")]
     [SerializeField] private TMP_Text countdownText;
-    [SerializeField] private TMP_Text timerText;
-    [SerializeField] private TMP_Text resultText;
     [SerializeField] private Button simulateButton;
 
     [Header("Character Visuals")]
@@ -27,29 +25,37 @@ public class BalancingMinigameUI : MinigameBaseUI
     [SerializeField] private BalanceParameterRowUI speedRow;
     [SerializeField] private BalanceParameterRowUI intelligenceRow;
 
-    [Header("Parameter Icons")]
-    [SerializeField] private Sprite hpIcon;
-    [SerializeField] private Sprite damageIcon;
-    [SerializeField] private Sprite speedIcon;
-    [SerializeField] private Sprite intelligenceIcon;
-
     [Header("Level Config")]
     [SerializeField] private int level = 1;
     [SerializeField] private MonsterLevelConfig level1Config;
     [SerializeField] private MonsterLevelConfig level2Config;
     [SerializeField] private MonsterLevelConfig level3Config;
 
-    [Header("Timing")]
-    [SerializeField] private float totalRoundTime = 30f;
-    [SerializeField] private float restartDelay = 1.5f;
-    [SerializeField] private float successCloseDelay = 3f;
+    [Header("Flow Timing")]
+    [SerializeField] private float restartDelay = 8f;
+    [SerializeField] private float successCloseDelay = 8f;
+
+    [Header("Battle Countdown")]
+    [SerializeField] private float battleCountdownStepDelay = 2f;
+    [SerializeField] private float battleCountdownFinalDelay = 2f;
+
+    [Header("Battle Animation")]
+    [SerializeField] private float moveDistance = 80f;
+    [SerializeField] private float moveDuration = 0.5f;
+    [SerializeField] private float hitPause = 0.25f;
+    [SerializeField] private float betweenActionsDelay = 1f;
+    [SerializeField] private float returnDuration = 0.5f;
 
     private BalancingLogic logic;
     private MonsterLevelConfig currentConfig;
-    private Coroutine timerRoutine;
 
     private MonsterStatValues currentValues;
     private bool canSimulate;
+
+    private RectTransform playerRect;
+    private RectTransform monsterRect;
+    private Vector2 playerStartPos;
+    private Vector2 monsterStartPos;
 
     protected override void Awake()
     {
@@ -59,10 +65,22 @@ public class BalancingMinigameUI : MinigameBaseUI
             simulateButton.onClick.AddListener(OnSimulatePressed);
     }
 
+    private void OnDestroy()
+    {
+        if (simulateButton != null)
+            simulateButton.onClick.RemoveListener(OnSimulatePressed);
+    }
+
     protected override void OnMinigameOpened()
     {
         logic = new BalancingLogic();
         currentConfig = GetCurrentConfig();
+
+        if (!HasRequiredReferences())
+        {
+            SetFeedback("Missing UI references.");
+            return;
+        }
 
         if (currentConfig == null)
         {
@@ -70,7 +88,23 @@ public class BalancingMinigameUI : MinigameBaseUI
             return;
         }
 
+        playerRect = playerImage != null ? playerImage.rectTransform : null;
+        monsterRect = monsterImage != null ? monsterImage.rectTransform : null;
+
         StartCoroutine(RunBalancingGame());
+    }
+
+    private bool HasRequiredReferences()
+    {
+        return
+            countdownText != null &&
+            simulateButton != null &&
+            playerImage != null &&
+            monsterImage != null &&
+            hpRow != null &&
+            damageRow != null &&
+            speedRow != null &&
+            intelligenceRow != null;
     }
 
     private IEnumerator RunBalancingGame()
@@ -80,20 +114,16 @@ public class BalancingMinigameUI : MinigameBaseUI
 
         SetInstruction("Adjust the values to set a fair challenge.");
 
-        yield return StartCoroutine(ShowCountdown());
+        yield return StartCoroutine(ShowSetupCountdown());
 
         canSimulate = true;
 
         if (simulateButton != null)
             simulateButton.interactable = true;
-
-        timerRoutine = StartCoroutine(RunRoundTimer());
     }
 
     private void ResetVisualState()
     {
-        StopExistingCoroutines();
-
         canSimulate = false;
 
         if (simulateButton != null)
@@ -105,12 +135,6 @@ public class BalancingMinigameUI : MinigameBaseUI
             countdownText.text = string.Empty;
         }
 
-        if (timerText != null)
-            timerText.text = $"Time: {Mathf.CeilToInt(totalRoundTime)}";
-
-        if (resultText != null)
-            resultText.text = string.Empty;
-
         SetFeedback(string.Empty);
     }
 
@@ -121,11 +145,17 @@ public class BalancingMinigameUI : MinigameBaseUI
 
         SetTitle(currentConfig.levelTitle);
 
-        if (playerImage != null && currentConfig.playerSprite != null)
-            playerImage.sprite = currentConfig.playerSprite;
+        if (playerImage != null && currentConfig.playerSprites != null && currentConfig.playerSprites.idle != null)
+            playerImage.sprite = currentConfig.playerSprites.idle;
 
-        if (monsterImage != null && currentConfig.monsterSprite != null)
-            monsterImage.sprite = currentConfig.monsterSprite;
+        if (monsterImage != null && currentConfig.monsterSprites != null && currentConfig.monsterSprites.idle != null)
+            monsterImage.sprite = currentConfig.monsterSprites.idle;
+
+        if (playerRect != null)
+            playerStartPos = playerRect.anchoredPosition;
+
+        if (monsterRect != null)
+            monsterStartPos = monsterRect.anchoredPosition;
 
         currentValues = new MonsterStatValues(
             currentConfig.hpStartValue,
@@ -134,13 +164,13 @@ public class BalancingMinigameUI : MinigameBaseUI
             currentConfig.intelligenceStartValue
         );
 
-        hpRow.Setup("HP", hpIcon, currentConfig.hpStartValue, currentConfig.hpFixed, OnParameterChanged);
-        damageRow.Setup("Damage", damageIcon, currentConfig.damageStartValue, currentConfig.damageFixed, OnParameterChanged);
-        speedRow.Setup("Speed", speedIcon, currentConfig.speedStartValue, currentConfig.speedFixed, OnParameterChanged);
-        intelligenceRow.Setup("Intelligence", intelligenceIcon, currentConfig.intelligenceStartValue, currentConfig.intelligenceFixed, OnParameterChanged);
+        hpRow.Setup("HP", null, currentConfig.hpStartValue, currentConfig.hpFixed, OnParameterChanged);
+        damageRow.Setup("Damage", null, currentConfig.damageStartValue, currentConfig.damageFixed, OnParameterChanged);
+        speedRow.Setup("Speed", null, currentConfig.speedStartValue, currentConfig.speedFixed, OnParameterChanged);
+        intelligenceRow.Setup("Intelligence", null, currentConfig.intelligenceStartValue, currentConfig.intelligenceFixed, OnParameterChanged);
     }
 
-    private IEnumerator ShowCountdown()
+    private IEnumerator ShowSetupCountdown()
     {
         if (countdownText == null)
             yield break;
@@ -162,23 +192,29 @@ public class BalancingMinigameUI : MinigameBaseUI
         countdownText.gameObject.SetActive(false);
     }
 
-    private IEnumerator RunRoundTimer()
+    private IEnumerator ShowBattleCountdown()
     {
-        float remaining = totalRoundTime;
+        if (countdownText == null)
+            yield break;
 
-        while (remaining > 0f)
-        {
-            if (timerText != null)
-                timerText.text = $"Time: {Mathf.CeilToInt(remaining)}";
+        countdownText.gameObject.SetActive(true);
 
-            remaining -= Time.deltaTime;
-            yield return null;
-        }
+        countdownText.text = "Battle!";
+        yield return new WaitForSeconds(battleCountdownStepDelay);
 
-        if (timerText != null)
-            timerText.text = "Time: 0";
+        countdownText.text = "3";
+        yield return new WaitForSeconds(battleCountdownStepDelay);
 
-        StartCoroutine(HandleFailure("Time is over! Restarting..."));
+        countdownText.text = "2";
+        yield return new WaitForSeconds(battleCountdownStepDelay);
+
+        countdownText.text = "1";
+        yield return new WaitForSeconds(battleCountdownStepDelay);
+
+        countdownText.text = "Fight!";
+        yield return new WaitForSeconds(battleCountdownFinalDelay);
+
+        countdownText.gameObject.SetActive(false);
     }
 
     private void OnParameterChanged(MonsterParameterType parameterType, int newValue)
@@ -222,27 +258,166 @@ public class BalancingMinigameUI : MinigameBaseUI
 
         BalanceEvaluationResult result = logic.Evaluate(weights, currentValues);
 
-        if (resultText != null)
-        {
-            resultText.text =
-                $"Final Score: {result.finalScore:0.0}/100\n" +
-                $"Damage to Monster: {result.normalizedDamage:0.0}/10";
-        }
+        StartCoroutine(PlayBattleSequence(result));
+    }
+
+    private IEnumerator PlayBattleSequence(BalanceEvaluationResult result)
+    {
+        SetInstruction("Watch the battle outcome.");
+
+        yield return StartCoroutine(ShowBattleCountdown());
 
         switch (result.outcome)
         {
-            case BalanceOutcome.TooHard:
-                StartCoroutine(HandleFailure("Too hard! The player dies. Restarting..."));
+            case BalanceOutcome.TooEasy:
+                yield return StartCoroutine(PlayPlayerAttack(killTarget: true));
+                yield return StartCoroutine(HandleFailure("Too easy! The monster died too fast. Restarting..."));
                 break;
 
-            case BalanceOutcome.TooEasy:
-                StartCoroutine(HandleFailure("Too easy! No challenge. Restarting..."));
+            case BalanceOutcome.TooHard:
+                yield return StartCoroutine(PlayPlayerAttack(killTarget: false));
+                yield return new WaitForSeconds(betweenActionsDelay);
+                yield return StartCoroutine(PlayMonsterAttack(killTarget: true));
+                yield return StartCoroutine(HandleFailure("Too hard! The player dies. Restarting..."));
                 break;
 
             case BalanceOutcome.Balanced:
-                StartCoroutine(HandleSuccess("Balanced! Challenging but fair."));
+                yield return StartCoroutine(PlayPlayerAttack(killTarget: false));
+                yield return new WaitForSeconds(betweenActionsDelay);
+                yield return StartCoroutine(PlayMonsterAttack(killTarget: false));
+                yield return new WaitForSeconds(betweenActionsDelay);
+                yield return StartCoroutine(PlayPlayerAttack(killTarget: true));
+                yield return StartCoroutine(HandleSuccess("Balanced! Challenging but fair."));
                 break;
         }
+    }
+
+    private IEnumerator PlayPlayerAttack(bool killTarget)
+    {
+        if (currentConfig == null || currentConfig.playerSprites == null || currentConfig.monsterSprites == null)
+            yield break;
+
+        if (playerRect == null || monsterRect == null)
+            yield break;
+
+        SetSprites(
+            currentConfig.playerSprites.idle,
+            currentConfig.monsterSprites.idle);
+
+        yield return StartCoroutine(MoveAnchoredPosition(
+            playerRect,
+            playerStartPos,
+            playerStartPos + Vector2.right * moveDistance,
+            moveDuration));
+
+        if (currentConfig.playerSprites.attacking != null)
+            playerImage.sprite = currentConfig.playerSprites.attacking;
+
+        if (currentConfig.monsterSprites.damaged != null)
+            monsterImage.sprite = currentConfig.monsterSprites.damaged;
+
+        yield return new WaitForSeconds(hitPause);
+
+        if (killTarget)
+        {
+            if (currentConfig.monsterSprites.defeated != null)
+                monsterImage.sprite = currentConfig.monsterSprites.defeated;
+        }
+        else
+        {
+            if (currentConfig.playerSprites.idle != null)
+                playerImage.sprite = currentConfig.playerSprites.idle;
+
+            if (currentConfig.monsterSprites.idle != null)
+                monsterImage.sprite = currentConfig.monsterSprites.idle;
+        }
+
+        yield return StartCoroutine(MoveAnchoredPosition(
+            playerRect,
+            playerRect.anchoredPosition,
+            playerStartPos,
+            returnDuration));
+    }
+
+    private IEnumerator PlayMonsterAttack(bool killTarget)
+    {
+        if (currentConfig == null || currentConfig.playerSprites == null || currentConfig.monsterSprites == null)
+            yield break;
+
+        if (playerRect == null || monsterRect == null)
+            yield break;
+
+        SetSprites(
+            currentConfig.playerSprites.idle,
+            currentConfig.monsterSprites.idle);
+
+        yield return StartCoroutine(MoveAnchoredPosition(
+            monsterRect,
+            monsterStartPos,
+            monsterStartPos + Vector2.left * moveDistance,
+            moveDuration));
+
+        if (currentConfig.monsterSprites.attacking != null)
+            monsterImage.sprite = currentConfig.monsterSprites.attacking;
+
+        if (currentConfig.playerSprites.damaged != null)
+            playerImage.sprite = currentConfig.playerSprites.damaged;
+
+        yield return new WaitForSeconds(hitPause);
+
+        if (killTarget)
+        {
+            if (currentConfig.playerSprites.defeated != null)
+                playerImage.sprite = currentConfig.playerSprites.defeated;
+        }
+        else
+        {
+            if (currentConfig.playerSprites.idle != null)
+                playerImage.sprite = currentConfig.playerSprites.idle;
+
+            if (currentConfig.monsterSprites.idle != null)
+                monsterImage.sprite = currentConfig.monsterSprites.idle;
+        }
+
+        yield return StartCoroutine(MoveAnchoredPosition(
+            monsterRect,
+            monsterRect.anchoredPosition,
+            monsterStartPos,
+            returnDuration));
+    }
+
+    private void SetSprites(Sprite playerSprite, Sprite monsterSprite)
+    {
+        if (playerImage != null && playerSprite != null)
+            playerImage.sprite = playerSprite;
+
+        if (monsterImage != null && monsterSprite != null)
+            monsterImage.sprite = monsterSprite;
+    }
+
+    private IEnumerator MoveAnchoredPosition(RectTransform target, Vector2 from, Vector2 to, float duration)
+    {
+        if (target == null)
+            yield break;
+
+        if (duration <= 0f)
+        {
+            target.anchoredPosition = to;
+            yield break;
+        }
+
+        float elapsed = 0f;
+        target.anchoredPosition = from;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsed / duration);
+            target.anchoredPosition = Vector2.Lerp(from, to, t);
+            yield return null;
+        }
+
+        target.anchoredPosition = to;
     }
 
     private IEnumerator HandleFailure(string message)
@@ -251,8 +426,6 @@ public class BalancingMinigameUI : MinigameBaseUI
             yield break;
 
         isRunning = false;
-        StopExistingCoroutines();
-
         SetFeedback(message);
 
         yield return new WaitForSeconds(restartDelay);
@@ -266,23 +439,12 @@ public class BalancingMinigameUI : MinigameBaseUI
         if (!isRunning)
             yield break;
 
-        StopExistingCoroutines();
         CompleteMinigame();
-
         SetFeedback(message);
 
         yield return new WaitForSeconds(successCloseDelay);
 
         CloseMinigame();
-    }
-
-    private void StopExistingCoroutines()
-    {
-        if (timerRoutine != null)
-        {
-            StopCoroutine(timerRoutine);
-            timerRoutine = null;
-        }
     }
 
     private MonsterLevelConfig GetCurrentConfig()
@@ -298,9 +460,20 @@ public class BalancingMinigameUI : MinigameBaseUI
 
     public override void CloseMinigame()
     {
-        StopExistingCoroutines();
         base.CloseMinigame();
     }
+}
+
+/// <summary>
+/// Set of battle sprites for one actor.
+/// </summary>
+[System.Serializable]
+public class BattleSpriteSet
+{
+    public Sprite idle;
+    public Sprite attacking;
+    public Sprite damaged;
+    public Sprite defeated;
 }
 
 /// <summary>
@@ -311,8 +484,8 @@ public class MonsterLevelConfig
 {
     [Header("Presentation")]
     public string levelTitle = "Combat Balance";
-    public Sprite playerSprite;
-    public Sprite monsterSprite;
+    public BattleSpriteSet playerSprites;
+    public BattleSpriteSet monsterSprites;
 
     [Header("Weights (must sum to 10)")]
     public float hpWeight = 2.5f;

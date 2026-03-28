@@ -44,6 +44,18 @@ public class BalanceParameterRowUI : MonoBehaviour
             increaseButton.onClick.AddListener(IncreaseValue);
     }
 
+    private void OnDestroy()
+    {
+        if (valueSlider != null)
+            valueSlider.onValueChanged.RemoveListener(OnSliderChanged);
+
+        if (decreaseButton != null)
+            decreaseButton.onClick.RemoveListener(DecreaseValue);
+
+        if (increaseButton != null)
+            increaseButton.onClick.RemoveListener(IncreaseValue);
+    }
+
     /// <summary>
     /// Initializes this parameter row.
     /// </summary>
@@ -87,7 +99,12 @@ public class BalanceParameterRowUI : MonoBehaviour
         if (isLocked)
             return;
 
-        currentValue = Mathf.RoundToInt(newValue);
+        int roundedValue = Mathf.RoundToInt(newValue);
+
+        if (roundedValue == currentValue)
+            return;
+
+        currentValue = roundedValue;
         RefreshValueText();
         onValueChanged?.Invoke(parameterType, currentValue);
     }
@@ -110,7 +127,15 @@ public class BalanceParameterRowUI : MonoBehaviour
 
     public void SetValue(int newValue)
     {
-        currentValue = Mathf.Clamp(newValue, 1, 10);
+        if (isLocked)
+            return;
+
+        int clampedValue = Mathf.Clamp(newValue, 1, 10);
+
+        if (clampedValue == currentValue)
+            return;
+
+        currentValue = clampedValue;
 
         if (valueSlider != null)
             valueSlider.SetValueWithoutNotify(currentValue);
