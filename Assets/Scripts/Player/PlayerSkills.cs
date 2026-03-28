@@ -4,7 +4,20 @@ using UnityEngine;
 
 public class PlayerSkills : MonoBehaviour
 {
+    public static PlayerSkills Instance { get; private set; }
+
     private Dictionary<SkillDefinition, int> xp = new();
+
+    void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+    }
 
     public void AddXP(SkillDefinition skill, int amount)
     {
