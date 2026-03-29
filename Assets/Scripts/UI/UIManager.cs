@@ -53,7 +53,7 @@ public class UIManager : MonoBehaviour
     {
         OpenUI(UIType.PlayerUI);
         Time.timeScale = 1f;
-        MovementController.PlayerInput.SwitchCurrentActionMap("Gameplay");
+        MovementController.playerInput.SwitchCurrentActionMap("Gameplay");
         _isGamePaused = false;
     }
 
@@ -61,7 +61,7 @@ public class UIManager : MonoBehaviour
     {
         OpenUI(UIType.PauseMenu);
         Time.timeScale = 0f;
-        MovementController.PlayerInput.SwitchCurrentActionMap("UI");
+        MovementController.playerInput.SwitchCurrentActionMap("UI");
         _isGamePaused = true;
     }
 
