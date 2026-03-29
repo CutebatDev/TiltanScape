@@ -127,6 +127,46 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4986674319748976101, guid: 711856e0ad970864ea77e249fcc5b026, type: 3}
+      propertyPath: sceneGroups.Array.data[0].groupName
+      value: Level_SecondFloor
+      objectReference: {fileID: 0}
+    - target: {fileID: 4986674319748976101, guid: 711856e0ad970864ea77e249fcc5b026, type: 3}
+      propertyPath: sceneGroups.Array.data[1].groupName
+      value: Level_FirstFloor
+      objectReference: {fileID: 0}
+    - target: {fileID: 4986674319748976101, guid: 711856e0ad970864ea77e249fcc5b026, type: 3}
+      propertyPath: sceneGroups.Array.data[1].scenes.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4986674319748976101, guid: 711856e0ad970864ea77e249fcc5b026, type: 3}
+      propertyPath: sceneGroups.Array.data[1].scenes.Array.data[3].sceneType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4986674319748976101, guid: 711856e0ad970864ea77e249fcc5b026, type: 3}
+      propertyPath: sceneGroups.Array.data[0].scenes.Array.data[0].reference.guid
+      value: 3e29a9a88696918449a8c34ba28da409
+      objectReference: {fileID: 0}
+    - target: {fileID: 4986674319748976101, guid: 711856e0ad970864ea77e249fcc5b026, type: 3}
+      propertyPath: sceneGroups.Array.data[1].scenes.Array.data[0].reference.guid
+      value: 251235d223efd8b4d89fbee6c614b938
+      objectReference: {fileID: 0}
+    - target: {fileID: 4986674319748976101, guid: 711856e0ad970864ea77e249fcc5b026, type: 3}
+      propertyPath: sceneGroups.Array.data[1].scenes.Array.data[3].reference.guid
+      value: 41317417e61c0154a946e3ba06c1b411
+      objectReference: {fileID: 0}
+    - target: {fileID: 4986674319748976101, guid: 711856e0ad970864ea77e249fcc5b026, type: 3}
+      propertyPath: sceneGroups.Array.data[0].scenes.Array.data[0].reference.asset
+      value: 
+      objectReference: {fileID: 102900000, guid: 3e29a9a88696918449a8c34ba28da409, type: 3}
+    - target: {fileID: 4986674319748976101, guid: 711856e0ad970864ea77e249fcc5b026, type: 3}
+      propertyPath: sceneGroups.Array.data[1].scenes.Array.data[0].reference.asset
+      value: 
+      objectReference: {fileID: 102900000, guid: 251235d223efd8b4d89fbee6c614b938, type: 3}
+    - target: {fileID: 4986674319748976101, guid: 711856e0ad970864ea77e249fcc5b026, type: 3}
+      propertyPath: sceneGroups.Array.data[1].scenes.Array.data[3].reference.asset
+      value: 
+      objectReference: {fileID: 102900000, guid: 41317417e61c0154a946e3ba06c1b411, type: 3}
     - target: {fileID: 7857950688394321695, guid: 711856e0ad970864ea77e249fcc5b026, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.14689
