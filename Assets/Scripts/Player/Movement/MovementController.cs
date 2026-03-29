@@ -46,6 +46,7 @@ namespace Player.Movement
 
         private void ClickToMove()
         {
+            agent.enabled = true;
             if (!mainCamera)
                 return;
 
@@ -86,17 +87,18 @@ namespace Player.Movement
             if (!agent.pathPending && agent.remainingDistance <= interactionRange)
             {
                 agent.ResetPath();
+                agent.enabled = false;
 
                 if (targetInteractable.seat)
                 {
-                    transform.position = new Vector3(targetInteractable.seat.position.x, transform.position.y, targetInteractable.seat.position.z);
+                    agent.Warp(new Vector3(targetInteractable.seat.position.x, transform.position.y, targetInteractable.seat.position.z));
                     transform.rotation = targetInteractable.seat.rotation;
 
                     anim.SitDown(true);
                 }
                 if (targetInteractable.standSlot)
                 {
-                    transform.position = new Vector3(targetInteractable.standSlot.position.x, transform.position.y, targetInteractable.standSlot.position.z);
+                    agent.Warp(new Vector3(targetInteractable.standSlot.position.x, transform.position.y, targetInteractable.standSlot.position.z));
                     transform.rotation = targetInteractable.standSlot.rotation;
                 }
 
