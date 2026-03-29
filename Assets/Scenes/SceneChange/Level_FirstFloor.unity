@@ -200,6 +200,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   seat: {fileID: 0}
+  standSlot: {fileID: 0}
+  useInteractionAnimation: 0
+  interactionAnimation: 0
   actionController: {fileID: 0}
   baseActionTime: 1
   OnActionComplete:
@@ -323,6 +326,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   seat: {fileID: 0}
+  standSlot: {fileID: 0}
+  useInteractionAnimation: 0
+  interactionAnimation: 0
   actionController: {fileID: 0}
   baseActionTime: 1
   OnActionComplete:
@@ -409,6 +415,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   seat: {fileID: 0}
+  standSlot: {fileID: 0}
+  useInteractionAnimation: 0
+  interactionAnimation: 0
   actionController: {fileID: 0}
   baseActionTime: 1
   OnActionComplete:
@@ -495,6 +504,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   seat: {fileID: 0}
+  standSlot: {fileID: 0}
+  useInteractionAnimation: 0
+  interactionAnimation: 0
   actionController: {fileID: 0}
   baseActionTime: 1
   OnActionComplete:
@@ -722,6 +734,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   seat: {fileID: 0}
+  standSlot: {fileID: 0}
+  useInteractionAnimation: 0
+  interactionAnimation: 0
   actionController: {fileID: 0}
   baseActionTime: 1
   OnActionComplete:
@@ -1218,6 +1233,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   seat: {fileID: 0}
+  standSlot: {fileID: 0}
+  useInteractionAnimation: 0
+  interactionAnimation: 0
   actionController: {fileID: 0}
   baseActionTime: 1
   OnActionComplete:
@@ -1331,6 +1349,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   seat: {fileID: 0}
+  standSlot: {fileID: 0}
+  useInteractionAnimation: 0
+  interactionAnimation: 0
   actionController: {fileID: 0}
   baseActionTime: 1
   OnActionComplete:
@@ -1652,6 +1673,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   seat: {fileID: 0}
+  standSlot: {fileID: 0}
+  useInteractionAnimation: 0
+  interactionAnimation: 0
   actionController: {fileID: 0}
   baseActionTime: 1
   OnActionComplete:
@@ -1665,6 +1689,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 370141192017633123, guid: f9017651a69acc5418457a38e2678289, type: 3}
+      propertyPath: isLaptop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 370141192017633123, guid: f9017651a69acc5418457a38e2678289, type: 3}
+      propertyPath: interactionAnimation
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 370141192017633123, guid: f9017651a69acc5418457a38e2678289, type: 3}
+      propertyPath: useInteractionAnimation
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1966114914662359424, guid: f9017651a69acc5418457a38e2678289, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.4947011
@@ -1852,11 +1888,96 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   seat: {fileID: 0}
+  standSlot: {fileID: 0}
+  useInteractionAnimation: 0
+  interactionAnimation: 0
   actionController: {fileID: 0}
   baseActionTime: 1
   OnActionComplete:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1001 &2146809908
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 605488086634024266, guid: 60e894c1232708441a244f5bc6465f5c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.9310474
+      objectReference: {fileID: 0}
+    - target: {fileID: 605488086634024266, guid: 60e894c1232708441a244f5bc6465f5c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 605488086634024266, guid: 60e894c1232708441a244f5bc6465f5c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 8.034184
+      objectReference: {fileID: 0}
+    - target: {fileID: 605488086634024266, guid: 60e894c1232708441a244f5bc6465f5c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 605488086634024266, guid: 60e894c1232708441a244f5bc6465f5c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 605488086634024266, guid: 60e894c1232708441a244f5bc6465f5c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 605488086634024266, guid: 60e894c1232708441a244f5bc6465f5c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 605488086634024266, guid: 60e894c1232708441a244f5bc6465f5c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 605488086634024266, guid: 60e894c1232708441a244f5bc6465f5c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 605488086634024266, guid: 60e894c1232708441a244f5bc6465f5c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 700239621747940693, guid: 60e894c1232708441a244f5bc6465f5c, type: 3}
+      propertyPath: m_Name
+      value: standSlot
+      objectReference: {fileID: 0}
+    - target: {fileID: 1049077621434952975, guid: 60e894c1232708441a244f5bc6465f5c, type: 3}
+      propertyPath: seat
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1049077621434952975, guid: 60e894c1232708441a244f5bc6465f5c, type: 3}
+      propertyPath: standSlot
+      value: 
+      objectReference: {fileID: 2146809909}
+    - target: {fileID: 2597113433660550897, guid: 60e894c1232708441a244f5bc6465f5c, type: 3}
+      propertyPath: m_Name
+      value: Dev Teacher
+      objectReference: {fileID: 0}
+    - target: {fileID: 4073714295202349587, guid: 60e894c1232708441a244f5bc6465f5c, type: 3}
+      propertyPath: questGreeting
+      value: Nyahallo
+      objectReference: {fileID: 0}
+    - target: {fileID: 4073714295202349587, guid: 60e894c1232708441a244f5bc6465f5c, type: 3}
+      propertyPath: defaultGreeting
+      value: Henlor
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 60e894c1232708441a244f5bc6465f5c, type: 3}
+--- !u!4 &2146809909 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4486451234210986095, guid: 60e894c1232708441a244f5bc6465f5c, type: 3}
+  m_PrefabInstance: {fileID: 2146809908}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1877,3 +1998,4 @@ SceneRoots:
   - {fileID: 1081496808}
   - {fileID: 493574513}
   - {fileID: 2001240848}
+  - {fileID: 2146809908}

@@ -8,54 +8,34 @@ namespace Player.Movement
 {
     public class MovementController : MonoBehaviour
     {
-        public static PlayerInput PlayerInput;
-        public UnityEvent onStartedMoving;
-        public float ForwardSpeed => agent.velocity.magnitude;
-        public float RotationSpeed => CalculateRotationSpeed();
-        public float interactionRange = 2f;
-        public bool isTurning;
-
+        [Header("References")]
+        public static PlayerInput playerInput;
         [SerializeField] private NavMeshAgent agent;
         [SerializeField] private Camera mainCamera;
         [SerializeField] private LayerMask clickableLayers;
+        [SerializeField] private HumanoidAnimationManager anim;
+
+        [Header("Settings")]
         [SerializeField] private float lookRotationSpeed = 5f;
         [SerializeField] private float moveSpeed = 5f;
-        [SerializeField] private float runSpeed = 8f;
+        [SerializeField] private float interactionRange = 2f;
 
-        private Quaternion _lastRotation;
-        private Interactable _targetInteractable;
-        private float _rotationSpeed;
-        private bool _wasMoving;
-        private bool _isRunning = false;
+        private Interactable targetInteractable;
+        private bool isMoving;
 
         void Awake()
         {
             agent.updateRotation = false;
             agent.stoppingDistance = interactionRange;
-        }
 
-        private void Start()
-        {
-            if (!PlayerInput)
-                PlayerInput = GetComponent<PlayerInput>();
+            agent.speed = moveSpeed;
         }
 
         void Update()
         {
-            agent.speed = _isRunning ? runSpeed : moveSpeed;
-
             FaceTarget();
-
-            bool isMoving = AgentIsMoving();
-
-            isTurning = RotationSpeed > 0.1f;
-
-            if (isMoving && !_wasMoving)
-                onStartedMoving?.Invoke();
-
-            _wasMoving = isMoving;
-
             CheckInteraction();
+            UpdateMovementAnimation();
         }
 
         public void OnMovePerformed(InputAction.CallbackContext ctx)
@@ -77,12 +57,18 @@ namespace Player.Movement
 
                 if (interactable)
                 {
-                    _targetInteractable = interactable;
-                    agent.SetDestination(interactable.seat.transform.position);
+                    targetInteractable = interactable;
+                    anim.SitDown(false);
+                    if (interactable.seat)
+                        agent.SetDestination(interactable.seat.transform.position);
+                    else if (interactable.standSlot)
+                        agent.SetDestination(interactable.standSlot.transform.position);
+
                 }
                 else
                 {
-                    _targetInteractable = null;
+                    targetInteractable = null;
+                    anim.SitDown(false);
                     agent.SetDestination(hit.point);
 
                     DrawClickIndicator(hit);
@@ -92,21 +78,35 @@ namespace Player.Movement
 
         private void CheckInteraction()
         {
-            if (!_targetInteractable)
+            if (!targetInteractable)
                 return;
 
             if (!agent.pathPending && agent.remainingDistance <= interactionRange)
             {
                 agent.ResetPath();
 
-                if (_targetInteractable.seat)
+                if (targetInteractable.seat)
                 {
-                    transform.position = _targetInteractable.seat.position;
-                    transform.rotation = _targetInteractable.seat.rotation;
+                    transform.position = new Vector3(targetInteractable.seat.position.x, transform.position.y, targetInteractable.seat.position.z);
+                    transform.rotation = targetInteractable.seat.rotation;
+
+                    anim.SitDown(true);
+                }
+                if (targetInteractable.standSlot)
+                {
+                    transform.position = new Vector3(targetInteractable.standSlot.position.x, transform.position.y, targetInteractable.standSlot.position.z);
+                    transform.rotation = targetInteractable.standSlot.rotation;
                 }
 
-                _targetInteractable.Interact();
-                _targetInteractable = null;
+                var interactionAnim = targetInteractable.GetInteractionAnimation();
+
+                if (interactionAnim.HasValue)
+                    anim.PlayAnimation(interactionAnim.Value);
+                else
+                    anim.PlayAnimation(EnumAnimations.Idle);
+
+                targetInteractable.Interact();
+                targetInteractable = null;
             }
         }
 
@@ -138,21 +138,24 @@ namespace Player.Movement
             transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * lookRotationSpeed);
         }
 
-        private bool AgentIsMoving()
+        private void UpdateMovementAnimation()
         {
-            return agent.hasPath && agent.velocity.sqrMagnitude > 0.01f;
+            bool movingNow = agent.hasPath && !agent.pathPending && agent.remainingDistance > agent.stoppingDistance;
+
+            if (movingNow && !isMoving)
+            {
+                isMoving = true;
+
+                anim.SitDown(false);
+                anim.PlayAnimation(EnumAnimations.Walk);
+            }
+
+            else if (!movingNow && isMoving)
+            {
+                isMoving = false;
+
+                anim.PlayAnimation(EnumAnimations.Idle);
+            }
         }
-
-        private float CalculateRotationSpeed()
-        {
-            // Angle between current rotation and last rotation
-            float angle = Quaternion.Angle(transform.rotation, _lastRotation);
-            _lastRotation = transform.rotation;
-
-            // Convert to degrees per second
-            return angle / Time.deltaTime;
-        }
-
-        public bool IsMoving => AgentIsMoving();
     }
 }
