@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -21,5 +22,7 @@ namespace Events
 
         public UnityAction OnTogglePauseMenu;
         public UnityAction OnNextScene;
+        public UnityAction OnUseQuestStation;
+        public UnityAction OnLevelUp;
     }
 }

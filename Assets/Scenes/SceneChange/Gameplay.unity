@@ -243,14 +243,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerSound
   footstepSource: {fileID: 1361912040}
-  footstepSound:
-  - {fileID: 8300000, guid: def86c93031f1af458cd211c129ff9d6, type: 3}
-  - {fileID: 8300000, guid: fd233d162dfff3b4b965eca0767dfd9c, type: 3}
-  - {fileID: 8300000, guid: f28ed1f09bb7481428fcaaa0691c3d13, type: 3}
-  minVolume: 0.1
-  maxVolume: 0.2
-  minPitch: 0.9
-  maxPitch: 1.1
+  footstepSound: []
+  minVolume: 0
+  maxVolume: 0
+  minPitch: 0.98
+  maxPitch: 1.02
 --- !u!1 &939143318
 GameObject:
   m_ObjectHideFlags: 0
@@ -282,10 +279,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dae39735a21a5e4eb5e9b076a0f294c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AnimatorLayerWeightDriver
-  animator: {fileID: 939143321}
-  layerName: UpperBodyLocomotions
-  currentWeight: 1
-  lerpSpeed: 8
 --- !u!114 &939143320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -600,6 +593,11 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 2237581728382267107, guid: 94673695d80ce4740a0c918ed0ea8c70, type: 3}
   m_PrefabInstance: {fileID: 5160624064292849046}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &1765033960 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6878963921423269379, guid: f246c5f073f849647ac6c8207f71e594, type: 3}
+  m_PrefabInstance: {fileID: 1766094356}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1766094356
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -610,15 +608,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 791702604872033255, guid: f246c5f073f849647ac6c8207f71e594, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.08945
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 791702604872033255, guid: f246c5f073f849647ac6c8207f71e594, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.93686
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 791702604872033255, guid: f246c5f073f849647ac6c8207f71e594, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.11818
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 791702604872033255, guid: f246c5f073f849647ac6c8207f71e594, type: 3}
       propertyPath: m_LocalRotation.w
@@ -648,6 +646,82 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1166483551880416870, guid: f246c5f073f849647ac6c8207f71e594, type: 3}
+      propertyPath: sfxSource
+      value: 
+      objectReference: {fileID: 1765033960}
+    - target: {fileID: 1166483551880416870, guid: f246c5f073f849647ac6c8207f71e594, type: 3}
+      propertyPath: sfxClips.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1166483551880416870, guid: f246c5f073f849647ac6c8207f71e594, type: 3}
+      propertyPath: sfxClips.Array.data[0].type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1166483551880416870, guid: f246c5f073f849647ac6c8207f71e594, type: 3}
+      propertyPath: sfxClips.Array.data[1].type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1166483551880416870, guid: f246c5f073f849647ac6c8207f71e594, type: 3}
+      propertyPath: sfxClips.Array.data[2].type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1166483551880416870, guid: f246c5f073f849647ac6c8207f71e594, type: 3}
+      propertyPath: sfxClips.Array.data[3].type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1166483551880416870, guid: f246c5f073f849647ac6c8207f71e594, type: 3}
+      propertyPath: sfxClips.Array.data[4].type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1166483551880416870, guid: f246c5f073f849647ac6c8207f71e594, type: 3}
+      propertyPath: sfxClips.Array.data[0].sfxSource
+      value: 
+      objectReference: {fileID: 1361912040}
+    - target: {fileID: 1166483551880416870, guid: f246c5f073f849647ac6c8207f71e594, type: 3}
+      propertyPath: sfxClips.Array.data[1].sfxSource
+      value: 
+      objectReference: {fileID: 1361912040}
+    - target: {fileID: 1166483551880416870, guid: f246c5f073f849647ac6c8207f71e594, type: 3}
+      propertyPath: sfxClips.Array.data[2].sfxSource
+      value: 
+      objectReference: {fileID: 1361912040}
+    - target: {fileID: 1166483551880416870, guid: f246c5f073f849647ac6c8207f71e594, type: 3}
+      propertyPath: sfxClips.Array.data[3].sfxSource
+      value: 
+      objectReference: {fileID: 1361912040}
+    - target: {fileID: 1166483551880416870, guid: f246c5f073f849647ac6c8207f71e594, type: 3}
+      propertyPath: sfxClips.Array.data[4].sfxSource
+      value: 
+      objectReference: {fileID: 1361912040}
+    - target: {fileID: 1166483551880416870, guid: f246c5f073f849647ac6c8207f71e594, type: 3}
+      propertyPath: sfxClips.Array.data[0].audioClips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1166483551880416870, guid: f246c5f073f849647ac6c8207f71e594, type: 3}
+      propertyPath: sfxClips.Array.data[1].audioClips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1166483551880416870, guid: f246c5f073f849647ac6c8207f71e594, type: 3}
+      propertyPath: sfxClips.Array.data[2].audioClips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1166483551880416870, guid: f246c5f073f849647ac6c8207f71e594, type: 3}
+      propertyPath: sfxClips.Array.data[3].audioClips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1166483551880416870, guid: f246c5f073f849647ac6c8207f71e594, type: 3}
+      propertyPath: 'sfxClips.Array.data[0].audioClips.Array.data[0]'
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1166483551880416870, guid: f246c5f073f849647ac6c8207f71e594, type: 3}
+      propertyPath: 'sfxClips.Array.data[0].audioClips.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: fd233d162dfff3b4b965eca0767dfd9c, type: 3}
+    - target: {fileID: 1166483551880416870, guid: f246c5f073f849647ac6c8207f71e594, type: 3}
+      propertyPath: 'sfxClips.Array.data[0].audioClips.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8300000, guid: f28ed1f09bb7481428fcaaa0691c3d13, type: 3}
     - target: {fileID: 1232773531037786039, guid: f246c5f073f849647ac6c8207f71e594, type: 3}
       propertyPath: m_Name
       value: AudioManager

@@ -1,3 +1,4 @@
+using Events;
 using UnityEngine;
 
 public class SkillXP
@@ -25,7 +26,10 @@ public class SkillXP
         int level = 1;
 
         while (level < maxLevel && xp >= GetXPForLevel(level + 1))
+        {
+            EventsManager.Instance.OnLevelUp.Invoke();
             level++;
+        }
 
         return level;
     }

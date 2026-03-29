@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8992f0154bca3040bdbe90e54bbd1f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
---- !u!1 &53202392
+PlayEnemyDeathSfx2
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
