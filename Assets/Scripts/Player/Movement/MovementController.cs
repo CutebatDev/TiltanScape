@@ -25,6 +25,9 @@ namespace Player.Movement
 
         void Awake()
         {
+            if (!playerInput)
+                playerInput = GetComponent<PlayerInput>();
+
             agent.updateRotation = false;
             agent.stoppingDistance = interactionRange;
 

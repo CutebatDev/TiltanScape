@@ -306,6 +306,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7563602391043313131, guid: 65413e3584bce3841a81a86916756ee5, type: 3}
   m_PrefabInstance: {fileID: 215752794}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &584798477 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8440101879133471608, guid: 65413e3584bce3841a81a86916756ee5, type: 3}
+  m_PrefabInstance: {fileID: 215752794}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &787204122
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -481,6 +486,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1256924737190735836, guid: 71be3260b3cf68d49801ae21d5e87e35, type: 3}
   m_PrefabInstance: {fileID: 837310633}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &837310635 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1607708674341535400, guid: 71be3260b3cf68d49801ae21d5e87e35, type: 3}
+  m_PrefabInstance: {fileID: 837310633}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60e1e0aa51cbcd341a51466acca4851e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1001 &906226358
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -489,6 +505,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3309743935549399341}
     m_Modifications:
+    - target: {fileID: 2351912892929510154, guid: d9600a9c632c863489e1de10f1ccd4e1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2351912892929510154, guid: d9600a9c632c863489e1de10f1ccd4e1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2351912892929510154, guid: d9600a9c632c863489e1de10f1ccd4e1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 837310635}
+    - target: {fileID: 2351912892929510154, guid: d9600a9c632c863489e1de10f1ccd4e1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2351912892929510154, guid: d9600a9c632c863489e1de10f1ccd4e1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CloseUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 2351912892929510154, guid: d9600a9c632c863489e1de10f1ccd4e1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: QuestUIManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2351912892929510154, guid: d9600a9c632c863489e1de10f1ccd4e1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3272321054527172626, guid: d9600a9c632c863489e1de10f1ccd4e1, type: 3}
       propertyPath: m_Name
       value: QuestSelectionUI
@@ -585,6 +629,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8561359394428743327, guid: d9600a9c632c863489e1de10f1ccd4e1, type: 3}
+      propertyPath: m_Name
+      value: CloseButton
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -603,6 +651,11 @@ GameObject:
 --- !u!224 &1006172709 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5131462702543719077, guid: d9600a9c632c863489e1de10f1ccd4e1, type: 3}
+  m_PrefabInstance: {fileID: 906226358}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1386120716 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3272321054527172626, guid: d9600a9c632c863489e1de10f1ccd4e1, type: 3}
   m_PrefabInstance: {fileID: 906226358}
   m_PrefabAsset: {fileID: 0}
 --- !u!224 &1591500097120198934 stripped
@@ -685,6 +738,10 @@ MonoBehaviour:
     uiObject: {fileID: 9016424218911351454}
   - type: 5
     uiObject: {fileID: 3153805812565273945}
+  - type: 7
+    uiObject: {fileID: 584798477}
+  - type: 6
+    uiObject: {fileID: 1386120716}
 --- !u!223 &5832311444309112020
 Canvas:
   m_ObjectHideFlags: 0

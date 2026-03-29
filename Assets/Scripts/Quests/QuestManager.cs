@@ -75,6 +75,8 @@ public class QuestManager : MonoBehaviour
         return quest;
     }
 
+    public List<Quest> GetActiveQuests() => activeQuests.Values.ToList();
+
     public bool IsQuestCompleted(string questId) => completedQuests.Contains(questId);
     public void GetActiveQuestNames() => Debug.Log(string.Join(", ", activeQuests.Values.Select(q => q.Data.Title)));
 }
