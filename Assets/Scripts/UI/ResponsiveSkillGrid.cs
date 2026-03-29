@@ -110,4 +110,4 @@ public class ResponsiveSkillGrid : MonoBehaviour
             child.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, finalCellSize);
         }
     }
-}
+}   
