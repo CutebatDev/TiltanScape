@@ -59,7 +59,10 @@ namespace Player.Movement
                 {
                     targetInteractable = interactable;
                     anim.SitDown(false);
-                    agent.SetDestination(interactable.seat.transform.position);
+                    if (interactable.seat)
+                        agent.SetDestination(interactable.seat.transform.position);
+                    else if (interactable.standSlot)
+                        agent.SetDestination(interactable.standSlot.transform.position);
                 }
                 else
                 {
@@ -90,7 +93,7 @@ namespace Player.Movement
                 }
                 if (targetInteractable.standSlot)
                 {
-                    transform.position = new Vector3(targetInteractable.seat.position.x, transform.position.y, targetInteractable.seat.position.z);
+                    transform.position = new Vector3(targetInteractable.standSlot.position.x, transform.position.y, targetInteractable.standSlot.position.z);
                     transform.rotation = targetInteractable.standSlot.rotation;
                 }
 

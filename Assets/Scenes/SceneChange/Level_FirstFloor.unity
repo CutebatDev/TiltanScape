@@ -1880,7 +1880,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 605488086634024266, guid: 60e894c1232708441a244f5bc6465f5c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.61227995
+      value: 0.45
       objectReference: {fileID: 0}
     - target: {fileID: 605488086634024266, guid: 60e894c1232708441a244f5bc6465f5c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1929,6 +1929,14 @@ PrefabInstance:
     - target: {fileID: 2597113433660550897, guid: 60e894c1232708441a244f5bc6465f5c, type: 3}
       propertyPath: m_Name
       value: Dev Teacher
+      objectReference: {fileID: 0}
+    - target: {fileID: 4073714295202349587, guid: 60e894c1232708441a244f5bc6465f5c, type: 3}
+      propertyPath: questGreeting
+      value: Nyahallo
+      objectReference: {fileID: 0}
+    - target: {fileID: 4073714295202349587, guid: 60e894c1232708441a244f5bc6465f5c, type: 3}
+      propertyPath: defaultGreeting
+      value: Henlor
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
