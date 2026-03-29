@@ -195,6 +195,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: def86c93031f1af458cd211c129ff9d6, type: 3}
   - {fileID: 8300000, guid: fd233d162dfff3b4b965eca0767dfd9c, type: 3}
   - {fileID: 8300000, guid: f28ed1f09bb7481428fcaaa0691c3d13, type: 3}
+  minVolume: 0.1
+  maxVolume: 0.2
+  minPitch: 0.98
+  maxPitch: 1.02
 --- !u!1001 &710848753
 PrefabInstance:
   m_ObjectHideFlags: 0
