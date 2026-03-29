@@ -647,13 +647,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1742279215}
     - target: {fileID: 3553936593944067565, guid: f73ea0a71499be441878e9f1d10edd21, type: 3}
-      propertyPath: anim
-      value: 
-      objectReference: {fileID: 3317553926036753773}
-    - target: {fileID: 3553936593944067565, guid: f73ea0a71499be441878e9f1d10edd21, type: 3}
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 1742279215}
+    - target: {fileID: 3722344063681255188, guid: f73ea0a71499be441878e9f1d10edd21, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8610836195100105991, guid: f73ea0a71499be441878e9f1d10edd21, type: 3}
       propertyPath: m_Name
       value: Player
@@ -699,22 +699,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 8948904821399860283, guid: f73ea0a71499be441878e9f1d10edd21, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f73ea0a71499be441878e9f1d10edd21, type: 3}
---- !u!114 &3317553926036753773 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9077785283149094786, guid: f73ea0a71499be441878e9f1d10edd21, type: 3}
-  m_PrefabInstance: {fileID: 3317553926036753768}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86e3e390bbfc464479ad7ca40648eca1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HumanoidAnimationManager
 --- !u!1001 &5160624064292849046
 PrefabInstance:
   m_ObjectHideFlags: 0
