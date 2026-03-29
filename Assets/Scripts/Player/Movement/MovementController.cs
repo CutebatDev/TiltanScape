@@ -49,6 +49,8 @@ namespace Player.Movement
             if (!mainCamera)
                 return;
 
+            PlayerActionController.Instance.InterruptAction();
+
             Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
 
             if (Physics.Raycast(ray, out RaycastHit hit, 100f, clickableLayers))
