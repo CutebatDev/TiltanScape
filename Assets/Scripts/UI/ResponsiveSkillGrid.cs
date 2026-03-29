@@ -8,7 +8,6 @@ public class ResponsiveSkillGrid : MonoBehaviour
     [SerializeField] private int rows = 3;
 
     [Header("Cell Size Limits")]
-    [SerializeField] private float preferredCellSize = 100f;
     [SerializeField] private float minCellSize = 60f;
     [SerializeField] private float maxCellSize = 140f;
 
@@ -55,18 +54,21 @@ public class ResponsiveSkillGrid : MonoBehaviour
             rectTransform = GetComponent<RectTransform>();
 
         int childCount = Mathf.Min(transform.childCount, columns * rows);
-        if (childCount == 0) return;
+        if (childCount == 0)
+            return;
 
         float availableWidth = rectTransform.rect.width - paddingLeft - paddingRight;
         float availableHeight = rectTransform.rect.height - paddingTop - paddingBottom;
 
-        if (availableWidth <= 0 || availableHeight <= 0) return;
+        if (availableWidth <= 0f || availableHeight <= 0f)
+            return;
 
+        // Maximum cell size that still fits in the padded area
         float cellSizeFromWidth = (availableWidth - minSpacingX * (columns - 1)) / columns;
         float cellSizeFromHeight = (availableHeight - minSpacingY * (rows - 1)) / rows;
 
-        float finalCellSize = Mathf.Min(preferredCellSize, cellSizeFromWidth, cellSizeFromHeight);
-        finalCellSize = Mathf.Clamp(finalCellSize, minCellSize, maxCellSize);
+        float targetCellSize = Mathf.Min(cellSizeFromWidth, cellSizeFromHeight);
+        float finalCellSize = Mathf.Clamp(targetCellSize, minCellSize, maxCellSize);
 
         float usedWidth = columns * finalCellSize;
         float usedHeight = rows * finalCellSize;
@@ -83,20 +85,22 @@ public class ResponsiveSkillGrid : MonoBehaviour
         float totalGridWidth = columns * finalCellSize + (columns - 1) * spacingX;
         float totalGridHeight = rows * finalCellSize + (rows - 1) * spacingY;
 
-        float startX = (rectTransform.rect.width - totalGridWidth) * 0.5f;
-        float startY = -(rectTransform.rect.height - totalGridHeight) * 0.5f;
+        // Center inside the padded area
+        float startX = paddingLeft + (availableWidth - totalGridWidth) * 0.5f;
+        float startY = -paddingTop - (availableHeight - totalGridHeight) * 0.5f;
 
         for (int i = 0; i < childCount; i++)
         {
             RectTransform child = transform.GetChild(i) as RectTransform;
-            if (child == null) continue;
+            if (child == null)
+                continue;
 
             int row = i / columns;
             int col = i % columns;
 
-            child.anchorMin = new Vector2(0, 1);
-            child.anchorMax = new Vector2(0, 1);
-            child.pivot = new Vector2(0, 1);
+            child.anchorMin = new Vector2(0f, 1f);
+            child.anchorMax = new Vector2(0f, 1f);
+            child.pivot = new Vector2(0f, 1f);
 
             float x = startX + col * (finalCellSize + spacingX);
             float y = startY - row * (finalCellSize + spacingY);
