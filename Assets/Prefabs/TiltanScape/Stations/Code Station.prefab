@@ -240,11 +240,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 876b0cf3ede2a2b41b272ffe44d1c944, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SkillStation
-  playerSkills: {fileID: 0}
   skill: {fileID: 11400000, guid: b87cbd23487a10243801bb5cca53aea1, type: 2}
   xpReward: 25
   baseActionTime: 3
-  actionController: {fileID: 0}
   interactable: {fileID: 370141192017633123}
 --- !u!208 &7398754818672831463
 NavMeshObstacle:
@@ -278,7 +276,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   seat: {fileID: 1176392262220908665}
-  actionController: {fileID: 0}
+  standSlot: {fileID: 0}
+  useInteractionAnimation: 1
+  interactionAnimation: 2
   baseActionTime: 1
   OnActionComplete:
     m_PersistentCalls:

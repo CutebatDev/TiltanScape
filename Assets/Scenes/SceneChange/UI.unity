@@ -127,6 +127,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3309743935549399341}
     m_Modifications:
+    - target: {fileID: 7053435577072219794, guid: 65413e3584bce3841a81a86916756ee5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 787204124}
+    - target: {fileID: 7053435577072219794, guid: 65413e3584bce3841a81a86916756ee5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CloseDialogue
+      objectReference: {fileID: 0}
     - target: {fileID: 8440101879133471608, guid: 65413e3584bce3841a81a86916756ee5, type: 3}
       propertyPath: m_Name
       value: NPCDialogueCanvas
@@ -233,6 +241,71 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8992878768547033046, guid: 65413e3584bce3841a81a86916756ee5, type: 3}
   m_PrefabInstance: {fileID: 215752794}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &215752796 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 74910451544752989, guid: 65413e3584bce3841a81a86916756ee5, type: 3}
+  m_PrefabInstance: {fileID: 215752794}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &215752797 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 763523087288385420, guid: 65413e3584bce3841a81a86916756ee5, type: 3}
+  m_PrefabInstance: {fileID: 215752794}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+--- !u!114 &215752798 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3980895848241905364, guid: 65413e3584bce3841a81a86916756ee5, type: 3}
+  m_PrefabInstance: {fileID: 215752794}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!114 &215752799 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1796259632169444989, guid: 65413e3584bce3841a81a86916756ee5, type: 3}
+  m_PrefabInstance: {fileID: 215752794}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!114 &215752800 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3189127340111333287, guid: 65413e3584bce3841a81a86916756ee5, type: 3}
+  m_PrefabInstance: {fileID: 215752794}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!114 &215752801 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1119916750722401685, guid: 65413e3584bce3841a81a86916756ee5, type: 3}
+  m_PrefabInstance: {fileID: 215752794}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!224 &215752802 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7563602391043313131, guid: 65413e3584bce3841a81a86916756ee5, type: 3}
+  m_PrefabInstance: {fileID: 215752794}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &787204122
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -241,6 +314,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3309743935549399341}
     m_Modifications:
+    - target: {fileID: 1281252585745484905, guid: dac241ce29ff71a44a03ea24eaea38c7, type: 3}
+      propertyPath: panel
+      value: 
+      objectReference: {fileID: 215752796}
+    - target: {fileID: 1281252585745484905, guid: dac241ce29ff71a44a03ea24eaea38c7, type: 3}
+      propertyPath: npcMessageText
+      value: 
+      objectReference: {fileID: 215752801}
+    - target: {fileID: 1281252585745484905, guid: dac241ce29ff71a44a03ea24eaea38c7, type: 3}
+      propertyPath: questButtonLabel
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1281252585745484905, guid: dac241ce29ff71a44a03ea24eaea38c7, type: 3}
+      propertyPath: questDetailTitle
+      value: 
+      objectReference: {fileID: 215752800}
+    - target: {fileID: 1281252585745484905, guid: dac241ce29ff71a44a03ea24eaea38c7, type: 3}
+      propertyPath: acceptQuestButton
+      value: 
+      objectReference: {fileID: 215752797}
+    - target: {fileID: 1281252585745484905, guid: dac241ce29ff71a44a03ea24eaea38c7, type: 3}
+      propertyPath: questDetailSkills
+      value: 
+      objectReference: {fileID: 215752798}
+    - target: {fileID: 1281252585745484905, guid: dac241ce29ff71a44a03ea24eaea38c7, type: 3}
+      propertyPath: questButtonContainer
+      value: 
+      objectReference: {fileID: 215752802}
+    - target: {fileID: 1281252585745484905, guid: dac241ce29ff71a44a03ea24eaea38c7, type: 3}
+      propertyPath: questDetailDescription
+      value: 
+      objectReference: {fileID: 215752799}
     - target: {fileID: 2273636388416388870, guid: dac241ce29ff71a44a03ea24eaea38c7, type: 3}
       propertyPath: m_LocalPosition.x
       value: -956.5628
@@ -295,6 +400,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2273636388416388870, guid: dac241ce29ff71a44a03ea24eaea38c7, type: 3}
   m_PrefabInstance: {fileID: 787204122}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &787204124 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1281252585745484905, guid: dac241ce29ff71a44a03ea24eaea38c7, type: 3}
+  m_PrefabInstance: {fileID: 787204122}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a80451ca74800548a4d8fa91e99d513, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1001 &837310633
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -343,6 +459,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1607708674341535400, guid: 71be3260b3cf68d49801ae21d5e87e35, type: 3}
+      propertyPath: panel
+      value: 
+      objectReference: {fileID: 966914889}
+    - target: {fileID: 1607708674341535400, guid: 71be3260b3cf68d49801ae21d5e87e35, type: 3}
+      propertyPath: buttonParent
+      value: 
+      objectReference: {fileID: 1006172709}
     - target: {fileID: 6686688768285930351, guid: 71be3260b3cf68d49801ae21d5e87e35, type: 3}
       propertyPath: m_Name
       value: QuestUIManager
@@ -469,6 +593,16 @@ PrefabInstance:
 --- !u!224 &906226359 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8104367160887932411, guid: d9600a9c632c863489e1de10f1ccd4e1, type: 3}
+  m_PrefabInstance: {fileID: 906226358}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &966914889 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6047968674789295499, guid: d9600a9c632c863489e1de10f1ccd4e1, type: 3}
+  m_PrefabInstance: {fileID: 906226358}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &1006172709 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5131462702543719077, guid: d9600a9c632c863489e1de10f1ccd4e1, type: 3}
   m_PrefabInstance: {fileID: 906226358}
   m_PrefabAsset: {fileID: 0}
 --- !u!224 &1591500097120198934 stripped
