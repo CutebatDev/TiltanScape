@@ -6,7 +6,6 @@ using UnityEngine.Events;
 public class ActionInteractable : Interactable
 {
     [Header("References")]
-    [SerializeField] private PlayerActionController actionController;
     [SerializeField] private float baseActionTime = 1f;
 
     [Header("Optional Events")]
@@ -15,9 +14,14 @@ public class ActionInteractable : Interactable
     // Delegate to run during interaction
     private Func<IEnumerator> actionCoroutineFunc;
 
-    void Awake()
+    void OnEnable()
     {
         OnInteract.AddListener(StartInteract);    
+    }
+
+    void OnDisable()
+    {
+        OnInteract.RemoveListener(StartInteract);    
     }
 
     public void SetAction(Func<IEnumerator> actionFunc)
@@ -27,10 +31,16 @@ public class ActionInteractable : Interactable
 
     public void StartInteract()
     {
-        if (actionController.IsBusy || actionCoroutineFunc == null)
+        if (PlayerActionController.Instance == null)
+        {
+            Debug.LogError("PlayerActionController.Instance is NULL");
+            return;
+        }
+
+        if (PlayerActionController.Instance.IsBusy || actionCoroutineFunc == null)
             return;
 
-        actionController.StartAction(RunAction());
+        PlayerActionController.Instance.StartAction(RunAction());
     }
 
     private IEnumerator RunAction()
