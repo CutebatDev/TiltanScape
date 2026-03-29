@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,7 @@ public class PlayerSkills : MonoBehaviour
     public static PlayerSkills Instance { get; private set; }
 
     private Dictionary<SkillDefinition, int> xp = new();
+    public int skillsAmount;
 
     void Awake()
     {
@@ -17,6 +19,11 @@ public class PlayerSkills : MonoBehaviour
         }
 
         Instance = this;
+    }
+
+    private void Start()
+    {
+        skillsAmount = Instance.xp.Count;
     }
 
     public void AddXP(SkillDefinition skill, int amount)
