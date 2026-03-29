@@ -142,6 +142,9 @@ namespace Player.Movement
 
         private void UpdateMovementAnimation()
         {
+            if (PlayerActionController.Instance != null && PlayerActionController.Instance.IsBusy)
+                return;
+
             bool movingNow = agent.hasPath && !agent.pathPending && agent.remainingDistance > agent.stoppingDistance;
 
             if (movingNow && !isMoving)
