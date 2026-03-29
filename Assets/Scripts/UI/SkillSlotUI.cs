@@ -14,21 +14,21 @@ public class SkillSlotUI : MonoBehaviour
 
     private void Awake()
     {
-        if (mainIcon != null && icon != null)
+        if (mainIcon && icon)
             mainIcon.sprite = icon;
     }
 
     public void Refresh(PlayerSkills playerSkills)
     {
-        if (playerSkills == null || skillDefinition == null)
+        if (!playerSkills || !skillDefinition)
             return;
 
-        if (mainIcon != null && icon != null)
+        if (mainIcon && icon)
             mainIcon.sprite = icon;
 
         int level = playerSkills.GetLevel(skillDefinition);
 
-        if (levelText != null)
+        if (levelText)
             levelText.text = level.ToString();
     }
 }

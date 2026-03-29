@@ -10,13 +10,13 @@ public class UIManager : MonoBehaviour
         RefreshSkillsUI();
     }
 
-    public void RefreshSkillsUI()
+    private void RefreshSkillsUI()
     {
-        if (playerSkills == null) return;
+        if (!playerSkills) return;
 
         foreach (SkillSlotUI slot in skillSlots)
         {
-            if (slot == null) continue;
+            if (!slot) continue;
             slot.Refresh(playerSkills);
         }
     }
