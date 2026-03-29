@@ -201,6 +201,8 @@ MonoBehaviour:
       m_Calls: []
   seat: {fileID: 0}
   standSlot: {fileID: 0}
+  useInteractionAnimation: 0
+  interactionAnimation: 0
   actionController: {fileID: 0}
   baseActionTime: 1
   OnActionComplete:
@@ -325,6 +327,8 @@ MonoBehaviour:
       m_Calls: []
   seat: {fileID: 0}
   standSlot: {fileID: 0}
+  useInteractionAnimation: 0
+  interactionAnimation: 0
   actionController: {fileID: 0}
   baseActionTime: 1
   OnActionComplete:
@@ -412,6 +416,8 @@ MonoBehaviour:
       m_Calls: []
   seat: {fileID: 0}
   standSlot: {fileID: 0}
+  useInteractionAnimation: 0
+  interactionAnimation: 0
   actionController: {fileID: 0}
   baseActionTime: 1
   OnActionComplete:
@@ -499,6 +505,8 @@ MonoBehaviour:
       m_Calls: []
   seat: {fileID: 0}
   standSlot: {fileID: 0}
+  useInteractionAnimation: 0
+  interactionAnimation: 0
   actionController: {fileID: 0}
   baseActionTime: 1
   OnActionComplete:
@@ -727,6 +735,8 @@ MonoBehaviour:
       m_Calls: []
   seat: {fileID: 0}
   standSlot: {fileID: 0}
+  useInteractionAnimation: 0
+  interactionAnimation: 0
   actionController: {fileID: 0}
   baseActionTime: 1
   OnActionComplete:
@@ -1224,6 +1234,8 @@ MonoBehaviour:
       m_Calls: []
   seat: {fileID: 0}
   standSlot: {fileID: 0}
+  useInteractionAnimation: 0
+  interactionAnimation: 0
   actionController: {fileID: 0}
   baseActionTime: 1
   OnActionComplete:
@@ -1338,6 +1350,8 @@ MonoBehaviour:
       m_Calls: []
   seat: {fileID: 0}
   standSlot: {fileID: 0}
+  useInteractionAnimation: 0
+  interactionAnimation: 0
   actionController: {fileID: 0}
   baseActionTime: 1
   OnActionComplete:
@@ -1660,6 +1674,8 @@ MonoBehaviour:
       m_Calls: []
   seat: {fileID: 0}
   standSlot: {fileID: 0}
+  useInteractionAnimation: 0
+  interactionAnimation: 0
   actionController: {fileID: 0}
   baseActionTime: 1
   OnActionComplete:
@@ -1673,6 +1689,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 370141192017633123, guid: f9017651a69acc5418457a38e2678289, type: 3}
+      propertyPath: isLaptop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 370141192017633123, guid: f9017651a69acc5418457a38e2678289, type: 3}
+      propertyPath: interactionAnimation
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 370141192017633123, guid: f9017651a69acc5418457a38e2678289, type: 3}
+      propertyPath: useInteractionAnimation
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1966114914662359424, guid: f9017651a69acc5418457a38e2678289, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.4947011
@@ -1861,6 +1889,8 @@ MonoBehaviour:
       m_Calls: []
   seat: {fileID: 0}
   standSlot: {fileID: 0}
+  useInteractionAnimation: 0
+  interactionAnimation: 0
   actionController: {fileID: 0}
   baseActionTime: 1
   OnActionComplete:

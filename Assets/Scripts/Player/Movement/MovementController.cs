@@ -63,6 +63,7 @@ namespace Player.Movement
                         agent.SetDestination(interactable.seat.transform.position);
                     else if (interactable.standSlot)
                         agent.SetDestination(interactable.standSlot.transform.position);
+
                 }
                 else
                 {
@@ -97,7 +98,12 @@ namespace Player.Movement
                     transform.rotation = targetInteractable.standSlot.rotation;
                 }
 
-                anim.PlayAnimation(EnumAnimations.Idle);
+                var interactionAnim = targetInteractable.GetInteractionAnimation();
+
+                if (interactionAnim.HasValue)
+                    anim.PlayAnimation(interactionAnim.Value);
+                else
+                    anim.PlayAnimation(EnumAnimations.Idle);
 
                 targetInteractable.Interact();
                 targetInteractable = null;
