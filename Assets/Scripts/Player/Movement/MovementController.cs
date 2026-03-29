@@ -88,6 +88,11 @@ namespace Player.Movement
 
                     anim.SitDown(true);
                 }
+                if (targetInteractable.standSlot)
+                {
+                    transform.position = new Vector3(targetInteractable.seat.position.x, transform.position.y, targetInteractable.seat.position.z);
+                    transform.rotation = targetInteractable.standSlot.rotation;
+                }
 
                 anim.PlayAnimation(EnumAnimations.Idle);
 
