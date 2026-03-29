@@ -4,7 +4,7 @@ using UnityEngine.Audio;
 public class AudioManager : MonoBehaviour
 {
 
-    [HideInInspector] public AudioManager Instance;
+    [HideInInspector] public static AudioManager Instance { get; private set; }
     
     
     [Header("Audio Mixers")]

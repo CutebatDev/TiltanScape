@@ -14,6 +14,7 @@ namespace Player.Movement
         [SerializeField] private Camera mainCamera;
         [SerializeField] private LayerMask clickableLayers;
         [SerializeField] private HumanoidAnimationManager anim;
+        [SerializeField] private AudioClip moveSfx;
 
         [Header("Settings")]
         [SerializeField] private float lookRotationSpeed = 5f;
@@ -157,5 +158,7 @@ namespace Player.Movement
                 anim.PlayAnimation(EnumAnimations.Idle);
             }
         }
+        
+        
     }
 }
