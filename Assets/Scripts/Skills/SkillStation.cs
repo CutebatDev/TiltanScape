@@ -6,28 +6,33 @@ using UnityEngine;
 public class SkillStation : MonoBehaviour
 {
     [Header("Skill Settings")]
-    [SerializeField] private PlayerSkills playerSkills;
     [SerializeField] private SkillDefinition skill;
     [SerializeField] private int xpReward = 25;
     [SerializeField] private float baseActionTime = 3f;
 
     [Header("References")]
-    [SerializeField] private PlayerActionController actionController;
     [SerializeField] private ActionInteractable interactable;
+
+    private float delay;
 
     void Awake()
     {
         interactable.SetAction(PerformAction);
     }
 
+    void Start()
+    {
+        delay = PlayerActionController.Instance.UseDelay;
+    }
+
     private IEnumerator PerformAction()
     {
         while (true)
         {
-            if (actionController.ShouldCancelAction())
+            if (PlayerActionController.Instance.ShouldCancelAction())
                 yield break;
 
-            int level = playerSkills.GetLevel(skill);
+            int level = PlayerSkills.Instance.GetLevel(skill);
             float speedMultiplier = skill.actionSpeed.Evaluate(level);
             float duration = baseActionTime * speedMultiplier;
 
@@ -37,7 +42,7 @@ public class SkillStation : MonoBehaviour
             float timer = 0f;
             while (timer < duration)
             {
-                if (actionController.ShouldCancelAction())
+                if (PlayerActionController.Instance.ShouldCancelAction())
                 {
                     Debug.Log($"{skill.skillName} action interrupted!");
                     yield break;
@@ -47,11 +52,11 @@ public class SkillStation : MonoBehaviour
                 yield return null;
             }
 
-            playerSkills.AddXP(skill, xpReward);
+            PlayerSkills.Instance.AddXP(skill, xpReward);
             Debug.Log($"{skill.skillName}: +{xpReward}EXP");
-            Debug.Log($"Current {skill.name} level: {playerSkills.GetLevel(skill)}");
+            Debug.Log($"Current {skill.name} level: {PlayerSkills.Instance.GetLevel(skill)}");
 
-            yield return new WaitForSeconds(actionController.UseDelay);
+            yield return new WaitForSeconds(delay);
         }
     }
 }

@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class PlayerActionController : MonoBehaviour
 {
+    public static PlayerActionController Instance { get; private set; }
+
     private Coroutine currentAction;
     private bool cancelAction;
 
@@ -11,9 +13,21 @@ public class PlayerActionController : MonoBehaviour
 
     public bool IsBusy { get; private set; }
 
+    void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }    
+
+        Instance = this;
+    }
+
     public void StartAction(IEnumerator action)
     {
-        if (IsBusy) return;
+        if (IsBusy)
+            InterruptAction(); // used to just return;
 
         IsBusy = true;
         cancelAction = false;

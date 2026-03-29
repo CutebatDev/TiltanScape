@@ -168,37 +168,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8747867214255574041, guid: f73ea0a71499be441878e9f1d10edd21, type: 3}
   m_PrefabInstance: {fileID: 3317553926036753768}
   m_PrefabAsset: {fileID: 0}
---- !u!82 &290643026 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 7263257163184266855, guid: f73ea0a71499be441878e9f1d10edd21, type: 3}
-  m_PrefabInstance: {fileID: 3317553926036753768}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &580531592 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1500757961881211205, guid: f73ea0a71499be441878e9f1d10edd21, type: 3}
-  m_PrefabInstance: {fileID: 3317553926036753768}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &580531595
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 580531592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da83425805c2b84409cceb9e9c39f3a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerSound
-  footstepSource: {fileID: 290643026}
-  footstepSound:
-  - {fileID: 8300000, guid: def86c93031f1af458cd211c129ff9d6, type: 3}
-  - {fileID: 8300000, guid: fd233d162dfff3b4b965eca0767dfd9c, type: 3}
-  - {fileID: 8300000, guid: f28ed1f09bb7481428fcaaa0691c3d13, type: 3}
-  minVolume: 0.1
-  maxVolume: 0.2
-  minPitch: 0.98
-  maxPitch: 1.02
 --- !u!1001 &710848753
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -256,6 +225,32 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bfd26eb18ac325a44af5041af0b8366b, type: 3}
+--- !u!1 &780964547 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1500757961881211205, guid: f73ea0a71499be441878e9f1d10edd21, type: 3}
+  m_PrefabInstance: {fileID: 3317553926036753768}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &780964550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 780964547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da83425805c2b84409cceb9e9c39f3a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerSound
+  footstepSource: {fileID: 1361912040}
+  footstepSound:
+  - {fileID: 8300000, guid: def86c93031f1af458cd211c129ff9d6, type: 3}
+  - {fileID: 8300000, guid: fd233d162dfff3b4b965eca0767dfd9c, type: 3}
+  - {fileID: 8300000, guid: f28ed1f09bb7481428fcaaa0691c3d13, type: 3}
+  minVolume: 0.1
+  maxVolume: 0.2
+  minPitch: 0.9
+  maxPitch: 1.1
 --- !u!1 &939143318
 GameObject:
   m_ObjectHideFlags: 0
@@ -595,6 +590,11 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!82 &1361912040 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7263257163184266855, guid: f73ea0a71499be441878e9f1d10edd21, type: 3}
+  m_PrefabInstance: {fileID: 3317553926036753768}
+  m_PrefabAsset: {fileID: 0}
 --- !u!20 &1742279215 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 2237581728382267107, guid: 94673695d80ce4740a0c918ed0ea8c70, type: 3}
@@ -673,6 +673,10 @@ PrefabInstance:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 1742279215}
+    - target: {fileID: 3722344063681255188, guid: f73ea0a71499be441878e9f1d10edd21, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5294050709120569733, guid: f73ea0a71499be441878e9f1d10edd21, type: 3}
       propertyPath: m_Controller
       value: 
@@ -729,7 +733,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1500757961881211205, guid: f73ea0a71499be441878e9f1d10edd21, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 580531595}
+      addedObject: {fileID: 780964550}
   m_SourcePrefab: {fileID: 100100000, guid: f73ea0a71499be441878e9f1d10edd21, type: 3}
 --- !u!1001 &5160624064292849046
 PrefabInstance:
