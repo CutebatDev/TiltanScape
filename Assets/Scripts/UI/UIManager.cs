@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Events;
 using Player.Movement;
+using Save_System;
 using SceneChange;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -24,6 +25,11 @@ public class UIManager : MonoBehaviour
             ResumeGame();
         else
             PauseGame();
+    }
+
+    public void ToggleSaveMenu()
+    {
+        OpenUI(UIType.SaveMenu);
     }
 
     private void OpenUI(UIType uiToOpen)
@@ -88,6 +94,23 @@ public class UIManager : MonoBehaviour
     {
         CloseAllUI();
         OpenUI(_previusPanel.type);
+    }
+
+    public void TestNextScene()
+    {
+        BackButton();
+        ResumeGame();
+        EventsManager.Instance.OnNextScene?.Invoke();
+    }
+
+    public void SaveGame()
+    {
+        EventsManager.Instance.OnGameSave?.Invoke();
+    }
+
+    public void LoadGame()
+    {
+        EventsManager.Instance.OnGameLoad?.Invoke();
     }
 }
 

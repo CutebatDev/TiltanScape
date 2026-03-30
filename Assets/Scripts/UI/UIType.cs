@@ -7,5 +7,6 @@ public enum UIType
     InventoryMenu,
     SettingsMenu,
     QuestMenu,
-    NPCDialogue
+    NPCDialogue,
+    SaveMenu
 }
