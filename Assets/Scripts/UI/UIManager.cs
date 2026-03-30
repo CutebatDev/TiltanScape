@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Events;
 using Player.Movement;
+using Save_System;
 using SceneChange;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -95,6 +96,16 @@ public class UIManager : MonoBehaviour
         BackButton();
         ResumeGame();
         EventsManager.Instance.OnNextScene?.Invoke();
+    }
+
+    public void SaveGame()
+    {
+        EventsManager.Instance.OnGameSave?.Invoke();
+    }
+
+    public void LoadGame()
+    {
+        EventsManager.Instance.OnGameLoad?.Invoke();
     }
 }
 

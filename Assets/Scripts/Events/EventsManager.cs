@@ -23,5 +23,7 @@ namespace Events
         public UnityAction OnTogglePauseMenu;
         public UnityAction OnNextScene;
         public UnityAction OnUseQuestStation;
+        public UnityAction OnGameSave;
+        public UnityAction OnGameLoad;
     }
 }
