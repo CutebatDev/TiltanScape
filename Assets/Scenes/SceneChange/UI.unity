@@ -723,9 +723,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6418971329953449378}
     m_Modifications:
+    - target: {fileID: 2013343246960861031, guid: 528041443ca5fce42bd91c4a357a12c2, type: 3}
+      propertyPath: expReward
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 3569706603659068561, guid: 528041443ca5fce42bd91c4a357a12c2, type: 3}
       propertyPath: m_Name
       value: MinigameBase
+      objectReference: {fileID: 0}
+    - target: {fileID: 4641469133338971418, guid: 528041443ca5fce42bd91c4a357a12c2, type: 3}
+      propertyPath: expReward
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5139458204463602590, guid: 528041443ca5fce42bd91c4a357a12c2, type: 3}
+      propertyPath: expReward
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7406781830327145037, guid: 528041443ca5fce42bd91c4a357a12c2, type: 3}
       propertyPath: m_Pivot.x
