@@ -27,7 +27,6 @@ public class SkillXP
 
         while (level < maxLevel && xp >= GetXPForLevel(level + 1))
         {
-            EventsManager.Instance.OnLevelUp.Invoke();
             level++;
         }
 
