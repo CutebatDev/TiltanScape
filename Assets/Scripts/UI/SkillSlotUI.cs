@@ -23,6 +23,24 @@ public class SkillSlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
             mainIcon.sprite = icon;
     }
 
+    void OnEnable()
+    {
+        if (PlayerSkills.Instance != null && skillDefinition != null)
+            PlayerSkills.Instance.OnSkillLevelChanged += OnSkillLevelChanged;
+    }
+
+    void OnDisable()
+    {
+        if (PlayerSkills.Instance != null && skillDefinition != null)
+            PlayerSkills.Instance.OnSkillLevelChanged -= OnSkillLevelChanged;
+    }
+
+    private void OnSkillLevelChanged(SkillDefinition skill)
+    {
+        if (skill == skillDefinition)
+            Refresh();
+    }
+
     public void Refresh()
     {
         if (!skillDefinition)

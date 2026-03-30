@@ -8,6 +8,9 @@ public class PlayerSkills : MonoBehaviour
 
     private Dictionary<SkillDefinition, int> xp = new();
 
+    public delegate void SkillChanged(SkillDefinition skill);
+    public event SkillChanged OnSkillLevelChanged;
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -29,14 +32,9 @@ public class PlayerSkills : MonoBehaviour
         int newLevel = GetLevel(skill);
 
         if (newLevel > oldLevel)
-            OnLevelUp(skill, oldLevel, newLevel);
+            OnSkillLevelChanged?.Invoke(skill);
     }
 
     public int GetXP(SkillDefinition skill) => xp.TryGetValue(skill, out int value) ? value : 0;
     public int GetLevel(SkillDefinition skill) => SkillXP.GetLevelForXP(GetXP(skill));
-
-    private void OnLevelUp(SkillDefinition skill, int oldLevel, int newLevel)
-    {
-        Debug.Log($"{skill.skillName} leveled up from {oldLevel} to {newLevel}!");
-    }
 }
