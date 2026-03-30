@@ -29,55 +29,49 @@ public class SkillStation : MonoBehaviour
             MinigameManager.Instance != null
         );
 
-        while (true)
+        if (PlayerActionController.Instance.ShouldCancelAction())
+            yield break;
+
+        var minigame = MinigameManager.Instance.Get(minigameType);
+
+        if (minigame == null)
+        {
+            Debug.LogError($"No minigame found for type {minigameType}");
+            yield break;
+        }
+
+        bool finished = false;
+        bool success = false;
+
+        void OnCompleted(MinigameBaseUI game)
+        {
+            finished = true;
+            success = true;
+        }
+
+        minigame.OnMinigameCompleted += OnCompleted;
+        minigame.OpenMinigame();
+
+        while (!finished)
         {
             if (PlayerActionController.Instance.ShouldCancelAction())
-                yield break;
-
-            var minigame = MinigameManager.Instance.Get(minigameType);
-
-            if (minigame == null)
             {
-                Debug.LogError($"No minigame found for type {minigameType}");
+                minigame.CloseMinigame();
+                minigame.OnMinigameCompleted -= OnCompleted;
                 yield break;
             }
-                
-            bool finished = false;
-            bool success = false;
 
-            void OnCompleted(MinigameBaseUI game)
-            {
-                finished = true;
-                success = true;
-            }
+            yield return null;
+        }
 
-            minigame.OnMinigameCompleted += OnCompleted;
+        minigame.OnMinigameCompleted -= OnCompleted;
 
-            minigame.OpenMinigame();
-            
-            while (!finished)
-            {
-                if (PlayerActionController.Instance.ShouldCancelAction())
-                {
-                    minigame.CloseMinigame();
-                    minigame.OnMinigameCompleted -= OnCompleted;
-                    yield break;
-                }
+        if (success)
+        {
+            int xp = minigame.GetExp;
+            PlayerSkills.Instance.AddXP(skill, xp);
 
-                yield return null;
-            }
-
-            minigame.OnMinigameCompleted -= OnCompleted;
-
-            if (success)
-            {
-                int xp = minigame.GetExp;
-                PlayerSkills.Instance.AddXP(skill, xp);
-
-                Debug.Log($"{skill.skillName}: +{xp} EXP");
-            }
-
-            yield return new WaitForSeconds(PlayerActionController.Instance.UseDelay);
+            Debug.Log($"{skill.skillName}: +{xp} EXP");
         }
     }
 }

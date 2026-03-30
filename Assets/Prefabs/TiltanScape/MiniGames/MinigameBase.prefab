@@ -2411,7 +2411,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2322611453086046191
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3229,7 +3229,7 @@ RectTransform:
   m_GameObject: {fileID: 3569706603659068561}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2322611453086046191}
@@ -3679,7 +3679,7 @@ MonoBehaviour:
   feedbackText: {fileID: 1167325575976282167}
   closeButton: {fileID: 6263132661101626480}
   gameArea: {fileID: 1817298202545569073}
-  expReward: 0
+  expReward: 25
 --- !u!114 &3911318483319498332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8051,7 +8051,7 @@ MonoBehaviour:
   feedbackText: {fileID: 8048542829276649268}
   closeButton: {fileID: 8413703576331867740}
   gameArea: {fileID: 6437831212010635762}
-  expReward: 0
+  expReward: 25
   countdownText: {fileID: 7110492833353987970}
   timerText: {fileID: 8291475955655869372}
   counterText: {fileID: 9205332607764540156}
@@ -8555,7 +8555,7 @@ MonoBehaviour:
   feedbackText: {fileID: 1459185526627178498}
   closeButton: {fileID: 7421134282737519643}
   gameArea: {fileID: 7626737871196987632}
-  expReward: 0
+  expReward: 25
   countdownText: {fileID: 8706028342304932878}
   simulateButton: {fileID: 998886230036550381}
   playerImage: {fileID: 327346179896641508}
