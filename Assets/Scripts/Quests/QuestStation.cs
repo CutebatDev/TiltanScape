@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Events;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -88,6 +89,7 @@ public class QuestStation : MonoBehaviour
                 int level = PlayerSkills.Instance.GetLevel(skill);
                 sum += skill.actionSpeed.Evaluate(level);
             }
+
             averageMultiplier = sum / questToPerform.relevantSkills.Count;
         }
 

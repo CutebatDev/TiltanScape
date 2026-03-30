@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using Events;
 using UnityEngine;
 
 public class QuestManager : MonoBehaviour
@@ -12,6 +13,7 @@ public class QuestManager : MonoBehaviour
 
     // Events
     public delegate void QuestEvent(Quest quets);
+
     public event QuestEvent OnQuestStarted;
     public event QuestEvent OnQuestProgressUpdated;
     public event QuestEvent OnQuestProgressCompleted;
@@ -45,6 +47,7 @@ public class QuestManager : MonoBehaviour
 
     public void AddProgress(string questId, float amount)
     {
+        EventsManager.Instance.OnUseQuestStation.Invoke();
         if (!activeQuests.TryGetValue(questId, out var quest))
             return;
 
