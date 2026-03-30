@@ -131,6 +131,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game Art Station
       objectReference: {fileID: 0}
+    - target: {fileID: 2459855065727671332, guid: 24cd847c1b33c69449c1ab050e44f1ac, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7210248078514885390, guid: 24cd847c1b33c69449c1ab050e44f1ac, type: 3}
       propertyPath: m_LocalPosition.x
       value: -38.4
@@ -200,7 +204,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   seat: {fileID: 0}
-  actionController: {fileID: 0}
+  standSlot: {fileID: 0}
+  useInteractionAnimation: 0
+  interactionAnimation: 0
   baseActionTime: 1
   OnActionComplete:
     m_PersistentCalls:
@@ -294,6 +300,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Concept Art Station
       objectReference: {fileID: 0}
+    - target: {fileID: 8303199011853310246, guid: 83cb59e122f6c6844ac0940e79242c65, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -323,7 +333,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   seat: {fileID: 0}
-  actionController: {fileID: 0}
+  standSlot: {fileID: 0}
+  useInteractionAnimation: 0
+  interactionAnimation: 0
   baseActionTime: 1
   OnActionComplete:
     m_PersistentCalls:
@@ -380,6 +392,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Narrative Station
       objectReference: {fileID: 0}
+    - target: {fileID: 6985771476660883428, guid: 35da72a72eda06b4899359fce8a9a50d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -409,7 +425,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   seat: {fileID: 0}
-  actionController: {fileID: 0}
+  standSlot: {fileID: 0}
+  useInteractionAnimation: 0
+  interactionAnimation: 0
   baseActionTime: 1
   OnActionComplete:
     m_PersistentCalls:
@@ -466,6 +484,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Code Station
       objectReference: {fileID: 0}
+    - target: {fileID: 6730014269552340650, guid: f9017651a69acc5418457a38e2678289, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -495,7 +517,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   seat: {fileID: 0}
-  actionController: {fileID: 0}
+  standSlot: {fileID: 0}
+  useInteractionAnimation: 0
+  interactionAnimation: 0
   baseActionTime: 1
   OnActionComplete:
     m_PersistentCalls:
@@ -653,6 +677,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level Design Station
       objectReference: {fileID: 0}
+    - target: {fileID: 3322398378345807818, guid: e91fb71106d41e94aa9b47c7549af830, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7509573106140492000, guid: e91fb71106d41e94aa9b47c7549af830, type: 3}
       propertyPath: m_LocalPosition.x
       value: -50.4
@@ -722,7 +750,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   seat: {fileID: 0}
-  actionController: {fileID: 0}
+  standSlot: {fileID: 0}
+  useInteractionAnimation: 0
+  interactionAnimation: 0
   baseActionTime: 1
   OnActionComplete:
     m_PersistentCalls:
@@ -1189,6 +1219,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game Systems Station
       objectReference: {fileID: 0}
+    - target: {fileID: 5955290891570523999, guid: d08b03cdb162d26498fd5e48182791a1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1218,7 +1252,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   seat: {fileID: 0}
-  actionController: {fileID: 0}
+  standSlot: {fileID: 0}
+  useInteractionAnimation: 0
+  interactionAnimation: 0
   baseActionTime: 1
   OnActionComplete:
     m_PersistentCalls:
@@ -1261,6 +1297,10 @@ PrefabInstance:
     - target: {fileID: 1086978653475319790, guid: 89586d710db922545befcfc44c210eb0, type: 3}
       propertyPath: m_Name
       value: Game Engine Station
+      objectReference: {fileID: 0}
+    - target: {fileID: 1086978653475319790, guid: 89586d710db922545befcfc44c210eb0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5276356296866668740, guid: 89586d710db922545befcfc44c210eb0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1331,7 +1371,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   seat: {fileID: 0}
-  actionController: {fileID: 0}
+  standSlot: {fileID: 0}
+  useInteractionAnimation: 0
+  interactionAnimation: 0
   baseActionTime: 1
   OnActionComplete:
     m_PersistentCalls:
@@ -1505,6 +1547,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1969219085
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6337264295079294877, guid: 986f17f0c2e00844baf4e312bcf0c619, type: 3}
+      propertyPath: m_Name
+      value: DevQuest Station
+      objectReference: {fileID: 0}
+    - target: {fileID: 7867204922175769477, guid: 986f17f0c2e00844baf4e312bcf0c619, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.773407
+      objectReference: {fileID: 0}
+    - target: {fileID: 7867204922175769477, guid: 986f17f0c2e00844baf4e312bcf0c619, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.077
+      objectReference: {fileID: 0}
+    - target: {fileID: 7867204922175769477, guid: 986f17f0c2e00844baf4e312bcf0c619, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 7.2471476
+      objectReference: {fileID: 0}
+    - target: {fileID: 7867204922175769477, guid: 986f17f0c2e00844baf4e312bcf0c619, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7867204922175769477, guid: 986f17f0c2e00844baf4e312bcf0c619, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7867204922175769477, guid: 986f17f0c2e00844baf4e312bcf0c619, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7867204922175769477, guid: 986f17f0c2e00844baf4e312bcf0c619, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7867204922175769477, guid: 986f17f0c2e00844baf4e312bcf0c619, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7867204922175769477, guid: 986f17f0c2e00844baf4e312bcf0c619, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7867204922175769477, guid: 986f17f0c2e00844baf4e312bcf0c619, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 986f17f0c2e00844baf4e312bcf0c619, type: 3}
 --- !u!1 &1977014556
 GameObject:
   m_ObjectHideFlags: 0
@@ -1623,6 +1722,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI Station
       objectReference: {fileID: 0}
+    - target: {fileID: 6630071578020622295, guid: e94198ddea8f3b447bc9c12d5a648f1b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1652,7 +1755,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   seat: {fileID: 0}
-  actionController: {fileID: 0}
+  standSlot: {fileID: 0}
+  useInteractionAnimation: 0
+  interactionAnimation: 0
   baseActionTime: 1
   OnActionComplete:
     m_PersistentCalls:
@@ -1671,7 +1776,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1966114914662359424, guid: f9017651a69acc5418457a38e2678289, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.112278044
+      value: -0.07
       objectReference: {fileID: 0}
     - target: {fileID: 1966114914662359424, guid: f9017651a69acc5418457a38e2678289, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1704,6 +1809,10 @@ PrefabInstance:
     - target: {fileID: 1966114914662359424, guid: f9017651a69acc5418457a38e2678289, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6578947416329413543, guid: f9017651a69acc5418457a38e2678289, type: 3}
+      propertyPath: minigameType
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6730014269552340650, guid: f9017651a69acc5418457a38e2678289, type: 3}
       propertyPath: m_Name
@@ -1823,6 +1932,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Animation Station
       objectReference: {fileID: 0}
+    - target: {fileID: 6520758786196621393, guid: ff577d4e379fa3b44b45ed804b264eb0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1852,11 +1965,70 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   seat: {fileID: 0}
-  actionController: {fileID: 0}
+  standSlot: {fileID: 0}
+  useInteractionAnimation: 0
+  interactionAnimation: 0
   baseActionTime: 1
   OnActionComplete:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1001 &2146809908
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 605488086634024266, guid: 60e894c1232708441a244f5bc6465f5c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.9310474
+      objectReference: {fileID: 0}
+    - target: {fileID: 605488086634024266, guid: 60e894c1232708441a244f5bc6465f5c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.398
+      objectReference: {fileID: 0}
+    - target: {fileID: 605488086634024266, guid: 60e894c1232708441a244f5bc6465f5c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 8.034184
+      objectReference: {fileID: 0}
+    - target: {fileID: 605488086634024266, guid: 60e894c1232708441a244f5bc6465f5c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 605488086634024266, guid: 60e894c1232708441a244f5bc6465f5c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 605488086634024266, guid: 60e894c1232708441a244f5bc6465f5c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 605488086634024266, guid: 60e894c1232708441a244f5bc6465f5c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 605488086634024266, guid: 60e894c1232708441a244f5bc6465f5c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 605488086634024266, guid: 60e894c1232708441a244f5bc6465f5c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 605488086634024266, guid: 60e894c1232708441a244f5bc6465f5c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2597113433660550897, guid: 60e894c1232708441a244f5bc6465f5c, type: 3}
+      propertyPath: m_Name
+      value: Dev Teacher
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 60e894c1232708441a244f5bc6465f5c, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1877,3 +2049,5 @@ SceneRoots:
   - {fileID: 1081496808}
   - {fileID: 493574513}
   - {fileID: 2001240848}
+  - {fileID: 2146809908}
+  - {fileID: 1969219085}

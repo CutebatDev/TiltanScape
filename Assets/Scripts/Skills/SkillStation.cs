@@ -1,57 +1,77 @@
 using NUnit.Framework.Internal;
 using System.Collections;
+using System.Threading;
 using UnityEngine;
 
 [RequireComponent(typeof(ActionInteractable))]
 public class SkillStation : MonoBehaviour
 {
     [Header("Skill Settings")]
-    [SerializeField] private PlayerSkills playerSkills;
+    [SerializeField] private MinigameType minigameType;
     [SerializeField] private SkillDefinition skill;
-    [SerializeField] private int xpReward = 25;
-    [SerializeField] private float baseActionTime = 3f;
 
     [Header("References")]
-    [SerializeField] private PlayerActionController actionController;
     [SerializeField] private ActionInteractable interactable;
 
     void Awake()
     {
+        if (!interactable)
+            interactable = GetComponent<ActionInteractable>();
+
         interactable.SetAction(PerformAction);
     }
 
     private IEnumerator PerformAction()
     {
-        while (true)
+        yield return new WaitUntil(() =>
+            PlayerActionController.Instance != null &&
+            PlayerSkills.Instance != null &&
+            MinigameManager.Instance != null
+        );
+
+        if (PlayerActionController.Instance.ShouldCancelAction())
+            yield break;
+
+        var minigame = MinigameManager.Instance.Get(minigameType);
+
+        if (minigame == null)
         {
-            if (actionController.ShouldCancelAction())
-                yield break;
+            Debug.LogError($"No minigame found for type {minigameType}");
+            yield break;
+        }
 
-            int level = playerSkills.GetLevel(skill);
-            float speedMultiplier = skill.actionSpeed.Evaluate(level);
-            float duration = baseActionTime * speedMultiplier;
+        bool finished = false;
+        bool success = false;
 
-            Debug.Log($"Speed multiplier: {speedMultiplier}");
-            Debug.Log($"Duration: {duration}");
+        void OnCompleted(MinigameBaseUI game)
+        {
+            finished = true;
+            success = true;
+        }
 
-            float timer = 0f;
-            while (timer < duration)
+        minigame.OnMinigameCompleted += OnCompleted;
+        minigame.OpenMinigame();
+
+        while (!finished)
+        {
+            if (PlayerActionController.Instance.ShouldCancelAction())
             {
-                if (actionController.ShouldCancelAction())
-                {
-                    Debug.Log($"{skill.skillName} action interrupted!");
-                    yield break;
-                }
-
-                timer += Time.deltaTime;
-                yield return null;
+                minigame.CloseMinigame();
+                minigame.OnMinigameCompleted -= OnCompleted;
+                yield break;
             }
 
-            playerSkills.AddXP(skill, xpReward);
-            Debug.Log($"{skill.skillName}: +{xpReward}EXP");
-            Debug.Log($"Current {skill.name} level: {playerSkills.GetLevel(skill)}");
+            yield return null;
+        }
 
-            yield return new WaitForSeconds(actionController.UseDelay);
+        minigame.OnMinigameCompleted -= OnCompleted;
+
+        if (success)
+        {
+            int xp = minigame.GetExp;
+            PlayerSkills.Instance.AddXP(skill, xp);
+
+            Debug.Log($"{skill.skillName}: +{xp} EXP");
         }
     }
 }

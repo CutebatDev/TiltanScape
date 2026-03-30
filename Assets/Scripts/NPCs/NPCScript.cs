@@ -23,10 +23,12 @@ public class NPCScript : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private ActionInteractable interactable;
-    [SerializeField] private PlayerActionController actionController;
 
     void Awake()
     {
+        if (!interactable)
+            interactable = GetComponent<ActionInteractable>();
+
         interactable.SetAction(PerformInteraction);
     }
 
@@ -70,6 +72,8 @@ public class NPCScript : MonoBehaviour
 
         foreach (var q in quests)
         {
+            if (QuestManager.Instance == null) return;
+
             var quest = QuestManager.Instance.GetActiveQuest(q.Id);
             if (quest != null && !quest.IsTurnedIn)
             {
@@ -108,8 +112,10 @@ public class NPCScript : MonoBehaviour
 
     private IEnumerator PerformInteraction()
     {
+        yield return new WaitUntil(() => NPCUIManager.Instance != null);
+
         NPCUIManager.Instance.OpenNPCDialogue(this);
-        yield return null;
+        //yield return null;
     }
 
     // Helpers

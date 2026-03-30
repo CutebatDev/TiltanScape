@@ -1,35 +1,51 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Events;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
 [RequireComponent(typeof(ActionInteractable))]
 public class QuestStation : MonoBehaviour
 {
-    [Header("References")]
-    [SerializeField] private List<QuestData> availableQuests;
-    [SerializeField] private PlayerSkills playerSkills;
-
+    [SerializeField] private PlayerInput playerInput;
     [SerializeField] private ActionInteractable interactable;
-    [SerializeField] private PlayerActionController actionController;
+
+    private List<QuestData> availableQuests;
 
     private QuestData selectedQuest;
 
     void Awake()
     {
+        if (!interactable)
+            interactable = GetComponent<ActionInteractable>();
+
         interactable.SetAction(OpenQuestSelectionCoroutine);
     }
 
     private IEnumerator OpenQuestSelectionCoroutine()
     {
+        yield return new WaitUntil(() => QuestUIManager.Instance != null);
+
+        List<Quest> activeQuests = QuestManager.Instance.GetActiveQuests();
+
+        if (activeQuests.Count == 0)
+        {
+            Debug.Log("QuestStation: No active quests to show");
+            yield break;
+        }
+
+        availableQuests = activeQuests.Select(q => q.Data).ToList();
+
         QuestUIManager.Instance.ShowQuestSelection(this, availableQuests);
-        yield return null;
     }
 
     public void OnQuestSelected(QuestData quest)
     {
         SelectQuest(quest);
+        //QuestUIManager.Instance.CloseUI();
         StartCoroutine(PerformQuestProgress());
     }
 
@@ -54,34 +70,42 @@ public class QuestStation : MonoBehaviour
             Debug.LogWarning("No quest selected");
             yield break;
         }
-        Quest quest = QuestManager.Instance.StartQuest(selectedQuest);
+
+        QuestData questToPerform = selectedQuest;
+
+        Quest quest = QuestManager.Instance.GetActiveQuest(questToPerform.Id);
+        if (quest == null)
+        {
+            Debug.LogWarning($"Quest {questToPerform.Title} is not active!");
+            yield break;
+        }
 
         float averageMultiplier = 1f;
-        if (selectedQuest.relevantSkills != null && selectedQuest.relevantSkills.Count > 0)
+        if (questToPerform.relevantSkills != null && questToPerform.relevantSkills.Count > 0)
         {
             float sum = 0f;
-            foreach (var skill in selectedQuest.relevantSkills)
+            foreach (var skill in questToPerform.relevantSkills)
             {
-                int level = playerSkills.GetLevel(skill);
+                int level = PlayerSkills.Instance.GetLevel(skill);
                 sum += skill.actionSpeed.Evaluate(level);
             }
-            averageMultiplier = sum / selectedQuest.relevantSkills.Count;
+
+            averageMultiplier = sum / questToPerform.relevantSkills.Count;
         }
 
         float timer = 0f;
 
 
-        while (timer < selectedQuest.baseActionTime)
+        while (timer < questToPerform.baseActionTime)
         {
-            if (actionController.ShouldCancelAction())
+            if (PlayerActionController.Instance.ShouldCancelAction())
             {
-                selectedQuest = null;
                 yield break;
             }
 
             // Avg multiplier to actual quest progress
-            float deltaProgress = (Time.deltaTime * averageMultiplier) / selectedQuest.baseActionTime;
-            QuestManager.Instance.AddProgress(selectedQuest.Id, deltaProgress * selectedQuest.baseActionTime);
+            float deltaProgress = (Time.deltaTime * averageMultiplier) / questToPerform.baseActionTime;
+            QuestManager.Instance.AddProgress(questToPerform.Id, deltaProgress * questToPerform.baseActionTime);
 
             // For timer UI
             timer += Time.deltaTime * averageMultiplier;
@@ -89,7 +113,7 @@ public class QuestStation : MonoBehaviour
             yield return null;
         }
 
-        Debug.Log($"Quest {selectedQuest.Title} progress completed!");
+        Debug.Log($"Quest {questToPerform.Title} progress completed!");
         selectedQuest = null;
     }
 }

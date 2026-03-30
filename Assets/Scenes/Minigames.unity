@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8992f0154bca3040bdbe90e54bbd1f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
---- !u!114 &124213723 stripped
+PlayEnemyDeathSfx3723 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3538006000926111972, guid: 528041443ca5fce42bd91c4a357a12c2, type: 3}
   m_PrefabInstance: {fileID: 1674153729609985100}

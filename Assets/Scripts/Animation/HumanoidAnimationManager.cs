@@ -14,6 +14,7 @@ public class HumanoidAnimationManager : MonoBehaviour
 {
     private static readonly string IsSittingParam = "IsSitting";
     private bool _isSittingBool = false;
+    private EnumAnimations currentAnimation;
     [SerializeField] private Animator animator;
 
 #if UNITY_EDITOR
@@ -41,15 +42,26 @@ public class HumanoidAnimationManager : MonoBehaviour
     void Sit() => ToggleSitting();
     
 #endif
-    void PlayAnimation(EnumAnimations anim)
+    public void PlayAnimation(EnumAnimations anim)
     {
+        if (currentAnimation == anim) return;
+        currentAnimation = anim;
         animator.SetTrigger(anim.ToString());
     }
 
-    void ToggleSitting()
+    public void ToggleSitting()
     {
         _isSittingBool = !_isSittingBool;
         if(_isSittingBool)
+            animator.SetLayerWeight(1, 1);
+        else
+            animator.SetLayerWeight(1, 0);
+    }
+
+    public void SitDown(bool state)
+    {
+        _isSittingBool = state;
+        if (_isSittingBool)
             animator.SetLayerWeight(1, 1);
         else
             animator.SetLayerWeight(1, 0);

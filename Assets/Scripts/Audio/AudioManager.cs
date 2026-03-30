@@ -1,44 +1,65 @@
+using System;
+using System.Collections.Generic;
+using Audio;
+using Events;
 using UnityEngine;
 using UnityEngine.Audio;
+using Random = UnityEngine.Random;
 
 public class AudioManager : MonoBehaviour
 {
+    [HideInInspector] public static AudioManager Instance { get; private set; }
 
-    [HideInInspector] public AudioManager Instance;
-    
-    
-    [Header("Audio Mixers")]
-    [SerializeField] private AudioMixer audioMixer;
+
+    [Header("Audio Mixers")] [SerializeField]
+    private AudioMixer audioMixer;
+
     [SerializeField] private AudioMixerGroup masterMixerGroup;
     [SerializeField] private AudioMixerGroup musicMixerGroup;
     [SerializeField] private AudioMixerGroup sfxMixerGroup;
     [SerializeField] private string masterMixerVolumeName = "MasterVolume";
     [SerializeField] private string musicMixerVolumeName = "MusicVolume";
     [SerializeField] private string sfxMixerVolumeName = "SFXVolume";
-    
-    [Header("Music")] 
-    [SerializeField] private AudioClip floor3Music;
+
+    [Header("Music")] [SerializeField] private AudioClip floor3Music;
     [SerializeField] private AudioClip floor2AndAHalfMusic;
+
     [SerializeField] private AudioClip floor2Music;
+
     //[SerializeField] private AudioClip mainMenuMusic;
     private AudioSource currentMusic;
-    
-    [Header("Prefabs")]
-    [SerializeField] private GameObject audioSourcePrefab;
 
-    
+    [Header("SFX")] [SerializeField] private AudioClip questStarted;
+    [SerializeField] private AudioClip questComplete;
+    [SerializeField] private AudioClip questProgress;
+    [SerializeField] private AudioClip levelUp;
+    [SerializeField] private float minVolume;
+    [SerializeField] private float maxVolume;
+    [SerializeField] private float minPitch = 0.98f;
+    [SerializeField] private float maxPitch = 1.02f;
+
+    [Header("Prefabs")] [SerializeField] private GameObject audioSourcePrefab;
+
+
     void Awake()
     {
-        if (!Instance) {
+        if (!Instance)
+        {
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
     }
-    
-    
+
+    private void Start()
+    {
+        QuestManager.Instance.OnQuestStarted += quets => PlayAudio2D(questStarted, AudioType.SFX, false);
+        QuestManager.Instance.OnQuestProgressCompleted += quets => PlayAudio2D(questComplete, AudioType.SFX, false);
+        EventsManager.Instance.OnUseQuestStation += () => PlayAudio2D(questProgress, AudioType.SFX, false);
+        PlayerSkills.Instance.OnSkillLevelChanged += skill => PlayAudio2D(levelUp, AudioType.SFX, false);
+    }
 
     #region Mixer Functions
-    
+
     /// <summary>
     /// The function to set the volume of a mixer group, via exposed parameters
     /// </summary>
@@ -57,6 +78,7 @@ public class AudioManager : MonoBehaviour
                 volumeName = sfxMixerVolumeName;
                 break;
         }
+
         audioMixer.SetFloat(volumeName, LinearVolumeToDB(volume));
     }
 
@@ -77,9 +99,8 @@ public class AudioManager : MonoBehaviour
     {
         SetAudioMixerVolume(AudioType.SFX, volume);
     }
-    
+
     #endregion
-    
 
 
     #region Helper Functions
@@ -112,35 +133,38 @@ public class AudioManager : MonoBehaviour
                 mixerGroup = sfxMixerGroup;
                 break;
         }
-        
+
         return mixerGroup;
     }
-    
-    
+
+
     /// <summary>
     /// Private helper function to create an audio source
     /// </summary>
-    private AudioSource InstantiateAudioSource(AudioClip audioClip,AudioType type, float linearVolume, bool isLoop)
+    private AudioSource InstantiateAudioSource(AudioClip audioClip, AudioType type, bool isLoop,
+        float linearVolume = 1f, float pitch = 1f)
     {
         AudioSource audioSource = Instantiate(audioSourcePrefab).GetComponent<AudioSource>();
         audioSource.outputAudioMixerGroup = GetMixerGroupFromAudioType(type);
         audioSource.clip = audioClip;
-        audioSource.volume = linearVolume;
         audioSource.loop = isLoop;
+        audioSource.pitch = pitch;
+        audioSource.volume = linearVolume;
         return audioSource;
     }
+
     #endregion
-    
-    
-    
+
+
     #region General Functions
 
     /// <summary>
     /// Plays an audio in 3D space at a position
     /// </summary>
-    public AudioSource PlayAudio3D(AudioClip audioClip,AudioType type, Vector3 position, float linearVolume,bool isLooping)
+    public AudioSource PlayAudio3D(AudioClip audioClip, AudioType type, Vector3 position, bool isLooping,
+        float linearVolume = 1f, float pitch = 1f)
     {
-        AudioSource audioSource = InstantiateAudioSource(audioClip,type,linearVolume,isLooping);
+        AudioSource audioSource = InstantiateAudioSource(audioClip, type, isLooping, linearVolume, pitch);
         audioSource.spatialBlend = 1;
         audioSource.gameObject.transform.position = position;
         audioSource.Play();
@@ -151,19 +175,24 @@ public class AudioManager : MonoBehaviour
     /// <summary>
     /// Plays an audio in mono space
     /// </summary>
-    public AudioSource PlayAudio2D(AudioClip audioClip,AudioType type, float linearVolume,bool isLooping)
+    public AudioSource PlayAudio2D(AudioClip audioClip, AudioType type, bool isLooping, float linearVolume = 1f,
+        float pitch = 1f)
     {
-        AudioSource audioSource = InstantiateAudioSource(audioClip,type,linearVolume,isLooping);
+        AudioSource audioSource = InstantiateAudioSource(audioClip, type, isLooping, linearVolume, pitch);
         audioSource.spatialBlend = 0;
         audioSource.Play();
+
+        if (type == AudioType.SFX && !isLooping)
+            Destroy(audioSource.gameObject, audioClip.length);
+
         return audioSource;
     }
-    
-    
+
     #endregion
-    
-    
+
+
     #region Music Functions
+
     /// <summary>
     /// Play Music For Whichever Floor
     /// </summary>
@@ -182,7 +211,8 @@ public class AudioManager : MonoBehaviour
                 music = floor2Music;
                 break;
         }
-        currentMusic = PlayAudio2D(music,AudioType.Music,0f,true);
+
+        currentMusic = PlayAudio2D(music, AudioType.Music, true, 1f);
     }
 
 
@@ -196,7 +226,7 @@ public class AudioManager : MonoBehaviour
 
         if (currentMusic.isPlaying)
             return;
-        
+
         currentMusic.UnPause();
     }
 
@@ -208,10 +238,10 @@ public class AudioManager : MonoBehaviour
     {
         if (!currentMusic)
             return;
-        
+
         currentMusic.Pause();
     }
-    
+
 
     /// <summary>
     /// Indefinitely Stop the current Music
@@ -220,9 +250,32 @@ public class AudioManager : MonoBehaviour
     {
         if (!currentMusic)
             return;
-        
+
         currentMusic.Stop();
     }
+
+    #endregion
+
+    #region SFX Functions
+
+    public void PlaySfxRandomly(List<AudioClip> audioClips, AudioSource audioSource)
+    {
+        if (audioClips != null && audioSource != null)
+        {
+            AudioClip clip = audioClips[Random.Range(0, audioClips.Count)];
+            audioSource.clip = clip;
+            audioSource.pitch = Random.Range(minPitch, maxPitch);
+            audioSource.volume = Random.Range(minVolume, maxVolume);
+            if (!audioSource.isPlaying)
+                audioSource.PlayOneShot(clip);
+        }
+    }
+
+    public enum SfxType
+    {
+        Footstep,
+    }
+
     #endregion
 
 
