@@ -50,7 +50,7 @@ public class PlayerSkills : MonoBehaviour
         xp.Clear();
         for (int i = 0; i < data.skillNames.Length; i++)
         {
-            SkillDefinition skill = Resources.Load<SkillDefinition>("Skills/" + data.skillNames[i]);
+            SkillDefinition skill = Resources.Load<SkillDefinition>("playerSkillsData/" + data.skillNames[i]);
             if (skill == null)
             {
                 Debug.LogWarning($"Could not find SkillDefinition for {data.skillNames[i]}");

@@ -80,7 +80,6 @@ namespace Player.Movement
                         }
 
                     }
-
                     else if (interactable.isTeleporter)
                     {
                         agent.SetDestination(interactable.transform.position);
