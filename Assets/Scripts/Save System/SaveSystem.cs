@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
+using Player;
 
 namespace Save_System
 {
@@ -9,12 +9,14 @@ namespace Save_System
         public static void SaveSkills()
         {
             string path = Application.persistentDataPath + "/playerSkillsData.bin";
-            BinaryFormatter formatter = new BinaryFormatter();
 
             using (FileStream stream = new FileStream(path, FileMode.Create))
             {
-                PlayerSkillsData playerSkillsData = new PlayerSkillsData(PlayerSkills.Instance.GetXpDictionary());
-                formatter.Serialize(stream, playerSkillsData);
+                using (BinaryWriter writer = new BinaryWriter(stream))
+                {
+                    PlayerSkillsData playerSkillsData = new PlayerSkillsData(PlayerSkills.Instance.GetXpDictionary());
+                    playerSkillsData.Write(writer);
+                }
             }
         }
 
@@ -23,11 +25,13 @@ namespace Save_System
             string path = Application.persistentDataPath + "/playerSkillsData.bin";
             if (File.Exists(path))
             {
-                BinaryFormatter formatter = new BinaryFormatter();
                 using (FileStream stream = new FileStream(path, FileMode.Open))
                 {
-                    PlayerSkillsData playerSkillsData = formatter.Deserialize(stream) as PlayerSkillsData;
-                    return playerSkillsData;
+                    using (BinaryReader reader = new BinaryReader(stream))
+                    {
+                        PlayerSkillsData playerSkillsData = PlayerSkillsData.Read(reader);
+                        return playerSkillsData;
+                    }
                 }
             }
             else
@@ -40,12 +44,14 @@ namespace Save_System
         public static void SaveQuests()
         {
             string path = Application.persistentDataPath + "/questData.bin";
-            BinaryFormatter formatter = new BinaryFormatter();
 
             using (FileStream stream = new FileStream(path, FileMode.Create))
             {
-                PlayerQuestData questData = QuestManager.Instance.GetQuestSaveData();
-                formatter.Serialize(stream, questData);
+                using (BinaryWriter writer = new BinaryWriter(stream))
+                {
+                    PlayerQuestData questData = QuestManager.Instance.GetQuestSaveData();
+                    questData.Write(writer);
+                }
             }
         }
 
@@ -54,11 +60,13 @@ namespace Save_System
             string path = Application.persistentDataPath + "/questData.bin";
             if (File.Exists(path))
             {
-                BinaryFormatter formatter = new BinaryFormatter();
                 using (FileStream stream = new FileStream(path, FileMode.Open))
                 {
-                    PlayerQuestData questData = formatter.Deserialize(stream) as PlayerQuestData;
-                    return questData;
+                    using (BinaryReader reader = new BinaryReader(stream))
+                    {
+                        PlayerQuestData questData = PlayerQuestData.Read(reader);
+                        return questData;
+                    }
                 }
             }
             else
