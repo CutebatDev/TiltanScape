@@ -93,24 +93,21 @@ public class QuestStation : MonoBehaviour
             averageMultiplier = sum / questToPerform.relevantSkills.Count;
         }
 
-        float timer = 0f;
+        float tickInterval = questToPerform.baseTickInterval / averageMultiplier;
+        float progressPerTick = questToPerform.progressTickPercent * questToPerform.baseActionTime;
 
-
-        while (timer < questToPerform.baseActionTime)
+        while (!quest.IsCompleted)
         {
             if (PlayerActionController.Instance.ShouldCancelAction())
             {
                 yield break;
             }
 
-            // Avg multiplier to actual quest progress
-            float deltaProgress = (Time.deltaTime * averageMultiplier) / questToPerform.baseActionTime;
-            QuestManager.Instance.AddProgress(questToPerform.Id, deltaProgress * questToPerform.baseActionTime);
+            yield return new WaitForSeconds(tickInterval);
 
-            // For timer UI
-            timer += Time.deltaTime * averageMultiplier;
+            QuestManager.Instance.AddProgress(questToPerform.Id, progressPerTick);
 
-            yield return null;
+            Debug.Log($"Tick: +{questToPerform.progressTickPercent * 100f}% progress");
         }
 
         Debug.Log($"Quest {questToPerform.Title} progress completed!");

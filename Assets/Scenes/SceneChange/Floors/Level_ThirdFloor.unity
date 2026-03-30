@@ -119,89 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &440020093 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3830981728719009068, guid: 66f564ff9d62e31498220873ef6ca39d, type: 3}
-  m_PrefabInstance: {fileID: 1064650990666501462}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &440020098
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 440020093}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshModifier
-  m_SerializedVersion: 0
-  m_OverrideArea: 0
-  m_Area: 0
-  m_OverrideGenerateLinks: 0
-  m_GenerateLinks: 0
-  m_IgnoreFromBuild: 1
-  m_ApplyToChildren: 1
-  m_AffectedAgents: ffffffff
---- !u!114 &440020099
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 440020093}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb41840a4969064389aceb3a1d5ac1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ActionInteractable
-  OnInteract:
-    m_PersistentCalls:
-      m_Calls: []
-  seat: {fileID: 0}
-  standSlot: {fileID: 0}
-  useInteractionAnimation: 0
-  interactionAnimation: 0
-  isTeleporter: 0
-  sceneName: 
-  baseActionTime: 1
-  OnActionComplete:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &440020100
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 440020093}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31ad7f7f654ad9a43a3264e281b68606, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Interactable
-  OnInteract:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  seat: {fileID: 0}
-  standSlot: {fileID: 0}
-  useInteractionAnimation: 0
-  interactionAnimation: 0
-  isTeleporter: 1
-  sceneName: 
 --- !u!1 &1034479241
 GameObject:
   m_ObjectHideFlags: 0
@@ -425,17 +342,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 585117761943238309, guid: 66f564ff9d62e31498220873ef6ca39d, type: 3}
-      propertyPath: m_NavMeshData
-      value: 
-      objectReference: {fileID: 23800000, guid: f8bc0604e2dff0348a1eec4244fa44a0, type: 2}
     - target: {fileID: 667489912614962768, guid: 66f564ff9d62e31498220873ef6ca39d, type: 3}
       propertyPath: m_Name
       value: Third Floor
-      objectReference: {fileID: 0}
-    - target: {fileID: 3830981728719009068, guid: 66f564ff9d62e31498220873ef6ca39d, type: 3}
-      propertyPath: m_Layer
-      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4745301641994165411, guid: 66f564ff9d62e31498220873ef6ca39d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -480,16 +389,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3830981728719009068, guid: 66f564ff9d62e31498220873ef6ca39d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 440020098}
-    - targetCorrespondingSourceObject: {fileID: 3830981728719009068, guid: 66f564ff9d62e31498220873ef6ca39d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 440020100}
-    - targetCorrespondingSourceObject: {fileID: 3830981728719009068, guid: 66f564ff9d62e31498220873ef6ca39d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 440020099}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66f564ff9d62e31498220873ef6ca39d, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

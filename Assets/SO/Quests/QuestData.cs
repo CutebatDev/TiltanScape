@@ -10,6 +10,9 @@ public class QuestData : ScriptableObject
     public string Title;
     public string Description;
 
+    public float progressTickPercent = 0.1f;
+    public float baseTickInterval = 1f;
+
     [Tooltip("Time in seconds to complete the quest at base speed")]
     public float baseActionTime = 5f;
 
