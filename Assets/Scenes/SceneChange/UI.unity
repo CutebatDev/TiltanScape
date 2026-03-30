@@ -119,6 +119,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &81835062 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8443124482641418853, guid: 7bdb279760a7f4d489ac12fd676592ba, type: 3}
+  m_PrefabInstance: {fileID: 387422688}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb2676ecd86fcbb48a525f195095ee3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TaskBoxUI
 --- !u!1 &183075989
 GameObject:
   m_ObjectHideFlags: 0
@@ -163,7 +174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b931401fc37497458300a81e4541023, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  taskBoxUI: {fileID: 0}
+  taskBoxUI: {fileID: 81835062}
 --- !u!1001 &215752794
 PrefabInstance:
   m_ObjectHideFlags: 0
