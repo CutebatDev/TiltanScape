@@ -16,6 +16,7 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         EventsManager.Instance.OnTogglePauseMenu += TogglePauseMenu;
+        EventsManager.Instance.OnToggleSaveMenu += ToggleSaveMenu;
         _isGamePaused = false;
     }
 
@@ -94,13 +95,6 @@ public class UIManager : MonoBehaviour
     {
         CloseAllUI();
         OpenUI(_previusPanel.type);
-    }
-
-    public void TestNextScene()
-    {
-        BackButton();
-        ResumeGame();
-        EventsManager.Instance.OnNextScene?.Invoke();
     }
 
     public void SaveGame()

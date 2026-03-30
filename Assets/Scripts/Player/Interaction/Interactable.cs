@@ -3,7 +3,6 @@ using UnityEngine.Events;
 
 public class Interactable : MonoBehaviour
 {
-
     public UnityEvent OnInteract;
     public Transform seat;
     public Transform standSlot;
@@ -11,6 +10,8 @@ public class Interactable : MonoBehaviour
     [Header("Interaction Animation")]
     [SerializeField] private bool useInteractionAnimation;
     [SerializeField] private EnumAnimations interactionAnimation;
+
+    public bool isSaveDesk;
 
     public bool isTeleporter;
     public string sceneName;

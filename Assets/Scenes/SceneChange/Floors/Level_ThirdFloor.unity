@@ -328,12 +328,102 @@ MonoBehaviour:
   standSlot: {fileID: 0}
   useInteractionAnimation: 0
   interactionAnimation: 0
-  isTeleporter: 1
-  sceneName: Level_SecondFloor
+  isSaveDesk: 0
+  isTeleporter: 0
+  sceneName: 
   baseActionTime: 1
   OnActionComplete:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &2054564455
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2054564456}
+  m_Layer: 0
+  m_Name: standSlot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2054564456
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2054564455}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 0, z: -95}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2142580931}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2142580930 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 421954486569046116, guid: 66f564ff9d62e31498220873ef6ca39d, type: 3}
+  m_PrefabInstance: {fileID: 1064650990666501462}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2142580931 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1136318063667647254, guid: 66f564ff9d62e31498220873ef6ca39d, type: 3}
+  m_PrefabInstance: {fileID: 1064650990666501462}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2142580932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2142580930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb41840a4969064389aceb3a1d5ac1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ActionInteractable
+  OnInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  seat: {fileID: 0}
+  standSlot: {fileID: 2054564456}
+  useInteractionAnimation: 0
+  interactionAnimation: 0
+  isSaveDesk: 1
+  isTeleporter: 0
+  sceneName: 
+  baseActionTime: 1
+  OnActionComplete:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!64 &2142580933
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2142580930}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7826061776304537819, guid: 10eb3e75bbb6b8a41bcaa2388fb785a6, type: 3}
 --- !u!1001 &1064650990666501462
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -342,6 +432,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 421954486569046116, guid: 66f564ff9d62e31498220873ef6ca39d, type: 3}
+      propertyPath: m_Name
+      value: SaveDesk
+      objectReference: {fileID: 0}
     - target: {fileID: 667489912614962768, guid: 66f564ff9d62e31498220873ef6ca39d, type: 3}
       propertyPath: m_Name
       value: Third Floor
@@ -388,8 +482,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 1136318063667647254, guid: 66f564ff9d62e31498220873ef6ca39d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2054564456}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 421954486569046116, guid: 66f564ff9d62e31498220873ef6ca39d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2142580933}
+    - targetCorrespondingSourceObject: {fileID: 421954486569046116, guid: 66f564ff9d62e31498220873ef6ca39d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2142580932}
   m_SourcePrefab: {fileID: 100100000, guid: 66f564ff9d62e31498220873ef6ca39d, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

@@ -1476,6 +1476,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SaveSystemMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 7803982725957873499, guid: d1ea314002c3a75408675da686dcaf5e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8598362415295727536, guid: d1ea314002c3a75408675da686dcaf5e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
