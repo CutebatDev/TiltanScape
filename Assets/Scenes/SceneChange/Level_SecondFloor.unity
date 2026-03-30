@@ -183,6 +183,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Animation Station
       objectReference: {fileID: 0}
+    - target: {fileID: 6520758786196621393, guid: ff577d4e379fa3b44b45ed804b264eb0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -256,6 +260,10 @@ PrefabInstance:
     - target: {fileID: 1086978653475319790, guid: 89586d710db922545befcfc44c210eb0, type: 3}
       propertyPath: m_Name
       value: Game Engine Station
+      objectReference: {fileID: 0}
+    - target: {fileID: 1086978653475319790, guid: 89586d710db922545befcfc44c210eb0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5276356296866668740, guid: 89586d710db922545befcfc44c210eb0, type: 3}
       propertyPath: m_LocalScale.x
@@ -378,6 +386,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Concept Art Station
       objectReference: {fileID: 0}
+    - target: {fileID: 8303199011853310246, guid: 83cb59e122f6c6844ac0940e79242c65, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -446,6 +458,10 @@ PrefabInstance:
     - target: {fileID: 5955290891570523999, guid: d08b03cdb162d26498fd5e48182791a1, type: 3}
       propertyPath: m_Name
       value: Game Systems Station
+      objectReference: {fileID: 0}
+    - target: {fileID: 5955290891570523999, guid: d08b03cdb162d26498fd5e48182791a1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -694,6 +710,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Narrative Station
       objectReference: {fileID: 0}
+    - target: {fileID: 6985771476660883428, guid: 35da72a72eda06b4899359fce8a9a50d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -941,6 +961,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI Station
       objectReference: {fileID: 0}
+    - target: {fileID: 6630071578020622295, guid: e94198ddea8f3b447bc9c12d5a648f1b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1133,6 +1157,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Code Station
       objectReference: {fileID: 0}
+    - target: {fileID: 6730014269552340650, guid: f9017651a69acc5418457a38e2678289, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1149,6 +1177,10 @@ PrefabInstance:
     - target: {fileID: 3322398378345807818, guid: e91fb71106d41e94aa9b47c7549af830, type: 3}
       propertyPath: m_Name
       value: Level Design Station
+      objectReference: {fileID: 0}
+    - target: {fileID: 3322398378345807818, guid: e91fb71106d41e94aa9b47c7549af830, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7509573106140492000, guid: e91fb71106d41e94aa9b47c7549af830, type: 3}
       propertyPath: m_LocalScale.x
@@ -1218,6 +1250,10 @@ PrefabInstance:
     - target: {fileID: 2459855065727671332, guid: 24cd847c1b33c69449c1ab050e44f1ac, type: 3}
       propertyPath: m_Name
       value: Game Art Station
+      objectReference: {fileID: 0}
+    - target: {fileID: 2459855065727671332, guid: 24cd847c1b33c69449c1ab050e44f1ac, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7210248078514885390, guid: 24cd847c1b33c69449c1ab050e44f1ac, type: 3}
       propertyPath: m_LocalScale.x
