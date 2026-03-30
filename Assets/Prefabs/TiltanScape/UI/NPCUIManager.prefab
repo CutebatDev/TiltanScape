@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5646414491545093572
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2273636388416388870}
+  - component: {fileID: 1281252585745484905}
+  m_Layer: 0
+  m_Name: NPCUIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2273636388416388870
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5646414491545093572}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1281252585745484905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5646414491545093572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a80451ca74800548a4d8fa91e99d513, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  panel: {fileID: 0}
+  questButtonContainer: {fileID: 0}
+  npcMessageText: {fileID: 0}
+  questDetailTitle: {fileID: 0}
+  questDetailDescription: {fileID: 0}
+  questDetailSkills: {fileID: 0}
+  acceptQuestButton: {fileID: 0}
+  questButtonPrefab: {fileID: 4865664990607802366, guid: 38d96b0a47122c24bb735cfbff6aae2c, type: 3}
+  questButtonLabel: {fileID: 0}
+  availableQuestColor: {r: 0, g: 0, b: 0, a: 1}
+  inProgressQuestColor: {r: 0.3962264, g: 0.3962264, b: 0.3962264, a: 1}
+  completeQuestColor: {r: 0, g: 0, b: 1, a: 1}
+  skillReqText: 'Relevant Skills: '
+  acceptButtonText: ACCEPT
+  turnInButtonText: COMPLETE

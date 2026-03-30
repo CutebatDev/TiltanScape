@@ -1,6 +1,5 @@
 using NUnit.Framework.Internal;
 using System.Collections;
-using Events;
 using UnityEngine;
 
 [RequireComponent(typeof(ActionInteractable))]
@@ -14,21 +13,21 @@ public class SkillStation : MonoBehaviour
     [Header("References")]
     [SerializeField] private ActionInteractable interactable;
 
-    private float delay;
-
     void Awake()
     {
-        interactable.SetAction(PerformAction);
-    }
+        if (!interactable)
+            interactable = GetComponent<ActionInteractable>();
 
-    void Start()
-    {
-        delay = PlayerActionController.Instance.UseDelay;
+        interactable.SetAction(PerformAction);
     }
 
     private IEnumerator PerformAction()
     {
-        EventsManager.Instance.OnUseQuestStation.Invoke();
+        yield return new WaitUntil(() =>
+            PlayerActionController.Instance != null &&
+            PlayerSkills.Instance != null
+        );
+
         while (true)
         {
             if (PlayerActionController.Instance.ShouldCancelAction())
@@ -58,7 +57,7 @@ public class SkillStation : MonoBehaviour
             Debug.Log($"{skill.skillName}: +{xpReward}EXP");
             Debug.Log($"Current {skill.name} level: {PlayerSkills.Instance.GetLevel(skill)}");
 
-            yield return new WaitForSeconds(delay);
+            yield return new WaitForSeconds(PlayerActionController.Instance.UseDelay);
         }
     }
 }

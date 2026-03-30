@@ -37,20 +37,28 @@ public class PlayerActionController : MonoBehaviour
     private IEnumerator RunAction(IEnumerator action)
     {
         yield return StartCoroutine(action);
+
         currentAction = null;
         IsBusy = false;
+        cancelAction = false;
     }
 
     public void InterruptAction()
     {
-        if (currentAction != null)
-        {
-            cancelAction = true;
-            StopCoroutine(currentAction);
-            currentAction = null;
-            IsBusy = false;
-            Debug.Log("Action Interrupted!");
-        }
+        if (!IsBusy)
+            return;
+
+        cancelAction = true;
+        Debug.Log("Action Interrupted!");
+
+        //if (currentAction != null)
+        //{
+        //    cancelAction = true;
+        //    StopCoroutine(currentAction);
+        //    currentAction = null;
+        //    IsBusy = false;
+        //    Debug.Log("Action Interrupted!");
+        //}
     }
 
     public bool ShouldCancelAction() => cancelAction;

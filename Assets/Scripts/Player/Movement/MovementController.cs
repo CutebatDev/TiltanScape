@@ -25,6 +25,9 @@ namespace Player.Movement
 
         void Awake()
         {
+            if (!playerInput)
+                playerInput = GetComponent<PlayerInput>();
+
             agent.updateRotation = false;
             agent.stoppingDistance = interactionRange;
 
@@ -46,8 +49,11 @@ namespace Player.Movement
 
         private void ClickToMove()
         {
+            agent.enabled = true;
             if (!mainCamera)
                 return;
+
+            PlayerActionController.Instance.InterruptAction();
 
             Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
 
@@ -84,17 +90,18 @@ namespace Player.Movement
             if (!agent.pathPending && agent.remainingDistance <= interactionRange)
             {
                 agent.ResetPath();
+                agent.enabled = false;
 
                 if (targetInteractable.seat)
                 {
-                    transform.position = new Vector3(targetInteractable.seat.position.x, transform.position.y, targetInteractable.seat.position.z);
+                    agent.Warp(new Vector3(targetInteractable.seat.position.x, transform.position.y, targetInteractable.seat.position.z));
                     transform.rotation = targetInteractable.seat.rotation;
 
                     anim.SitDown(true);
                 }
                 if (targetInteractable.standSlot)
                 {
-                    transform.position = new Vector3(targetInteractable.standSlot.position.x, transform.position.y, targetInteractable.standSlot.position.z);
+                    agent.Warp(new Vector3(targetInteractable.standSlot.position.x, transform.position.y, targetInteractable.standSlot.position.z));
                     transform.rotation = targetInteractable.standSlot.rotation;
                 }
 
@@ -140,6 +147,9 @@ namespace Player.Movement
 
         private void UpdateMovementAnimation()
         {
+            if (PlayerActionController.Instance != null && PlayerActionController.Instance.IsBusy)
+                return;
+
             bool movingNow = agent.hasPath && !agent.pathPending && agent.remainingDistance > agent.stoppingDistance;
 
             if (movingNow && !isMoving)

@@ -1,3 +1,4 @@
+using Player.Movement;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -63,6 +64,7 @@ public class QuestUIManager : MonoBehaviour
         }
 
         panel.SetActive(true);
+        MovementController.playerInput.SwitchCurrentActionMap("UI");
     }
 
     public void OnQuestChosen(QuestData quest)
@@ -72,10 +74,12 @@ public class QuestUIManager : MonoBehaviour
         currentStation.OnQuestSelected(quest);
 
         panel.SetActive(false);
+        MovementController.playerInput.SwitchCurrentActionMap("Gameplay");
     }
 
     public void CloseUI()
     {
         panel.SetActive(false);
+        MovementController.playerInput.SwitchCurrentActionMap("Gameplay");
     }
 }

@@ -1,3 +1,4 @@
+using Player.Movement;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -66,6 +67,7 @@ public class NPCUIManager : MonoBehaviour
         questDetailSkills.gameObject.SetActive(false);
         questButtonContainer.gameObject.SetActive(true);
         panel.SetActive(true);
+        MovementController.playerInput.SwitchCurrentActionMap("UI");
     }
 
     public void OpenNPCDialogue(NPCScript npc)
@@ -187,6 +189,7 @@ public class NPCUIManager : MonoBehaviour
     public void CloseDialogue()
     {
         panel.SetActive (false);
+        MovementController.playerInput.SwitchCurrentActionMap("Gameplay");
         selectedQuest = null;
         currentNPC = null;
         acceptQuestButton.gameObject.SetActive(false);
