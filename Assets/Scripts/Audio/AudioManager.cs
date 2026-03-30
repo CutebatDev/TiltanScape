@@ -181,6 +181,10 @@ public class AudioManager : MonoBehaviour
         AudioSource audioSource = InstantiateAudioSource(audioClip, type, isLooping, linearVolume, pitch);
         audioSource.spatialBlend = 0;
         audioSource.Play();
+
+        if (type == AudioType.SFX && !isLooping)
+            Destroy(audioSource.gameObject, audioClip.length);
+
         return audioSource;
     }
 
