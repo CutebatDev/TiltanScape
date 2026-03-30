@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bf7e8d12a2052e74bbb4ad6f9d8d1c25, type: 3}
-  m_Name: testQuest
+  m_Name: ArtFinalProject
   m_EditorClassIdentifier: Assembly-CSharp::QuestData
-  Id: 1
-  NpcId: 1
+  Id: 3
+  NpcId: 3
   Title: 1st test quest
   Description: some random description idk
+  progressTickPercent: 0.1
+  baseTickInterval: 1
   baseActionTime: 5
   relevantSkills:
-  - {fileID: 11400000, guid: 0b9fb064345f0de4dbb622029e880de3, type: 2}
-  - {fileID: 11400000, guid: 41b33d8de7fd1cd4bbce2a234c0620fe, type: 2}
-  - {fileID: 11400000, guid: 103d1385ac0d71e47bd11340dc72e018, type: 2}
+  - {fileID: 11400000, guid: 5b96f6babf52a7b4dbcc4066bf2be3d7, type: 2}
+  - {fileID: 11400000, guid: a110422365a127842a6bc11eb07ee043, type: 2}

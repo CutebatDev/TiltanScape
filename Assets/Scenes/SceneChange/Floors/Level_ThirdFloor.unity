@@ -335,6 +335,162 @@ MonoBehaviour:
   OnActionComplete:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &1469967375 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3995156231003573867, guid: 66f564ff9d62e31498220873ef6ca39d, type: 3}
+  m_PrefabInstance: {fileID: 1064650990666501462}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1469967378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469967375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cef88d0b2993644f96844ade1bb2dbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPCScript
+  npcId: 3
+  defaultGreeting: Absolutely original art teacher greeting
+  questGreeting: Go draw those pixels(?)
+  quests: []
+  questStatusIcon: {fileID: 0}
+  availableIcon: {fileID: 0}
+  inProgressIcon: {fileID: 0}
+  completedIcon: {fileID: 0}
+  interactable: {fileID: 1469967379}
+--- !u!114 &1469967379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469967375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb41840a4969064389aceb3a1d5ac1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ActionInteractable
+  OnInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  seat: {fileID: 0}
+  standSlot: {fileID: 0}
+  useInteractionAnimation: 0
+  interactionAnimation: 0
+  isSaveDesk: 0
+  isTeleporter: 0
+  sceneName: 
+  baseActionTime: 1
+  OnActionComplete:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &1498354652 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2444631920215541314, guid: 66f564ff9d62e31498220873ef6ca39d, type: 3}
+  m_PrefabInstance: {fileID: 1064650990666501462}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1498354655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1498354652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cef88d0b2993644f96844ade1bb2dbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPCScript
+  npcId: 1
+  defaultGreeting: Shalom!
+  questGreeting: Its time for the Unreal final project!
+  quests: []
+  questStatusIcon: {fileID: 0}
+  availableIcon: {fileID: 0}
+  inProgressIcon: {fileID: 0}
+  completedIcon: {fileID: 0}
+  interactable: {fileID: 1498354656}
+--- !u!114 &1498354656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1498354652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb41840a4969064389aceb3a1d5ac1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ActionInteractable
+  OnInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  seat: {fileID: 0}
+  standSlot: {fileID: 0}
+  useInteractionAnimation: 0
+  interactionAnimation: 0
+  isSaveDesk: 0
+  isTeleporter: 0
+  sceneName: 
+  baseActionTime: 1
+  OnActionComplete:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &1920105822 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3126862267168758904, guid: 66f564ff9d62e31498220873ef6ca39d, type: 3}
+  m_PrefabInstance: {fileID: 1064650990666501462}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1920105825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920105822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cef88d0b2993644f96844ade1bb2dbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPCScript
+  npcId: 2
+  defaultGreeting: Never make a platformer!
+  questGreeting: Split up into groups, time for the final project!
+  quests: []
+  questStatusIcon: {fileID: 0}
+  availableIcon: {fileID: 0}
+  inProgressIcon: {fileID: 0}
+  completedIcon: {fileID: 0}
+  interactable: {fileID: 1920105826}
+--- !u!114 &1920105826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920105822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb41840a4969064389aceb3a1d5ac1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ActionInteractable
+  OnInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  seat: {fileID: 0}
+  standSlot: {fileID: 0}
+  useInteractionAnimation: 0
+  interactionAnimation: 0
+  isSaveDesk: 0
+  isTeleporter: 0
+  sceneName: 
+  baseActionTime: 1
+  OnActionComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2054564455
 GameObject:
   m_ObjectHideFlags: 0
@@ -452,6 +608,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 3995156231003573867, guid: 66f564ff9d62e31498220873ef6ca39d, type: 3}
+      propertyPath: m_Name
+      value: ART
+      objectReference: {fileID: 0}
     - target: {fileID: 4745301641994165411, guid: 66f564ff9d62e31498220873ef6ca39d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -505,6 +665,24 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 421954486569046116, guid: 66f564ff9d62e31498220873ef6ca39d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2142580932}
+    - targetCorrespondingSourceObject: {fileID: 3126862267168758904, guid: 66f564ff9d62e31498220873ef6ca39d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1920105826}
+    - targetCorrespondingSourceObject: {fileID: 3126862267168758904, guid: 66f564ff9d62e31498220873ef6ca39d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1920105825}
+    - targetCorrespondingSourceObject: {fileID: 3995156231003573867, guid: 66f564ff9d62e31498220873ef6ca39d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1469967379}
+    - targetCorrespondingSourceObject: {fileID: 3995156231003573867, guid: 66f564ff9d62e31498220873ef6ca39d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1469967378}
+    - targetCorrespondingSourceObject: {fileID: 2444631920215541314, guid: 66f564ff9d62e31498220873ef6ca39d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1498354656}
+    - targetCorrespondingSourceObject: {fileID: 2444631920215541314, guid: 66f564ff9d62e31498220873ef6ca39d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1498354655}
   m_SourcePrefab: {fileID: 100100000, guid: 66f564ff9d62e31498220873ef6ca39d, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

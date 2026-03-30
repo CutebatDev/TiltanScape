@@ -10,14 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bf7e8d12a2052e74bbb4ad6f9d8d1c25, type: 3}
-  m_Name: testQuest2
+  m_Name: UnrealFInalProject
   m_EditorClassIdentifier: Assembly-CSharp::QuestData
-  Id: 2
+  Id: 1
   NpcId: 1
-  Title: 2nd test quest
-  Description: lorem ipsum?
+  Title: Unreal Endterm Project
+  Description: Worst engine by far, i mean, who even thought about making serious
+    games without code?
+  progressTickPercent: 0.1
+  baseTickInterval: 1
   baseActionTime: 5
   relevantSkills:
-  - {fileID: 11400000, guid: 0b9fb064345f0de4dbb622029e880de3, type: 2}
-  - {fileID: 11400000, guid: b87cbd23487a10243801bb5cca53aea1, type: 2}
-  - {fileID: 11400000, guid: f7b3a8aa769979546b2d60d8fff1e9ef, type: 2}
+  - {fileID: 11400000, guid: 41b33d8de7fd1cd4bbce2a234c0620fe, type: 2}
+  - {fileID: 11400000, guid: e668579a0e41bb64ca0fb3147d800cff, type: 2}
+  - {fileID: 11400000, guid: 103d1385ac0d71e47bd11340dc72e018, type: 2}
