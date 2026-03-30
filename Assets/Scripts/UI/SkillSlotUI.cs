@@ -1,8 +1,9 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class SkillSlotUI : MonoBehaviour
+public class SkillSlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [Header("Visual References")]
     [SerializeField] private Image mainIcon;
@@ -12,23 +13,40 @@ public class SkillSlotUI : MonoBehaviour
     [SerializeField] private SkillDefinition skillDefinition;
     [SerializeField] private Sprite icon;
 
+    [Header("Tooltip")]
+    [SerializeField] private GameObject tooltip;
+    [SerializeField] private TMP_Text tooltipText;
+
     private void Awake()
     {
         if (mainIcon && icon)
             mainIcon.sprite = icon;
     }
 
-    public void Refresh(PlayerSkills playerSkills)
+    public void Refresh()
     {
-        if (!playerSkills || !skillDefinition)
+        if (!skillDefinition)
             return;
 
         if (mainIcon && icon)
             mainIcon.sprite = icon;
 
-        int level = playerSkills.GetLevel(skillDefinition);
+        int level = PlayerSkills.Instance.GetLevel(skillDefinition);
 
         if (levelText)
             levelText.text = level.ToString();
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (tooltip)
+            tooltip.SetActive(true);
+        tooltipText.text = skillDefinition.skillName;
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if (tooltip)
+            tooltip.SetActive(false);
     }
 }
