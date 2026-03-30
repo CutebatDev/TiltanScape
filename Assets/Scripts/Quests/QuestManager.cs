@@ -13,6 +13,7 @@ public class QuestManager : MonoBehaviour
     // Events
     public delegate void QuestEvent(Quest quets);
     public event QuestEvent OnQuestStarted;
+    public event QuestEvent OnQuestProgressUpdated;
     public event QuestEvent OnQuestProgressCompleted;
     public event QuestEvent OnQuestTurnedIn;
 
@@ -49,6 +50,7 @@ public class QuestManager : MonoBehaviour
 
         bool wasCompleted = quest.IsCompleted;
         quest.AddProgress(amount);
+        OnQuestProgressUpdated?.Invoke(quest);
 
         if (!wasCompleted && quest.IsCompleted)
             OnQuestProgressCompleted?.Invoke(quest);
