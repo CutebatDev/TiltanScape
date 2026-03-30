@@ -1,3 +1,4 @@
+using Player;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -5,16 +6,17 @@ using UnityEngine.UI;
 
 public class SkillSlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    [Header("Visual References")]
-    [SerializeField] private Image mainIcon;
+    [Header("Visual References")] [SerializeField]
+    private Image mainIcon;
+
     [SerializeField] private TMP_Text levelText;
 
-    [Header("Skill Data")]
-    [SerializeField] private SkillDefinition skillDefinition;
+    [Header("Skill Data")] [SerializeField]
+    private SkillDefinition skillDefinition;
+
     [SerializeField] private Sprite icon;
 
-    [Header("Tooltip")]
-    [SerializeField] private GameObject tooltip;
+    [Header("Tooltip")] [SerializeField] private GameObject tooltip;
     [SerializeField] private TMP_Text tooltipText;
 
     private void Awake()

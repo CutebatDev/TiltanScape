@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Audio;
 using Events;
+using Player;
 using UnityEngine;
 using UnityEngine.Audio;
 using Random = UnityEngine.Random;

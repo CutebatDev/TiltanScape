@@ -1,17 +1,19 @@
 using NUnit.Framework.Internal;
 using System.Collections;
 using System.Threading;
+using Player;
 using UnityEngine;
 
 [RequireComponent(typeof(ActionInteractable))]
 public class SkillStation : MonoBehaviour
 {
-    [Header("Skill Settings")]
-    [SerializeField] private MinigameType minigameType;
+    [Header("Skill Settings")] [SerializeField]
+    private MinigameType minigameType;
+
     [SerializeField] private SkillDefinition skill;
 
-    [Header("References")]
-    [SerializeField] private ActionInteractable interactable;
+    [Header("References")] [SerializeField]
+    private ActionInteractable interactable;
 
     void Awake()
     {
