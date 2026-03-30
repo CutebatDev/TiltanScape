@@ -47,7 +47,7 @@ public class QuestStation : MonoBehaviour
     {
         SelectQuest(quest);
         //QuestUIManager.Instance.CloseUI();
-        StartCoroutine(PerformQuestProgress());
+        PlayerActionController.Instance.StartAction(PerformQuestProgress());
     }
 
     public void SelectQuest(QuestData quest)

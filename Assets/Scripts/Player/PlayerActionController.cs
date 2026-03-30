@@ -26,39 +26,34 @@ public class PlayerActionController : MonoBehaviour
 
     public void StartAction(IEnumerator action)
     {
-        if (IsBusy)
-            InterruptAction(); // used to just return;
+        //if (IsBusy)
+        InterruptAction(); // used to just return;
 
-        IsBusy = true;
+        //IsBusy = true;
         cancelAction = false;
         currentAction = StartCoroutine(RunAction(action));
     }
 
     private IEnumerator RunAction(IEnumerator action)
     {
-        yield return StartCoroutine(action);
+        IsBusy = true;
+
+        yield return action;
 
         currentAction = null;
-        IsBusy = false;
-        cancelAction = false;
+        IsBusy = false;;
     }
 
     public void InterruptAction()
     {
-        if (!IsBusy)
-            return;
+        if (currentAction != null)
+        {
+            cancelAction = true;
+            StopCoroutine(currentAction);
+            currentAction = null;
+        }
 
-        cancelAction = true;
-        Debug.Log("Action Interrupted!");
-
-        //if (currentAction != null)
-        //{
-        //    cancelAction = true;
-        //    StopCoroutine(currentAction);
-        //    currentAction = null;
-        //    IsBusy = false;
-        //    Debug.Log("Action Interrupted!");
-        //}
+        IsBusy = false;
     }
 
     public bool ShouldCancelAction() => cancelAction;
