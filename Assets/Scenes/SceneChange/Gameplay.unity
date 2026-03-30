@@ -698,6 +698,10 @@ PrefabInstance:
       propertyPath: near clip plane
       value: 3.2
       objectReference: {fileID: 0}
+    - target: {fileID: 2237581728382267107, guid: 94673695d80ce4740a0c918ed0ea8c70, type: 3}
+      propertyPath: m_NormalizedViewPortRect.width
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 5451870679231836201, guid: 94673695d80ce4740a0c918ed0ea8c70, type: 3}
       propertyPath: target
       value: 
