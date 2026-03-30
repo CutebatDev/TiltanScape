@@ -94,7 +94,7 @@ public class QuestStation : MonoBehaviour
         }
 
         float tickInterval = questToPerform.baseTickInterval / averageMultiplier;
-        float progressPerTick = questToPerform.progressTickPercent * questToPerform.baseActionTime;
+        float progressPerTick = questToPerform.progressTickPercent;
 
         while (!quest.IsCompleted)
         {

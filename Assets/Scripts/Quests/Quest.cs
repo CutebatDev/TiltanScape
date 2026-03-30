@@ -20,6 +20,7 @@ public class Quest
 
         Progress += amount;
         Progress = Mathf.Clamp01(Progress);
+        Debug.Log(Progress);
     }
 
     public void TurnIn()
