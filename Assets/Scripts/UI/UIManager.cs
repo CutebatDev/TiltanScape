@@ -27,6 +27,11 @@ public class UIManager : MonoBehaviour
             PauseGame();
     }
 
+    public void ToggleSaveMenu()
+    {
+        OpenUI(UIType.SaveMenu);
+    }
+
     private void OpenUI(UIType uiToOpen)
     {
         _previusPanel = uiPanels.Find(panel => panel.uiObject.activeSelf);
