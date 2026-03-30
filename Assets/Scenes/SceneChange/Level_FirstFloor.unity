@@ -1810,6 +1810,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6578947416329413543, guid: f9017651a69acc5418457a38e2678289, type: 3}
+      propertyPath: minigameType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6730014269552340650, guid: f9017651a69acc5418457a38e2678289, type: 3}
       propertyPath: m_Name
       value: Code Station (1)

@@ -1,14 +1,14 @@
 using NUnit.Framework.Internal;
 using System.Collections;
+using System.Threading;
 using UnityEngine;
 
 [RequireComponent(typeof(ActionInteractable))]
 public class SkillStation : MonoBehaviour
 {
     [Header("Skill Settings")]
+    [SerializeField] private MinigameType minigameType;
     [SerializeField] private SkillDefinition skill;
-    [SerializeField] private int xpReward = 25;
-    [SerializeField] private float baseActionTime = 3f;
 
     [Header("References")]
     [SerializeField] private ActionInteractable interactable;
@@ -25,7 +25,8 @@ public class SkillStation : MonoBehaviour
     {
         yield return new WaitUntil(() =>
             PlayerActionController.Instance != null &&
-            PlayerSkills.Instance != null
+            PlayerSkills.Instance != null &&
+            MinigameManager.Instance != null
         );
 
         while (true)
@@ -33,29 +34,48 @@ public class SkillStation : MonoBehaviour
             if (PlayerActionController.Instance.ShouldCancelAction())
                 yield break;
 
-            int level = PlayerSkills.Instance.GetLevel(skill);
-            float speedMultiplier = skill.actionSpeed.Evaluate(level);
-            float duration = baseActionTime * speedMultiplier;
+            var minigame = MinigameManager.Instance.Get(minigameType);
 
-            Debug.Log($"Speed multiplier: {speedMultiplier}");
-            Debug.Log($"Duration: {duration}");
+            if (minigame == null)
+            {
+                Debug.LogError($"No minigame found for type {minigameType}");
+                yield break;
+            }
+                
+            bool finished = false;
+            bool success = false;
 
-            float timer = 0f;
-            while (timer < duration)
+            void OnCompleted(MinigameBaseUI game)
+            {
+                finished = true;
+                success = true;
+            }
+
+            minigame.OnMinigameCompleted += OnCompleted;
+
+            minigame.OpenMinigame();
+            
+            while (!finished)
             {
                 if (PlayerActionController.Instance.ShouldCancelAction())
                 {
-                    Debug.Log($"{skill.skillName} action interrupted!");
+                    minigame.CloseMinigame();
+                    minigame.OnMinigameCompleted -= OnCompleted;
                     yield break;
                 }
 
-                timer += Time.deltaTime;
                 yield return null;
             }
 
-            PlayerSkills.Instance.AddXP(skill, xpReward);
-            Debug.Log($"{skill.skillName}: +{xpReward}EXP");
-            Debug.Log($"Current {skill.name} level: {PlayerSkills.Instance.GetLevel(skill)}");
+            minigame.OnMinigameCompleted -= OnCompleted;
+
+            if (success)
+            {
+                int xp = minigame.GetExp;
+                PlayerSkills.Instance.AddXP(skill, xp);
+
+                Debug.Log($"{skill.skillName}: +{xp} EXP");
+            }
 
             yield return new WaitForSeconds(PlayerActionController.Instance.UseDelay);
         }

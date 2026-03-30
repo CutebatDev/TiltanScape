@@ -1,3 +1,4 @@
+using Player.Movement;
 using System;
 using TMPro;
 using UnityEngine;
@@ -60,6 +61,10 @@ public class MinigameBaseUI : MonoBehaviour
         isCompleted = false;
 
         SetFeedback("");
+
+        if (MovementController.playerInput != null)
+            MovementController.playerInput.SwitchCurrentActionMap("UI");
+
         OnMinigameOpened();
     }
 
@@ -80,6 +85,9 @@ public class MinigameBaseUI : MonoBehaviour
             rootPanel.SetActive(false);
 
         isRunning = false;
+
+        if (MovementController.playerInput != null)
+            MovementController.playerInput.SwitchCurrentActionMap("Gameplay");
     }
 
     /// <summary>
