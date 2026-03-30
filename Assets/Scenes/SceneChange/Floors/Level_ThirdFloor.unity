@@ -344,7 +344,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2054564456}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: standSlot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -360,7 +360,7 @@ Transform:
   m_GameObject: {fileID: 2054564455}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: -95}
+  m_LocalPosition: {x: 0, y: 11.3, z: -152.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -436,6 +436,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SaveDesk
       objectReference: {fileID: 0}
+    - target: {fileID: 421954486569046116, guid: 66f564ff9d62e31498220873ef6ca39d, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 585117761943238309, guid: 66f564ff9d62e31498220873ef6ca39d, type: 3}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 23800000, guid: 011fe6328fa8e184ca5278dc02818416, type: 2}
     - target: {fileID: 667489912614962768, guid: 66f564ff9d62e31498220873ef6ca39d, type: 3}
       propertyPath: m_Name
       value: Third Floor

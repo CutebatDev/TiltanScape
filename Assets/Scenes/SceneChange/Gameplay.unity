@@ -430,6 +430,10 @@ PrefabInstance:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 1742279215}
+    - target: {fileID: 3553936593944067565, guid: f73ea0a71499be441878e9f1d10edd21, type: 3}
+      propertyPath: interactionRange
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4445430089895624610, guid: f73ea0a71499be441878e9f1d10edd21, type: 3}
       propertyPath: footstepSource
       value: 

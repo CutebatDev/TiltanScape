@@ -31,6 +31,9 @@ public class UIManager : MonoBehaviour
     public void ToggleSaveMenu()
     {
         OpenUI(UIType.SaveMenu);
+        Time.timeScale = 0f;
+        MovementController.playerInput.SwitchCurrentActionMap("UI");
+        _isGamePaused = true;
     }
 
     private void OpenUI(UIType uiToOpen)

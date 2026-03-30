@@ -70,17 +70,13 @@ namespace Player.Movement
                     if (interactable.seat)
                         agent.SetDestination(interactable.seat.transform.position);
 
-                    else if (interactable.isSaveDesk) Debug.Log("test");
-
                     else if (interactable.standSlot)
                     {
                         agent.SetDestination(interactable.standSlot.transform.position);
 
                         if (interactable.isSaveDesk)
                         {
-                            Debug.Log("inside .savedesk condition");
-                            if (!agent.pathPending && agent.remainingDistance <= interactionRange)
-                                EventsManager.Instance.OnToggleSaveMenu?.Invoke();
+                            EventsManager.Instance.OnToggleSaveMenu?.Invoke();
                         }
 
                     }
@@ -92,7 +88,6 @@ namespace Player.Movement
                         if (!agent.pathPending && agent.remainingDistance <= interactionRange)
                             EventsManager.Instance.OnNextScene?.Invoke(interactable.sceneName);
                     }
-
                 }
                 else
                 {

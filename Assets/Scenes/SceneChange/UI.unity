@@ -1388,6 +1388,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3309743935549399341}
     m_Modifications:
+    - target: {fileID: 2579282884459475321, guid: d1ea314002c3a75408675da686dcaf5e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3665165677879319202}
     - target: {fileID: 5410908524694005985, guid: d1ea314002c3a75408675da686dcaf5e, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1475,10 +1479,6 @@ PrefabInstance:
     - target: {fileID: 7803982725957873499, guid: d1ea314002c3a75408675da686dcaf5e, type: 3}
       propertyPath: m_Name
       value: SaveSystemMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 7803982725957873499, guid: d1ea314002c3a75408675da686dcaf5e, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8598362415295727536, guid: d1ea314002c3a75408675da686dcaf5e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

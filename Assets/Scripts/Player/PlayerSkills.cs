@@ -53,11 +53,6 @@ public class PlayerSkills : MonoBehaviour
             SkillDefinition skill = Resources.Load<SkillDefinition>("Skills/" + data.skillNames[i]);
             if (skill == null)
             {
-                // Try searching the whole project structure if Resources doesn't work,
-                // but for now let's hope it's in a Resources folder or we use another method.
-                // Given the project structure, let's assume we might need to find it differently
-                // but I will start with a simple look-up if possible.
-                // Actually, let's use a more robust way if they aren't in Resources.
                 Debug.LogWarning($"Could not find SkillDefinition for {data.skillNames[i]}");
                 continue;
             }
