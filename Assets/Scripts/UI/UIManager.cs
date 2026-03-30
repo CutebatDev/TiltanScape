@@ -89,13 +89,6 @@ public class UIManager : MonoBehaviour
         CloseAllUI();
         OpenUI(_previusPanel.type);
     }
-
-    public void TestNextScene()
-    {
-        BackButton();
-        ResumeGame();
-        EventsManager.Instance.OnNextScene?.Invoke();
-    }
 }
 
 

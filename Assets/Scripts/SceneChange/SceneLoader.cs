@@ -31,8 +31,8 @@ namespace SceneChange
         {
             await LoadSceneGroup(0);
 
-            CollisionSystem.OnNextScene += o => FindSceneIndex(o);
-            EventsManager.Instance.OnNextScene += () => FindSceneIndex("Level_SecondFloor");
+            CollisionSystem.OnNextScene += (o) => FindSceneIndex(o);
+            EventsManager.Instance.OnNextScene += (name) => FindSceneIndex(name);
         }
 
         void Update()

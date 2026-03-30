@@ -1,3 +1,4 @@
+using Events;
 using System;
 using UnityEngine;
 using UnityEngine.AI;
@@ -65,10 +66,20 @@ namespace Player.Movement
                 {
                     targetInteractable = interactable;
                     anim.SitDown(false);
+
                     if (interactable.seat)
                         agent.SetDestination(interactable.seat.transform.position);
+
                     else if (interactable.standSlot)
                         agent.SetDestination(interactable.standSlot.transform.position);
+
+                    else if (interactable.isTeleporter)
+                    {
+                        agent.SetDestination(interactable.transform.position);
+
+                        if (!agent.pathPending && agent.remainingDistance <= interactionRange)
+                            EventsManager.Instance.OnNextScene?.Invoke(interactable.sceneName);
+                    }
 
                 }
                 else

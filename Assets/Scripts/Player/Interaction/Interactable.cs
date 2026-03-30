@@ -12,6 +12,9 @@ public class Interactable : MonoBehaviour
     [SerializeField] private bool useInteractionAnimation;
     [SerializeField] private EnumAnimations interactionAnimation;
 
+    public bool isTeleporter;
+    public string sceneName;
+
     public void Interact()
     {
         OnInteract?.Invoke();
