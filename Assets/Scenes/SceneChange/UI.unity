@@ -130,6 +130,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb2676ecd86fcbb48a525f195095ee3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TaskBoxUI
+--- !u!1 &142609115 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8349294244869712208, guid: 528041443ca5fce42bd91c4a357a12c2, type: 3}
+  m_PrefabInstance: {fileID: 1276195169}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &183075990 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 113149475175739130, guid: acfe9f61e0cb8394e86228935c10536f, type: 3}
@@ -306,6 +311,39 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7563602391043313131, guid: 65413e3584bce3841a81a86916756ee5, type: 3}
   m_PrefabInstance: {fileID: 215752794}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &222402502 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4503886309142261398, guid: 528041443ca5fce42bd91c4a357a12c2, type: 3}
+  m_PrefabInstance: {fileID: 1276195169}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+--- !u!114 &315548790 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3538006000926111972, guid: 528041443ca5fce42bd91c4a357a12c2, type: 3}
+  m_PrefabInstance: {fileID: 1276195169}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!114 &330350195 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 115495356857139922, guid: 528041443ca5fce42bd91c4a357a12c2, type: 3}
+  m_PrefabInstance: {fileID: 1276195169}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1001 &387422688
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -572,6 +610,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 28417600215203339, guid: 7bdb279760a7f4d489ac12fd676592ba, type: 3}
   m_PrefabInstance: {fileID: 387422688}
   m_PrefabAsset: {fileID: 0}
+--- !u!224 &425614874 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1817298202545569073, guid: 528041443ca5fce42bd91c4a357a12c2, type: 3}
+  m_PrefabInstance: {fileID: 1276195169}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &584798477 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8440101879133471608, guid: 65413e3584bce3841a81a86916756ee5, type: 3}
@@ -678,6 +721,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a80451ca74800548a4d8fa91e99d513, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+--- !u!114 &795994081 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1167325575976282167, guid: 528041443ca5fce42bd91c4a357a12c2, type: 3}
+  m_PrefabInstance: {fileID: 1276195169}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1001 &837310633
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -870,11 +924,69 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6047968674789295499, guid: d9600a9c632c863489e1de10f1ccd4e1, type: 3}
   m_PrefabInstance: {fileID: 906226358}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &967903729 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1550460764558626391, guid: 528041443ca5fce42bd91c4a357a12c2, type: 3}
+  m_PrefabInstance: {fileID: 1276195169}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!224 &1006172709 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5131462702543719077, guid: d9600a9c632c863489e1de10f1ccd4e1, type: 3}
   m_PrefabInstance: {fileID: 906226358}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1075743562 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6263132661101626480, guid: 528041443ca5fce42bd91c4a357a12c2, type: 3}
+  m_PrefabInstance: {fileID: 1276195169}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+--- !u!1 &1212433740 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2370235885759370415, guid: 528041443ca5fce42bd91c4a357a12c2, type: 3}
+  m_PrefabInstance: {fileID: 1276195169}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1212433744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212433740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cf4fdd87300ae6418d2486586ade4e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MemoryGameMinigame
+  rootPanel: {fileID: 1212433740}
+  titleText: {fileID: 315548790}
+  instructionText: {fileID: 330350195}
+  feedbackText: {fileID: 795994081}
+  closeButton: {fileID: 1075743562}
+  gameArea: {fileID: 425614874}
+  expReward: 100
+  countdownText: {fileID: 967903729}
+  sequenceDisplay: {fileID: 222402502}
+  choiceGrid: {fileID: 2136913748}
+  choiceButtonPrefab: {fileID: 397346169476182390, guid: d9367889eeb578d44886151511de7b35, type: 3}
+  availableSprites:
+  - {fileID: 21300000, guid: f956aae584ec8074ebb4b80ce6e1772d, type: 3}
+  - {fileID: 21300000, guid: 46e466c6181cad74785101e07214f0b8, type: 3}
+  - {fileID: 21300000, guid: 7d159ae395314d246ab471bc9e52f6ff, type: 3}
+  - {fileID: 21300000, guid: c490c213cbe83694abc922bdad45793e, type: 3}
+  - {fileID: 21300000, guid: b0cfd8b3dea3d2646ad41998281ae4b8, type: 3}
+  level: 1
+  gapBetweenImages: 0.2
 --- !u!1001 &1276195169
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -891,6 +1003,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MinigameBase
       objectReference: {fileID: 0}
+    - target: {fileID: 3911318483319498332, guid: 528041443ca5fce42bd91c4a357a12c2, type: 3}
+      propertyPath: expReward
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 4641469133338971418, guid: 528041443ca5fce42bd91c4a357a12c2, type: 3}
       propertyPath: expReward
       value: 100
@@ -899,6 +1015,10 @@ PrefabInstance:
       propertyPath: expReward
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 5139458204463602590, guid: 528041443ca5fce42bd91c4a357a12c2, type: 3}
+      propertyPath: rootPanel
+      value: 
+      objectReference: {fileID: 142609115}
     - target: {fileID: 7406781830327145037, guid: 528041443ca5fce42bd91c4a357a12c2, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -979,10 +1099,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2013343246960861031, guid: 528041443ca5fce42bd91c4a357a12c2, type: 3}
+    - {fileID: 3911318483319498332, guid: 528041443ca5fce42bd91c4a357a12c2, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2370235885759370415, guid: 528041443ca5fce42bd91c4a357a12c2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1212433744}
   m_SourcePrefab: {fileID: 100100000, guid: 528041443ca5fce42bd91c4a357a12c2, type: 3}
 --- !u!224 &1276195170 stripped
 RectTransform:
@@ -994,7 +1119,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5139458204463602590, guid: 528041443ca5fce42bd91c4a357a12c2, type: 3}
   m_PrefabInstance: {fileID: 1276195169}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 142609115}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 27bf51d91de7374449b878724b368dd9, type: 3}
@@ -1011,17 +1136,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39ad561d2ff03814d92aec02e7bc889d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BugSmashMinigame
---- !u!114 &1276195173 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2013343246960861031, guid: 528041443ca5fce42bd91c4a357a12c2, type: 3}
-  m_PrefabInstance: {fileID: 1276195169}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1695e5369b68faf45a344dcc05b8b87b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MinigameBaseUI
 --- !u!1 &1386120716 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3272321054527172626, guid: d9600a9c632c863489e1de10f1ccd4e1, type: 3}
@@ -1031,6 +1145,11 @@ GameObject:
 Transform:
   m_CorrespondingSourceObject: {fileID: 2492454681746328675, guid: c218e0928086dc24c9f91b92d13a9628, type: 3}
   m_PrefabInstance: {fileID: 1514565908397757711}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2136913748 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1230703673111679232, guid: 528041443ca5fce42bd91c4a357a12c2, type: 3}
+  m_PrefabInstance: {fileID: 1276195169}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1514565908397757711
 PrefabInstance:
@@ -1083,7 +1202,7 @@ PrefabInstance:
     - target: {fileID: 5496493554905598144, guid: c218e0928086dc24c9f91b92d13a9628, type: 3}
       propertyPath: minigames.Array.data[0].minigame
       value: 
-      objectReference: {fileID: 1276195173}
+      objectReference: {fileID: 1212433744}
     - target: {fileID: 5496493554905598144, guid: c218e0928086dc24c9f91b92d13a9628, type: 3}
       propertyPath: minigames.Array.data[1].minigame
       value: 
